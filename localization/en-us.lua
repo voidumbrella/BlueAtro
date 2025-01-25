@@ -1,0 +1,52 @@
+return {
+	descriptions = {
+		Back = {},
+		Blind = {},
+		Edition = {},
+		Enhanced = {},
+		Joker = {
+			j_blueatro_sobface = {
+				name = "Sobbing Face",
+				text = {
+					"{C:mult}+#1#{} Mult if all scored",
+					"cards are {C:attention}7{} or below",
+				},
+			},
+			j_blueatro_teabagging = {
+				name = "Teabagging",
+				text = {
+					"Gains {C:mult}+#2#{} Mult",
+					"whenever a card or",
+					"Joker is destroyed",
+					"{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
+				},
+			},
+		},
+		Other = {},
+		Planet = {},
+		Spectral = {},
+		Stake = {},
+		Tag = {},
+		Tarot = {},
+		Voucher = {},
+	},
+	misc = {
+		achievement_descriptions = {},
+		achievement_names = {},
+		blind_states = {},
+		challenge_names = {},
+		collabs = {},
+		dictionary = {},
+		high_scores = {},
+		labels = {},
+		poker_hand_descriptions = {},
+		poker_hands = {},
+		quips = {},
+		ranks = {},
+		suits_plural = {},
+		suits_singular = {},
+		tutorial = {},
+		v_dictionary = {},
+		v_text = {},
+	},
+}
