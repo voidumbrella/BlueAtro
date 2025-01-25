@@ -57,7 +57,7 @@ position = "after"
 match_indent = true
 payload = '''
 for i = 1, #G.jokers.cards do
-		if G.jokers.cards[i] ~= sliced_card and not G.jokers.card[i].getting_sliced then
+		if G.jokers.cards[i] ~= sliced_card and not G.jokers.cards[i].getting_sliced then
 			effect = G.jokers.cards[i]:calculate_joker({joker_destroyed = true, destroyed = sliced_card})
 		end
 end
