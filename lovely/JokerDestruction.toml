@@ -1,0 +1,117 @@
+# This adds a new calculation event that triggers whenever a Joker is destroyed.
+# Jokers can be destroyed in the base game by the following ways:
+# - Food Jokers destroying themselves 
+# - Mr Bones self destructing
+#	- Ceremonial Dagger and Madness destroying Jokers
+# - Ankh and Hex
+
+[manifest]
+version = "1.0.0"
+priority = 0
+
+# Covers all food jokers
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "G.jokers:remove_card(self)" # only food jokers destroy themselves like this.
+position = "after"
+match_indent = true
+payload = '''
+for i = 1, #G.jokers.cards do
+		if G.jokers.cards[i] ~= self then
+			effect = G.jokers.cards[i]:calculate_joker({joker_destroyed = true, destroyed = self})
+		end
+end
+'''
+
+# Mr. Bones
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+if self.ability.name == 'Mr. Bones' and context.game_over and 
+G.GAME.chips/G.GAME.blind.chips >= 0.25 then
+    G.E_MANAGER:add_event(Event({
+        func = function()
+            G.hand_text_area.blind_chips:juice_up()
+            G.hand_text_area.game_chips:juice_up()
+            play_sound('tarot1')
+            self:start_dissolve()
+'''
+position = "after"
+match_indent = true
+payload = '''
+for i = 1, #G.jokers.cards do
+		if G.jokers.cards[i] ~= self then
+			effect = G.jokers.cards[i]:calculate_joker({joker_destroyed = true, destroyed = self})
+		end
+end
+'''
+
+# Ceremonial Dagger
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = 'sliced_card:start_dissolve({HEX("57ecab")}, nil, 1.6)'
+position = "after"
+match_indent = true
+payload = '''
+for i = 1, #G.jokers.cards do
+		if G.jokers.cards[i] ~= sliced_card and not G.jokers.card[i].getting_sliced then
+			effect = G.jokers.cards[i]:calculate_joker({joker_destroyed = true, destroyed = sliced_card})
+		end
+end
+'''
+
+# Madness
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''(context.blueprint_card or self):juice_up(0.8, 0.8)
+joker_to_destroy:start_dissolve({G.C.RED}, nil, 1.6)'''
+position = "after"
+match_indent = true
+payload = '''
+for i = 1, #G.jokers.cards do
+		if G.jokers.cards[i] ~= sliced_card and not G.jokers.card[i].getting_sliced then
+			effect = G.jokers.cards[i]:calculate_joker({joker_destroyed = true, destroyed = sliced_card})
+		end
+end
+'''
+
+# Ankh
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+v:start_dissolve(nil, _first_dissolve)
+_first_dissolve = true
+'''
+position = "after"
+match_indent = true
+payload = '''
+for i = 1, #G.jokers.cards do
+		if G.jokers.cards[i] ~= v then
+			effect = G.jokers.cards[i]:calculate_joker({joker_destroyed = true, destroyed = v})
+		end
+end
+'''
+
+# Hex
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "if v ~= eligible_card and (not v.ability.eternal) then v:start_dissolve(nil, _first_dissolve);_first_dissolve = true end"
+position = "at"
+match_indent = true
+payload = '''
+if v ~= eligible_card and (not v.ability.eternal) then
+	v:start_dissolve(nil, _first_dissolve)
+	_first_dissolve = true 
+	for i = 1, #G.jokers.cards do
+			if G.jokers.card[i] ~= v then
+				effect = G.jokers.cards[i]:calculate_joker({joker_destroyed = true, destroyed = v})
+			end
+	end
+end
+'''
