@@ -2,7 +2,7 @@
 # Jokers can be destroyed in the base game by the following ways:
 # - Food Jokers destroying themselves 
 # - Mr Bones self destructing
-#	- Ceremonial Dagger and Madness destroying Jokers
+# - Ceremonial Dagger and Madness destroying Jokers
 # - Ankh and Hex
 
 [manifest]
@@ -18,9 +18,9 @@ position = "after"
 match_indent = true
 payload = '''
 for i = 1, #G.jokers.cards do
-		if G.jokers.cards[i] ~= self then
-			effect = G.jokers.cards[i]:calculate_joker({joker_destroyed = true, destroyed = self})
-		end
+	if G.jokers.cards[i] ~= self then
+		effect = G.jokers.cards[i]:calculate_joker({joker_destroyed = true, destroyed = self})
+	end
 end
 '''
 
@@ -42,9 +42,9 @@ position = "after"
 match_indent = true
 payload = '''
 for i = 1, #G.jokers.cards do
-		if G.jokers.cards[i] ~= self then
-			effect = G.jokers.cards[i]:calculate_joker({joker_destroyed = true, destroyed = self})
-		end
+	if G.jokers.cards[i] ~= self then
+		effect = G.jokers.cards[i]:calculate_joker({joker_destroyed = true, destroyed = self})
+	end
 end
 '''
 
@@ -57,9 +57,9 @@ position = "after"
 match_indent = true
 payload = '''
 for i = 1, #G.jokers.cards do
-		if G.jokers.cards[i] ~= sliced_card and not G.jokers.cards[i].getting_sliced then
-			effect = G.jokers.cards[i]:calculate_joker({joker_destroyed = true, destroyed = sliced_card})
-		end
+	if G.jokers.cards[i] ~= sliced_card and not G.jokers.cards[i].getting_sliced then
+		effect = G.jokers.cards[i]:calculate_joker({joker_destroyed = true, destroyed = sliced_card})
+	end
 end
 '''
 
@@ -73,9 +73,9 @@ position = "after"
 match_indent = true
 payload = '''
 for i = 1, #G.jokers.cards do
-		if G.jokers.cards[i] ~= sliced_card and not G.jokers.cards[i].getting_sliced then
-			effect = G.jokers.cards[i]:calculate_joker({joker_destroyed = true, destroyed = sliced_card})
-		end
+	if G.jokers.cards[i] ~= sliced_card and not G.jokers.cards[i].getting_sliced then
+		effect = G.jokers.cards[i]:calculate_joker({joker_destroyed = true, destroyed = sliced_card})
+	end
 end
 '''
 
@@ -91,9 +91,9 @@ position = "after"
 match_indent = true
 payload = '''
 for i = 1, #G.jokers.cards do
-		if G.jokers.cards[i] ~= v then
-			effect = G.jokers.cards[i]:calculate_joker({joker_destroyed = true, destroyed = v})
-		end
+	if G.jokers.cards[i] ~= v then
+		effect = G.jokers.cards[i]:calculate_joker({joker_destroyed = true, destroyed = v})
+	end
 end
 '''
 
@@ -109,9 +109,9 @@ if v ~= eligible_card and (not v.ability.eternal) then
 	v:start_dissolve(nil, _first_dissolve)
 	_first_dissolve = true 
 	for i = 1, #G.jokers.cards do
-			if G.jokers.cards[i] ~= v then
-				effect = G.jokers.cards[i]:calculate_joker({joker_destroyed = true, destroyed = v})
-			end
+		if G.jokers.cards[i] ~= v then
+			effect = G.jokers.cards[i]:calculate_joker({joker_destroyed = true, destroyed = v})
+		end
 	end
 end
 '''
