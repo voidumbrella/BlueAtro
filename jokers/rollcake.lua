@@ -45,55 +45,50 @@ SMODS.Joker({
 					nil,
 					{ message = localize("k_plus_planet") }
 				)
-			end
-		end
 
-		if
-			context.end_of_round
-			and context.cardarea == G.jokers
-			and not context.blueprint
-			and not context.game_over
-		then
-			if card.ability.extra.rounds_left - 1 <= 0 then
-				G.E_MANAGER:add_event(Event({
-					func = function()
-						play_sound("tarot1")
-						card.T.r = -0.2
-						card:juice_up(0.3, 0.4)
-						card.states.drag.is = true
-						card.children.center.pinch.x = true
+				if not context.blueprint then
+					if card.ability.extra.rounds_left - 1 <= 0 then
 						G.E_MANAGER:add_event(Event({
-							trigger = "after",
-							delay = 0.3,
-							blockable = false,
 							func = function()
-								G.jokers:remove_card(card)
-								for i = 1, #G.jokers.cards do
-									if G.jokers.cards[i] ~= card then
-										effect = G.jokers.cards[i]:calculate_joker({
-											joker_destroyed = true,
-											destroyed = card,
-										})
-									end
-								end
-								card:remove()
-								card = nil
+								play_sound("tarot1")
+								card.T.r = -0.2
+								card:juice_up(0.3, 0.4)
+								card.states.drag.is = true
+								card.children.center.pinch.x = true
+								G.E_MANAGER:add_event(Event({
+									trigger = "after",
+									delay = 0.3,
+									blockable = false,
+									func = function()
+										G.jokers:remove_card(card)
+										for i = 1, #G.jokers.cards do
+											if G.jokers.cards[i] ~= card then
+												effect = G.jokers.cards[i]:calculate_joker({
+													joker_destroyed = true,
+													destroyed = card,
+												})
+											end
+										end
+										card:remove()
+										card = nil
+										return true
+									end,
+								}))
 								return true
 							end,
 						}))
-						return true
-					end,
-				}))
-				return {
-					message = localize("k_eaten_ex"),
-					colour = G.C.FILTER,
-				}
-			else
-				card.ability.extra.rounds_left = card.ability.extra.rounds_left - 1
-				return {
-					message = card.ability.extra.rounds_left .. "",
-					colour = G.C.FILTER,
-				}
+						return {
+							message = localize("k_eaten_ex"),
+							colour = G.C.FILTER,
+						}
+					else
+						card.ability.extra.rounds_left = card.ability.extra.rounds_left - 1
+						return {
+							message = card.ability.extra.rounds_left .. "",
+							colour = G.C.FILTER,
+						}
+					end
+				end
 			end
 		end
 	end,

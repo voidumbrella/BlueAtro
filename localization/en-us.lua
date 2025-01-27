@@ -24,10 +24,10 @@ return {
 			j_blueatro_rollcake = {
 				name = "Roll Cake",
 				text = {
-					"For next {C:attention}#1#{} rounds,",
-					"creates a {C:planet}Planet{} card for",
+					"Creates a {C:planet}Planet{} card for",
 					"the third played {C:attention}poker hand{}",
-					"{C:inactive}({C:attention}#2#{C:attention} {C:inactive}hand(s) played this round)",
+					"{C:inactive}({C:attention}#2#{C:attention} {C:inactive}hands played this round)",
+					"{C:inactive}({C:attention}#1#{C:attention} {C:inactive}uses left)",
 				},
 			},
 		},
