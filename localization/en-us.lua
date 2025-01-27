@@ -8,17 +8,26 @@ return {
 			j_blueatro_sobface = {
 				name = "Sobbing Face",
 				text = {
-					"{C:mult}+#1#{} Mult if all scored",
-					"cards are {C:attention}7{} or below",
+					"If all scored cards are",
+					"{C:attention}7{} or below, {C:mult}+#1#{} Mult",
 				},
 			},
 			j_blueatro_teabagging = {
 				name = "Teabagging",
 				text = {
-					"Gains {C:mult}+#2#{} Mult",
-					"whenever a card or",
-					"Joker is destroyed",
+					"Whenever a card or",
+					"Joker is destroyed,",
+					"this gains {C:mult}+#2#{} Mult",
 					"{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
+				},
+			},
+			j_blueatro_rollcake = {
+				name = "Roll Cake",
+				text = {
+					"For next {C:attention}#1#{} rounds,",
+					"creates a {C:planet}Planet{} card for",
+					"the third played {C:attention}poker hand{}",
+					"{C:inactive}({C:attention}#2#{C:attention} {C:inactive}hand(s) played this round)",
 				},
 			},
 		},

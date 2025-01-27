@@ -5,9 +5,15 @@ SMODS.Atlas({
 	py = 95,
 })
 
+local jokers = {
+	"sobbing_face",
+	"teabagging",
+	"rollcake",
+}
+
 local jokers_directory = SMODS.current_mod.path .. "/jokers"
-for _, filename in ipairs(NFS.getDirectoryItems(jokers_directory)) do
-	local file_path = jokers_directory .. "/" .. filename
+for _, joker_name in ipairs(jokers) do
+	local file_path = jokers_directory .. "/" .. joker_name .. ".lua"
 	local file_type = NFS.getInfo(file_path).type
 	if file_type == "file" then
 		sendDebugMessage("Loaded " .. file_path)
