@@ -31,7 +31,7 @@ SMODS.Joker({
 				local planet_card
 				for k, v in pairs(G.P_CENTER_POOLS.Planet) do
 					if v.config.hand_type == context.scoring_name then
-						planet_card = SMODS.create_card({ set = "Planet", key = v.key, key_append = "rollcake" })
+						planet_card = SMODS.create_card({ set = "Planet", key = v.key })
 					end
 				end
 				planet_card:add_to_deck()

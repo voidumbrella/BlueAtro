@@ -9,6 +9,7 @@ local jokers = {
 	"sobbing_face",
 	"teabagging",
 	"rollcake",
+	"contraband",
 }
 
 local jokers_directory = SMODS.current_mod.path .. "/jokers"

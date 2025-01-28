@@ -30,6 +30,14 @@ return {
 					"{C:inactive}({C:attention}#2#{C:attention} {C:inactive}hand(s) played this round)",
 				},
 			},
+			j_blueatro_contraband = {
+				name = "Contraband",
+				text = {
+					"If played hand scored",
+					"both {C:attention}6{} and {C:attention}9{},",
+					"create a {C:attention}Death{} card",
+				},
+			},
 		},
 		Other = {},
 		Planet = {},
@@ -45,7 +53,9 @@ return {
 		blind_states = {},
 		challenge_names = {},
 		collabs = {},
-		dictionary = {},
+		dictionary = {
+			k_shikei = "SHIKEI!",
+		},
 		high_scores = {},
 		labels = {},
 		poker_hand_descriptions = {},
