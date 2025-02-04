@@ -5,7 +5,7 @@ SMODS.Joker({
 	key = "teabagging",
 	atlas = "jokers_atlas",
 	pos = { x = 1, y = 0 },
-	config = { extra = { mult = 0, mult_gain = 3 } },
+	config = { extra = { mult = 0, mult_gain = 4 } },
 	rarity = 2,
 	cost = 4,
 	loc_vars = function(_, info_queue, card)

@@ -46,7 +46,9 @@ SMODS.Joker({
 					{ message = localize("k_plus_planet") }
 				)
 			end
+		end
 
+		if context.end_of_round and not context.repetition and not context.individual then
 			if not context.blueprint then
 				if card.ability.extra.rounds_left - 1 <= 0 then
 					G.E_MANAGER:add_event(Event({
