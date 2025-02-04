@@ -38,6 +38,15 @@ return {
 					"create a {C:attention}Death{} card",
 				},
 			},
+			j_blueatro_hero = {
+				name = "Hero",
+				text = {
+					"For every {C:attention}#2#{} scored cards,",
+					"this Joker gains {C:mult}+#1#{} Mult",
+					"{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)",
+					"{C:inactive}({C:important}#4#{C:inactive} cards left)",
+				},
+			},
 		},
 		Other = {},
 		Planet = {},
@@ -55,6 +64,7 @@ return {
 		collabs = {},
 		dictionary = {
 			k_shikei = "SHIKEI!",
+			k_levelup = "Panpakapan!",
 		},
 		high_scores = {},
 		labels = {},

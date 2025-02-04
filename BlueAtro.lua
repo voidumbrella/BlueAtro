@@ -6,10 +6,11 @@ SMODS.Atlas({
 })
 
 local jokers = {
-	"sobbing_face",
-	"teabagging",
-	"rollcake",
-	"contraband",
+	"sobbing_face", -- 00
+	"teabagging", -- 01
+	"rollcake", -- 02
+	"contraband", -- 03
+	"hero", -- 04
 }
 
 local jokers_directory = SMODS.current_mod.path .. "/jokers"
