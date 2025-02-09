@@ -8,7 +8,9 @@ SMODS.Joker({
 	config = {},
 	rarity = 3,
 	cost = 8,
-	loc_vars = function(_, info_queue, center) end,
+	loc_vars = function(_, info_queue, center)
+		info_queue[#info_queue + 1] = G.P_CENTERS.c_death
+	end,
 	calculate = function(_, card, context)
 		if context.after and context.cardarea == G.jokers then
 			local scored_6 = false

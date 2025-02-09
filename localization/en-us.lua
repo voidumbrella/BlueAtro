@@ -25,9 +25,9 @@ return {
 				name = "Roll Cake",
 				text = {
 					"For next {C:attention}#1#{} rounds,",
+					"{C:green}#2# in #3# chance{} to",
 					"create a {C:planet}Planet{} card for",
-					"the third played {C:attention}poker hand{}",
-					"{C:inactive}({C:attention}#2#{C:attention} {C:inactive}hand(s) played this round)",
+					"the first played {C:attention}poker hand{}",
 				},
 			},
 			j_blueatro_contraband = {
@@ -45,6 +45,14 @@ return {
 					"this Joker gains {C:mult}+#1#{} Mult",
 					"{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)",
 					"{C:inactive}({C:important}#4#{C:inactive} cards left)",
+				},
+			},
+			j_blueatro_elixir_of_youth = {
+				name = "Elixir of Youth",
+				text = {
+					"If {C:attention}first hand{} of round is a",
+					"single {C:attention}face card{}, destroy it and",
+					"add a random enhanced {C:attention}9{} to {C:attention}hand{}",
 				},
 			},
 		},

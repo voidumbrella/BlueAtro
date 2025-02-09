@@ -5,18 +5,18 @@ SMODS.Joker({
 	key = "rollcake",
 	atlas = "jokers_atlas",
 	pos = { x = 2, y = 0 },
-	config = { extra = { rounds_left = 5 } },
+	config = { extra = { rounds_left = 5, odds = 2 } },
 	eternal_compat = false,
 	rarity = 2,
 	cost = 6,
 	loc_vars = function(_, _, card)
-		return { vars = { card.ability.extra.rounds_left, G.GAME.current_round.hands_played or 0 } }
+		return { vars = { card.ability.extra.rounds_left, (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
 	end,
 	calculate = function(_, card, context)
 		if context.hand_drawn and not context.blueprint then
-			if G.GAME.current_round.hands_played == 2 then
+			if G.GAME.current_round.hands_played == 0 then
 				local eval = function()
-					return G.GAME.current_round.hands_played == 2
+					return G.GAME.current_round.hands_played == 0
 				end
 				juice_card_until(card, eval, true)
 			end
@@ -24,27 +24,32 @@ SMODS.Joker({
 
 		if context.before and context.cardarea == G.jokers then
 			if
-				G.GAME.current_round.hands_played == 2
+				G.GAME.current_round.hands_played == 0
 				and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit
+				and pseudorandom("rollcake") < G.GAME.probabilities.normal / card.ability.extra.odds
 			then
 				G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
-				local planet_card
-				for k, v in pairs(G.P_CENTER_POOLS.Planet) do
-					if v.config.hand_type == context.scoring_name then
-						planet_card = SMODS.create_card({ set = "Planet", key = v.key })
-					end
-				end
-				planet_card:add_to_deck()
-				G.consumeables:emplace(planet_card)
-				G.GAME.consumeable_buffer = 0
-				card_eval_status_text(
-					context.blueprint_card or card,
-					"extra",
-					nil,
-					nil,
-					nil,
-					{ message = localize("k_plus_planet") }
-				)
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						for _, v in pairs(G.P_CENTER_POOLS.Planet) do
+							if v.config.hand_type == context.scoring_name then
+								local planet_card = SMODS.create_card({ set = "Planet", key = v.key })
+								planet_card:add_to_deck()
+								G.consumeables:emplace(planet_card)
+							end
+						end
+						G.GAME.consumeable_buffer = 0
+						card_eval_status_text(
+							context.blueprint_card or card,
+							"extra",
+							nil,
+							nil,
+							nil,
+							{ message = localize("k_plus_planet") }
+						)
+						return true
+					end,
+				}))
 			end
 		end
 
@@ -66,7 +71,7 @@ SMODS.Joker({
 									G.jokers:remove_card(card)
 									for i = 1, #G.jokers.cards do
 										if G.jokers.cards[i] ~= card then
-											effect = G.jokers.cards[i]:calculate_joker({
+											G.jokers.cards[i]:calculate_joker({
 												joker_destroyed = true,
 												destroyed = card,
 											})
