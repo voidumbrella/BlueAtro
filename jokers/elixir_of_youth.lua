@@ -4,7 +4,7 @@
 SMODS.Joker({
 	key = "elixir_of_youth",
 	atlas = "jokers_atlas",
-	pos = { x = 4, y = 0 },
+	pos = { x = 5, y = 0 },
 	config = {},
 	rarity = 3,
 	cost = 6,
