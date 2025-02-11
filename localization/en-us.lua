@@ -55,6 +55,14 @@ return {
 					"add a random enhanced {C:attention}9{} to {C:attention}hand{}",
 				},
 			},
+			j_blueatro_pointman = {
+				name = "Pointman",
+				text = {
+					"This gains {X:mult,C:white}X#1#{} Mult for",
+					"each Joker to the right",
+					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+				},
+			},
 		},
 		Other = {},
 		Planet = {},

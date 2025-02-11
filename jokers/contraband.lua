@@ -8,6 +8,7 @@ SMODS.Joker({
 	config = {},
 	rarity = 3,
 	cost = 8,
+	blueprint_compat = true,
 	loc_vars = function(_, info_queue, center)
 		info_queue[#info_queue + 1] = G.P_CENTERS.c_death
 	end,

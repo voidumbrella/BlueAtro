@@ -8,6 +8,7 @@ SMODS.Joker({
 	config = {},
 	rarity = 3,
 	cost = 6,
+	blueprint_compat = true,
 	loc_vars = function(_, info_queue, center) end,
 	calculate = function(_, card, context)
 		if context.first_hand_drawn and not context.blueprint then

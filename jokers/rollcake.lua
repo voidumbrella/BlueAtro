@@ -6,9 +6,10 @@ SMODS.Joker({
 	atlas = "jokers_atlas",
 	pos = { x = 2, y = 0 },
 	config = { extra = { rounds_left = 5, odds = 2 } },
-	eternal_compat = false,
 	rarity = 2,
 	cost = 6,
+	blueprint_compat = true,
+	eternal_compat = false,
 	loc_vars = function(_, _, card)
 		return { vars = { card.ability.extra.rounds_left, (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
 	end,

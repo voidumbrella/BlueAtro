@@ -8,6 +8,7 @@ SMODS.Joker({
 	config = { extra = { mult = 0, mult_gain = 1, cards_needed = 5, cards_scored = 0 } },
 	rarity = 1,
 	cost = 4,
+	blueprint_compat = true,
 	loc_vars = function(_, info_queue, card)
 		return {
 			vars = {
