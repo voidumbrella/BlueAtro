@@ -13,7 +13,8 @@ local jokers = {
 	"hero", -- 04
 	"elixir_of_youth", -- 05
 	"pointman", -- 06
-	"white_rabbit", -- 06
+	"white_rabbit", -- 07
+	"craft_chamber", -- 08
 }
 
 local jokers_directory = SMODS.current_mod.path .. "/jokers"
