@@ -17,11 +17,7 @@ pattern = "G.jokers:remove_card(self)" # only food jokers destroy themselves lik
 position = "after"
 match_indent = true
 payload = '''
-for i = 1, #G.jokers.cards do
-	if G.jokers.cards[i] ~= self then
-		G.jokers.cards[i]:calculate_joker({joker_destroyed = true, destroyed = self})
-	end
-end
+SMODS.calculate_context({jokers_destroyed = true, destroyed = {self}})
 '''
 
 # Mr. Bones
@@ -41,11 +37,7 @@ G.GAME.chips/G.GAME.blind.chips >= 0.25 then
 position = "after"
 match_indent = true
 payload = '''
-for i = 1, #G.jokers.cards do
-	if G.jokers.cards[i] ~= self then
-		G.jokers.cards[i]:calculate_joker({joker_destroyed = true, destroyed = self})
-	end
-end
+SMODS.calculate_context({jokers_destroyed = true, destroyed = {self}})
 '''
 
 # Ceremonial Dagger
@@ -56,11 +48,7 @@ pattern = 'sliced_card:start_dissolve({HEX("57ecab")}, nil, 1.6)'
 position = "after"
 match_indent = true
 payload = '''
-for i = 1, #G.jokers.cards do
-	if G.jokers.cards[i] ~= sliced_card and not G.jokers.cards[i].getting_sliced then
-		G.jokers.cards[i]:calculate_joker({joker_destroyed = true, destroyed = sliced_card})
-	end
-end
+SMODS.calculate_context({jokers_destroyed = true, destroyed = {sliced_card}})
 '''
 
 # Madness
@@ -72,11 +60,7 @@ joker_to_destroy:start_dissolve({G.C.RED}, nil, 1.6)'''
 position = "after"
 match_indent = true
 payload = '''
-for i = 1, #G.jokers.cards do
-	if G.jokers.cards[i] ~= sliced_card and not G.jokers.cards[i].getting_sliced then
-		G.jokers.cards[i]:calculate_joker({joker_destroyed = true, destroyed = sliced_card})
-	end
-end
+SMODS.calculate_context({jokers_destroyed = true, destroyed = {joker_to_destroy}})
 '''
 
 # Ankh
@@ -84,16 +68,26 @@ end
 [patches.pattern]
 target = "card.lua"
 pattern = '''
-v:start_dissolve(nil, _first_dissolve)
-_first_dissolve = true
+for k, v in pairs(deletable_jokers) do
+    if v ~= chosen_joker then 
+        v:start_dissolve(nil, _first_dissolve)
+        _first_dissolve = true
+    end
+end
 '''
-position = "after"
+position = "at"
 match_indent = true
 payload = '''
-for i = 1, #G.jokers.cards do
-	if G.jokers.cards[i] ~= v then
-		G.jokers.cards[i]:calculate_joker({joker_destroyed = true, destroyed = v})
-	end
+local _destroyed_jokers = {}
+for k, v in pairs(deletable_jokers) do
+    if v ~= chosen_joker then 
+        v:start_dissolve(nil, _first_dissolve)
+        _first_dissolve = true
+        _destroyed_jokers[#_destroyed_jokers + 1] = v
+    end
+end
+if #_destroyed_jokers > 0 then
+    SMODS.calculate_context({jokers_destroyed = true, destroyed = _destroyed_jokers})
 end
 '''
 
@@ -101,17 +95,25 @@ end
 [[patches]]
 [patches.pattern]
 target = "card.lua"
-pattern = "if v ~= eligible_card and (not v.ability.eternal) then v:start_dissolve(nil, _first_dissolve);_first_dissolve = true end"
+pattern = '''
+local _first_dissolve = nil
+for k, v in pairs(G.jokers.cards) do
+    if v ~= eligible_card and (not v.ability.eternal) then v:start_dissolve(nil, _first_dissolve);_first_dissolve = true end
+end
+'''
 position = "at"
 match_indent = true
 payload = '''
-if v ~= eligible_card and (not v.ability.eternal) then
-	v:start_dissolve(nil, _first_dissolve)
-	_first_dissolve = true 
-	for i = 1, #G.jokers.cards do
-		if G.jokers.cards[i] ~= v then
-			G.jokers.cards[i]:calculate_joker({joker_destroyed = true, destroyed = v})
-		end
-	end
+local _destroyed_jokers = {}
+local _first_dissolve = nil
+for k, v in pairs(G.jokers.cards) do
+    if v ~= eligible_card and (not v.ability.eternal) then
+        v:start_dissolve(nil, _first_dissolve)
+        _first_dissolve = true 
+        _destroyed_jokers[#_destroyed_jokers + 1] = v
+    end
+end
+if #_destroyed_jokers > 0 then
+    SMODS.calculate_context({jokers_destroyed = true, destroyed = _destroyed_jokers})
 end
 '''

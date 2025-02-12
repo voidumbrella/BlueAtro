@@ -9,7 +9,7 @@ SMODS.Joker({
 	rarity = 3,
 	cost = 8,
 	blueprint_compat = true,
-	loc_vars = function(_, info_queue, center)
+	loc_vars = function(_, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.c_death
 	end,
 	calculate = function(_, card, context)
@@ -25,9 +25,8 @@ SMODS.Joker({
 				end
 			end
 			if
-				scored_6
-				and scored_9
-				and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit
+				(scored_6 and scored_9)
+				and (#G.consumeables.cards + (G.GAME.consumeable_buffer or 0)) < G.consumeables.config.card_limit
 			then
 				G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
 				G.E_MANAGER:add_event(Event({

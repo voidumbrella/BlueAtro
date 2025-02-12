@@ -15,10 +15,10 @@ return {
 			j_blueatro_teabagging = {
 				name = "Teabagging",
 				text = {
+					"{C:mult}+#1#{} Mult",
 					"Whenever a card or",
 					"Joker is destroyed,",
 					"this gains {C:mult}+#2#{} Mult",
-					"{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
 				},
 			},
 			j_blueatro_rollcake = {
@@ -35,16 +35,16 @@ return {
 				text = {
 					"If played hand scored",
 					"both {C:attention}6{} and {C:attention}9{},",
-					"create a {C:attention}Death{} card",
+					"create a {C:tarot}Death{}",
 				},
 			},
 			j_blueatro_hero = {
 				name = "Hero",
 				text = {
+					"{C:mult}+#3#{} Mult",
 					"For every {C:attention}#2#{} scored cards,",
 					"this Joker gains {C:mult}+#1#{} Mult",
-					"{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)",
-					"{C:inactive}({C:important}#4#{C:inactive} cards left)",
+					"{C:inactive}(#4# cards left)",
 				},
 			},
 			j_blueatro_elixir_of_youth = {
@@ -60,7 +60,15 @@ return {
 				text = {
 					"This gains {X:mult,C:white}X#1#{} Mult for",
 					"each Joker to the right",
-					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+					"{C:inactive}(Currently X#2# Mult)",
+				},
+			},
+			j_blueatro_white_rabbit = {
+				name = "White Rabbit",
+				text = {
+					"When a Blind is selected, spend {C:money}$#1#{}",
+					"to create a {C:tarot}Wheel of Fortune{}",
+					"{C:inactive}(Must have room){}",
 				},
 			},
 		},
@@ -81,6 +89,7 @@ return {
 		dictionary = {
 			k_shikei = "SHIKEI!",
 			k_levelup = "Panpakapan!",
+			k_nihaha = "Nihaha!",
 		},
 		high_scores = {},
 		labels = {},

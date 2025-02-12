@@ -9,7 +9,7 @@ SMODS.Joker({
 	rarity = 3,
 	cost = 6,
 	blueprint_compat = true,
-	loc_vars = function(_, info_queue, center) end,
+	loc_vars = function(_, info_queue, card) end,
 	calculate = function(_, card, context)
 		if context.first_hand_drawn and not context.blueprint then
 			juice_card_until(card, function()

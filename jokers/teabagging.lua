@@ -22,25 +22,35 @@ SMODS.Joker({
 			if not context.removed or #context.removed == 0 then
 				return
 			end
-			card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain * #context.removed
-			return {
-				message = localize({
-					type = "variable",
-					key = "a_mult",
-					vars = { card.ability.extra.mult },
-				}),
-				card = card,
-			}
-		elseif context.joker_destroyed and not context.blueprint then
-			card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
-			-- Custom context so we do this ourselves, maybe SMOD can be patched so we can just return a message?
-			card_eval_status_text(card, "extra", nil, nil, nil, {
-				message = localize({
-					type = "variable",
-					key = "a_mult",
-					vars = { card.ability.extra.mult },
-				}),
-			})
+			for i = 1, #context.removed do
+				card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
+				SMODS.calculate_effect({
+					message = localize({
+						type = "variable",
+						key = "a_mult",
+						vars = { card.ability.extra.mult },
+					}),
+					card = card,
+				})
+			end
+		elseif context.jokers_destroyed and not context.blueprint then
+			for i, joker in ipairs(context.destroyed) do
+				-- This should not upgrade itself as it dies...
+				if joker == card then
+					return
+				end
+			end
+			for i = 1, #context.destroyed do
+				card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
+				SMODS.calculate_effect({
+					message = localize({
+						type = "variable",
+						key = "a_mult",
+						vars = { card.ability.extra.mult },
+					}),
+					card = card,
+				})
+			end
 		end
 	end,
 })

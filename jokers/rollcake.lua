@@ -10,7 +10,7 @@ SMODS.Joker({
 	cost = 6,
 	blueprint_compat = true,
 	eternal_compat = false,
-	loc_vars = function(_, _, card)
+	loc_vars = function(_, info_queue, card)
 		return { vars = { card.ability.extra.rounds_left, (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
 	end,
 	calculate = function(_, card, context)
@@ -27,7 +27,7 @@ SMODS.Joker({
 			if
 				G.GAME.current_round.hands_played == 0
 				and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit
-				and pseudorandom("rollcake") < G.GAME.probabilities.normal / card.ability.extra.odds
+				and pseudorandom(pseudoseed("rollcake")) < G.GAME.probabilities.normal / card.ability.extra.odds
 			then
 				G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
 				G.E_MANAGER:add_event(Event({
