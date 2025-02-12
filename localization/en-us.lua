@@ -15,10 +15,10 @@ return {
 			j_blueatro_teabagging = {
 				name = "Teabagging",
 				text = {
-					"{C:mult}+#1#{} Mult",
 					"Whenever a card or",
 					"Joker is destroyed,",
 					"this gains {C:mult}+#2#{} Mult",
+					"{C:inactive}(Currently {C:mult}+#1#{}{C:inactive} Mult{}",
 				},
 			},
 			j_blueatro_rollcake = {
@@ -41,10 +41,10 @@ return {
 			j_blueatro_hero = {
 				name = "Hero",
 				text = {
-					"{C:mult}+#3#{} Mult",
 					"For every {C:attention}#2#{} scored cards,",
 					"this Joker gains {C:mult}+#1#{} Mult",
 					"{C:inactive}(#4# cards left)",
+					"{C:inactive}(Currently {C:mult}+#3#{}{C:inactive} Mult{}",
 				},
 			},
 			j_blueatro_elixir_of_youth = {
