@@ -69,7 +69,7 @@ return {
 					"When Blind is selected,",
 					"spend {C:money}$#1#{} to create",
 					"a {C:tarot}Wheel of Fortune{}",
-					"(Must have room)",
+					"{C:inactive}(Must have room){}",
 				},
 			},
 			j_blueatro_crafting_chamber = {

@@ -5,7 +5,7 @@ SMODS.Joker({
 	key = "hero",
 	atlas = "jokers_atlas",
 	pos = { x = 4, y = 0 },
-	config = { extra = { mult = 0, mult_gain = 1, cards_needed = 3, cards_scored = 0 } },
+	config = { extra = { mult = 0, mult_gain = 1, cards_needed = 4, cards_scored = 0 } },
 	rarity = 1,
 	cost = 4,
 	blueprint_compat = true,
