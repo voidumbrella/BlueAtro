@@ -66,9 +66,19 @@ return {
 			j_blueatro_white_rabbit = {
 				name = "White Rabbit",
 				text = {
-					"When a Blind is selected, spend {C:money}$#1#{}",
-					"to create a {C:tarot}Wheel of Fortune{}",
+					"When Blind is selected,",
+					"spend {C:money}$#1#{} to create",
+					"a {C:tarot}Wheel of Fortune{}",
+					"(Must have room)",
+				},
+			},
+			j_blueatro_crafting_chamber = {
+				name = "Crafting Chamber",
+				text = {
+					"After selling {C:attention}#1# consumeable{} cards,",
+					"create a random {C:tarot}Tarot{} card",
 					"{C:inactive}(Must have room){}",
+					"{C:inactive}(#2# left){}",
 				},
 			},
 		},

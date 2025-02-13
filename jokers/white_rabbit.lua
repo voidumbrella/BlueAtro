@@ -32,6 +32,7 @@ SMODS.Joker({
 					return true
 				end,
 			}))
+			play_sound("blueatro_e_nihaha", 1.0, 0.6)
 			return {
 				message = localize("k_nihaha"),
 				colour = G.C.SECONDARY_SET.Tarot,

@@ -8,6 +8,6 @@
   "main_file": "BlueAtro.lua",
   "badge_colour": "0A8BFA",
   "badge_text_colour": "FFFFFF",
-  "version": "0.0.0~0",
+  "version": "0.1.0",
   "dependencies": []
 }

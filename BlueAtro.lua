@@ -5,6 +5,11 @@ SMODS.Atlas({
 	py = 95,
 })
 
+SMODS.Sound({
+	key = "e_nihaha",
+	path = "e_nihaha.ogg",
+})
+
 local jokers = {
 	"sobbing_face", -- 00
 	"teabagging", -- 01
@@ -14,7 +19,7 @@ local jokers = {
 	"elixir_of_youth", -- 05
 	"pointman", -- 06
 	"white_rabbit", -- 07
-	"craft_chamber", -- 08
+	"crafting_chamber", -- 08
 }
 
 local jokers_directory = SMODS.current_mod.path .. "/jokers"

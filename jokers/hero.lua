@@ -5,7 +5,7 @@ SMODS.Joker({
 	key = "hero",
 	atlas = "jokers_atlas",
 	pos = { x = 4, y = 0 },
-	config = { extra = { mult = 0, mult_gain = 1, cards_needed = 5, cards_scored = 0 } },
+	config = { extra = { mult = 0, mult_gain = 1, cards_needed = 3, cards_scored = 0 } },
 	rarity = 1,
 	cost = 4,
 	blueprint_compat = true,
@@ -30,17 +30,17 @@ SMODS.Joker({
 			if card.ability.extra.cards_scored >= card.ability.extra.cards_needed then
 				card.ability.extra.cards_scored = 0
 				card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
-				card_eval_status_text(card, "extra", nil, nil, nil, {
+				return {
 					message = localize("k_levelup"),
 					colour = G.C.MULT,
 					card = card,
 					sound = "timpani",
-				})
+				}
 			else
-				card_eval_status_text(card, "extra", nil, nil, nil, {
+				return {
 					message = string.format("%d/%d", card.ability.extra.cards_scored, card.ability.extra.cards_needed),
 					card = card,
-				})
+				}
 			end
 		end
 	end,
