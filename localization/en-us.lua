@@ -66,7 +66,7 @@ return {
 			j_blueatro_white_rabbit = {
 				name = "White Rabbit",
 				text = {
-					"When Blind is selected,",
+					"When {C:attention}Blind{} is selected,",
 					"spend {C:money}$#1#{} to create",
 					"a {C:tarot}Wheel of Fortune{}",
 					"{C:inactive}(Must have room){}",
