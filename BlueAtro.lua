@@ -11,16 +11,19 @@ SMODS.Sound({
 })
 
 local jokers = {
+	-- Commons
 	"sobbing_face", -- 00
 	"teabagging", -- 01
-	"rollcake", -- 02
-	"contraband", -- 03
 	"hero", -- 04
-	"elixir_of_youth", -- 05
-	"pointman", -- 06
 	"white_rabbit", -- 07
 	"crafting_chamber", -- 08
 	"ornate_chair", -- 09
+	-- Uncommons
+	"rollcake", -- 02
+	"pointman", -- 06
+	-- Rares
+	"contraband", -- 03
+	"elixir_of_youth", -- 05
 }
 
 local jokers_directory = SMODS.current_mod.path .. "/jokers"
