@@ -19,7 +19,7 @@ return {
 					"Whenever a card or",
 					"Joker is destroyed,",
 					"this gains {C:mult}+#2#{} Mult",
-					"{C:inactive}(Currently {C:mult}+#1#{}{C:inactive} Mult{})",
+					"{C:inactive}(Currently {C:mult}+#1#{}{C:inactive} Mult{C:inactive})",
 				},
 			},
 			j_blueatro_rollcake = {
@@ -62,7 +62,7 @@ return {
 				text = {
 					"This gains {X:mult,C:white}X#1#{} Mult for",
 					"each Joker to the right",
-					"{C:inactive}(Currently {X:mult,C:white}X#2#{} Mult)",
+					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
 				},
 			},
 			j_blueatro_white_rabbit = {

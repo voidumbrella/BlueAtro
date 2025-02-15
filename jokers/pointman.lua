@@ -2,6 +2,10 @@
 --  Pointman
 --]]
 local calculate_xmult = function(card)
+	if not G.jokers or not G.jokers.cards then
+		return 1.0
+	end
+
 	local joker_count = 0
 	for i = 1, #G.jokers.cards do
 		if G.jokers.cards[i] == card then
