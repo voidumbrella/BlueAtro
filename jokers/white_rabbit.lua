@@ -16,7 +16,7 @@ SMODS.Joker({
 	calculate = function(_, card, context)
 		if
 			context.setting_blind
-			and (G.GAME.dollars + (G.GAME.dollar_buffer or 0)) > card.ability.extra.cost
+			and (G.GAME.dollars + (G.GAME.dollar_buffer or 0)) - card.ability.extra.cost > G.GAME.bankrupt_at
 			and (#G.consumeables.cards + (G.GAME.consumeable_buffer or 0)) < G.consumeables.config.card_limit
 		then
 			ease_dollars(-card.ability.extra.cost)

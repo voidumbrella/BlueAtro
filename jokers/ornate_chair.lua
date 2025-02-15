@@ -38,4 +38,12 @@ SMODS.Joker({
 			SMODS.calculate_effect({ message = localize("k_reset"), colour = G.C.MULT, card = card })
 		end
 	end,
+	joker_display_def = function(JokerDisplay)
+		return {
+			text = {
+				{ text = "+", colour = G.C.MULT },
+				{ ref_table = "card.ability.extra", ref_value = "mult", colour = G.C.MULT },
+			},
+		}
+	end,
 })

@@ -1,7 +1,4 @@
 return {
-	"이 조커는 카드나 조커가",
-	"파괴될 때마다,",
-	"배수 획득량이 +#2# 증가합니다",
 	descriptions = {
 		Back = {},
 		Blind = {},
@@ -11,8 +8,9 @@ return {
 			j_blueatro_sobface = {
 				name = "우는 얼굴",
 				text = {
-					"모든 득점한 카드가",
-					"{C:attention}7{} 이하라면, {C:mult}+#1#{} 배수를 획득합니다",
+					"득점한 모든 카드가",
+					"{C:attention}7{} 이하라면, {C:money}$#1#{}를 얻습니다",
+					"{C:inactive}(에이스는 1로 취급됩니다){}",
 				},
 			},
 			j_blueatro_teabagging = {
@@ -29,15 +27,17 @@ return {
 				text = {
 					"다음 {C:attention}#1#{}번의 라운드 동안,",
 					"{C:green}#2#/#3#{} 확률로 첫 번째로",
-					"플레이한 {C:attention}포커 핸드{}에"
-					"맞는 {C:planet}행성{} 카드를 생성합니다",
+					"플레이한 {C:attention}포커 핸드{}에",
+					"해당하는 {C:planet}행성{} 카드를 생성합니다",
 				},
 			},
 			j_blueatro_contraband = {
-				name = "Contraband",
+				name = "압수품",
 				text = {
-					"{C:attention}6{}과 {C:attention}9{}가 동시에 득점할 경우,",
+					"라운드의 {C:attention}첫 핸드{}가",
+					"{C:attention}6{}과 {C:attention}9{}를 득점할 경우,",
 					"{C:tarot}죽음{} 카드를 생성합니다",
+					"{C:inactive}(공간이 있어야 합니다){}",
 				},
 			},
 			j_blueatro_hero = {
@@ -63,7 +63,7 @@ return {
 					"이 조커의 배수 획득량은 이 조커의 오른쪽에 있는",
 					"조커의 갯수에 {X:mult,C:white}X#1#{}를 곱한 값입니다",
 					"each Joker to the right",
-					"{C:inactive}(현재 X#2# 배수)",
+					"{C:inactive}(현재 {X:mult,C:white}X#2#{} 배수)",
 				},
 			},
 			j_blueatro_white_rabbit = {
@@ -87,7 +87,7 @@ return {
 			j_blueatro_ornate_chair = {
 				name = "화려한 의자",
 				text = {
-					"이 조커의 배수 획득량은"
+					"이 조커의 배수 획득량은",
 					"{C:attention}상점{}에서 나갈 때마다",
 					"{C:mult}+#1#{}씩 증가합니다.",
 					"상점을 {C:attention}새로고침{} 할시 초기화됩니다.",

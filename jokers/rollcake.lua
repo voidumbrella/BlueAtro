@@ -5,7 +5,7 @@ SMODS.Joker({
 	key = "rollcake",
 	atlas = "jokers_atlas",
 	pos = { x = 2, y = 0 },
-	config = { extra = { rounds_left = 5, odds = 2 } },
+	config = { extra = { rounds = 5, rounds_left = 5, odds = 2 } },
 	rarity = 2,
 	cost = 6,
 	blueprint_compat = true,
@@ -23,7 +23,7 @@ SMODS.Joker({
 			end
 		end
 
-		if context.before and context.cardarea == G.jokers then
+		if context.after and context.cardarea == G.jokers then
 			if
 				G.GAME.current_round.hands_played == 0
 				and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit
@@ -37,6 +37,7 @@ SMODS.Joker({
 								local planet_card = SMODS.create_card({ set = "Planet", key = v.key })
 								planet_card:add_to_deck()
 								G.consumeables:emplace(planet_card)
+								break
 							end
 						end
 						G.GAME.consumeable_buffer = 0
@@ -99,5 +100,41 @@ SMODS.Joker({
 				end
 			end
 		end
+	end,
+	joker_display_def = function(JokerDisplay)
+		return {
+			text = {
+				{ text = "(" },
+				{ ref_table = "card.ability.extra", ref_value = "rounds_left" },
+				{ text = "/" },
+				{ ref_table = "card.ability.extra", ref_value = "rounds" },
+				{ text = ")" },
+			},
+			text_config = { colour = lighten(G.C.GREY, 0.8), scale = 0.2 },
+			reminder_text = {
+				{ text = "(" },
+				{ ref_table = "card.joker_display_values", ref_value = "active" },
+				{ text = ")" },
+			},
+			extra = {
+				{
+					{ text = "(" },
+					{ ref_table = "card.joker_display_values", ref_value = "odds" },
+					{ text = ")" },
+				},
+			},
+			extra_config = { colour = G.C.GREEN, scale = 0.3 },
+			calc_function = function(card)
+				card.joker_display_values.active = (
+					G.GAME and G.GAME.current_round.hands_played == 0 and localize("jdis_active")
+					or localize("jdis_inactive")
+				)
+				card.joker_display_values.odds = localize({
+					type = "variable",
+					key = "jdis_odds",
+					vars = { G.GAME and G.GAME.probabilities.normal or 1, card.ability.extra.odds },
+				})
+			end,
+		}
 	end,
 })

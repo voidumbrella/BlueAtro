@@ -5,7 +5,7 @@ SMODS.Joker({
 	key = "crafting_chamber",
 	atlas = "jokers_atlas",
 	pos = { x = 8, y = 0 },
-	config = { extra = { cards_sold = 0, cards_needed = 2 } },
+	config = { extra = { cards_sold = 0, cards_needed = 3 } },
 	rarity = 1,
 	cost = 4,
 	blueprint_compat = false,
@@ -37,5 +37,18 @@ SMODS.Joker({
 				}
 			end
 		end
+	end,
+	joker_display_def = function(JokerDisplay)
+		return {
+			reminder_text = {
+				{ text = "(" },
+				{ ref_table = "card.joker_display_values", ref_value = "progress" },
+				{ text = ")" },
+			},
+			calc_function = function(card)
+				card.joker_display_values.progress =
+					string.format("%d/%d", card.ability.extra.cards_sold, card.ability.extra.cards_needed)
+			end,
+		}
 	end,
 })

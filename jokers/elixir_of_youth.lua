@@ -47,4 +47,27 @@ SMODS.Joker({
 			end
 		end
 	end,
+	joker_display_def = function(JokerDisplay)
+		return {
+			text = {
+				{ text = "+" },
+				{ ref_table = "card.joker_display_values", ref_value = "count", retrigger_type = "mult" },
+			},
+			calc_function = function(card)
+				local _, _, scoring_hand = JokerDisplay.evaluate_hand()
+				local should_proc = #scoring_hand == 1 and scoring_hand[1]:is_face()
+				local active = G.GAME and G.GAME.current_round.hands_played == 0
+				card.joker_display_values.active = active
+				card.joker_display_values.count = (active and should_proc) and 1 or 0
+			end,
+			style_function = function(card, text, reminder_text, extra)
+				if text and text.children[1] and text.children[2] then
+					text.children[1].config.colour = card.joker_display_values.active and G.C.WHITE
+						or G.C.UI.TEXT_INACTIVE
+					text.children[2].config.colour = card.joker_display_values.active and G.C.WHITE
+						or G.C.UI.TEXT_INACTIVE
+				end
+			end,
+		}
+	end,
 })

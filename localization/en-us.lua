@@ -9,7 +9,8 @@ return {
 				name = "Sobbing Face",
 				text = {
 					"If all scored cards are",
-					"{C:attention}7{} or below, {C:mult}+#1#{} Mult",
+					"{C:attention}7{} or below, earn {C:money}$#1#{}",
+					"{C:inactive}(Aces are ones){}",
 				},
 			},
 			j_blueatro_teabagging = {
@@ -25,7 +26,7 @@ return {
 				name = "Roll Cake",
 				text = {
 					"For next {C:attention}#1#{} rounds,",
-					"{C:green}#2# in #3# chance{} to",
+					"{C:green}#2# in #3#{} chance to",
 					"create a {C:planet}Planet{} card for",
 					"the first played {C:attention}poker hand{}",
 				},
@@ -33,9 +34,10 @@ return {
 			j_blueatro_contraband = {
 				name = "Contraband",
 				text = {
-					"If played hand scored",
-					"both {C:attention}6{} and {C:attention}9{},",
+					"If {C:attention}first hand{} of round",
+					"scores both {C:attention}6{} and {C:attention}9{},",
 					"create a {C:tarot}Death{}",
+					"{C:inactive}(Must have room){}",
 				},
 			},
 			j_blueatro_hero = {
@@ -60,7 +62,7 @@ return {
 				text = {
 					"This gains {X:mult,C:white}X#1#{} Mult for",
 					"each Joker to the right",
-					"{C:inactive}(Currently X#2# Mult)",
+					"{C:inactive}(Currently {X:mult,C:white}X#2#{} Mult)",
 				},
 			},
 			j_blueatro_white_rabbit = {

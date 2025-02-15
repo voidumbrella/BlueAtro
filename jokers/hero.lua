@@ -44,4 +44,21 @@ SMODS.Joker({
 			end
 		end
 	end,
+	joker_display_def = function(JokerDisplay)
+		return {
+			text = {
+				{ text = "+", colour = G.C.MULT },
+				{ ref_table = "card.ability.extra", ref_value = "mult", colour = G.C.MULT },
+			},
+			reminder_text = {
+				{ text = "(" },
+				{ ref_table = "card.joker_display_values", ref_value = "progress" },
+				{ text = ")" },
+			},
+			calc_function = function(card)
+				card.joker_display_values.progress =
+					string.format("%d/%d", card.ability.extra.cards_scored, card.ability.extra.cards_needed)
+			end,
+		}
+	end,
 })

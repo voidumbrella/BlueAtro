@@ -8,9 +8,12 @@
 Adds numerous (hopefully) vanilla-like and decently balanced Jokers to the game.
 The mod is currently a work in progress!
 
-Supports English and Korean (in the near future).
+Supports English and Korean.
 
 ## Installation
-Requires [Steamodded](https://github.com/Steamopollys/Steamodded/) and [Lovely](https://github.com/ethangreen-dev/lovely-injector)
-
 TODO: Actual instructions and list specific versions of dependencies
+
+### Dependencies
+- [Steamodded](https://github.com/Steamopollys/Steamodded/)
+- [Lovely](https://github.com/ethangreen-dev/lovely-injector)
+- (Optional) [JokerDisplay](https://github.com/nh6574/JokerDisplay)
