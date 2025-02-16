@@ -108,6 +108,13 @@ return {
 					"{C:inactive}(Currently {X:mult,C:white}X#1#{}{C:inactive} Mult{C:inactive})",
 				},
 			},
+			j_blueatro_cheerleader = {
+				name = "Cheerleader",
+				text = {
+					"Each played card is retriggered once for",
+					"each card with the {C:attention}same rank{} held in hand",
+				},
+			},
 		},
 		Other = {},
 		Planet = {},

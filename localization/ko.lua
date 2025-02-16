@@ -108,6 +108,13 @@ return {
 					"{C:inactive}(현재 {X:mult,C:white}X#1#{}{C:inactive} 배수)",
 				},
 			},
+			j_blueatro_cheerleader = {
+				name = "치어리더",
+				text = {
+					"각 득점한 카드를 손패에 남아 있는",
+					"{C:attention}동일한 랭크{}의 카드 한 장마다 다시 발동합니다",
+				},
+			},
 		},
 		Other = {},
 		Planet = {},
