@@ -23,7 +23,7 @@ return {
 				},
 			},
 			j_blueatro_rollcake = {
-				name = "Roll Cake",
+				name = "롤케이크",
 				text = {
 					"다음 {C:attention}#1#{}번의 라운드 동안,",
 					"{C:green}#2#/#3#{} 확률로 첫 번째로",
@@ -52,8 +52,8 @@ return {
 			j_blueatro_elixir_of_youth = {
 				name = "회춘의 비약",
 				text = {
-					"라운드의 {C:attention}첫 핸드{}가",
-					"{C:attention}그림 카드{} 1장뿐이라면, 그 카드를 파괴한뒤",
+					"라운드의 {C:attention}첫 핸드{}가 {C:attention}그림 카드{}",
+					"1장뿐이라면, 그 카드를 파괴한뒤",
 					"무작위로 강화된 {C:attention}9{}를 {C:attention}패{}에 넣습니다",
 				},
 			},
@@ -62,7 +62,6 @@ return {
 				text = {
 					"이 조커의 배수 획득량은 이 조커의 오른쪽에 있는",
 					"조커의 갯수에 {X:mult,C:white}X#1#{}를 곱한 값입니다",
-					"each Joker to the right",
 					"{C:inactive}(현재 {X:mult,C:white}X#2#{} 배수)",
 				},
 			},
@@ -78,7 +77,7 @@ return {
 			j_blueatro_crafting_chamber = {
 				name = "크래프트 챔버",
 				text = {
-					"{C:attention}소모품{}을 {C:attention}#1#{}장 판매할때마다,",
+					"{C:attention}카드{}를 {C:attention}#1#{}장 판매할때마다,",
 					"무작위한 {C:tarot}타로{} 카드를 생성합니다",
 					"{C:inactive}(공간이 있어야 합니다){}",
 					"{C:inactive}(#2#장 남음){}",
@@ -87,11 +86,17 @@ return {
 			j_blueatro_ornate_chair = {
 				name = "화려한 의자",
 				text = {
-					"이 조커의 배수 획득량은",
-					"{C:attention}상점{}에서 나갈 때마다",
-					"{C:mult}+#1#{}씩 증가합니다.",
+					"이 조커의 배수 획득량은 {C:attention}상점{}에서",
+					"나갈 때마다 {C:mult}+#1#{}씩 증가합니다.",
 					"상점을 {C:attention}새로고침{} 할시 초기화됩니다.",
 					"{C:inactive}(현재 {C:mult}+#2#{}{C:inactive} 배수)",
+				},
+			},
+			j_blueatro_stargazing = {
+				name = "천체관측",
+				text = {
+					"{C:tarot}타로{} 카드를 사용할시",
+					"무작위 {C:planet}행성{} 카드를 생성합니다",
 				},
 			},
 		},

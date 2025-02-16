@@ -77,7 +77,7 @@ return {
 			j_blueatro_crafting_chamber = {
 				name = "Crafting Chamber",
 				text = {
-					"After selling {C:attention}#1# consumeable{} cards,",
+					"After selling {C:attention}#1#{} cards,",
 					"create a random {C:tarot}Tarot{} card",
 					"{C:inactive}(Must have room){}",
 					"{C:inactive}(#2# left){}",
@@ -90,6 +90,13 @@ return {
 					"at the end of {C:attention}shop{}.",
 					"Resets when {C:attention}shop{} is {C:attention}rerolled{}",
 					"{C:inactive}(Currently {C:mult}+#2#{}{C:inactive} Mult)",
+				},
+			},
+			j_blueatro_stargazing = {
+				name = "Stargazing",
+				text = {
+					"Using a {C:tarot}Tarot{} card creates a",
+					"random {C:planet}Planet{} card",
 				},
 			},
 		},

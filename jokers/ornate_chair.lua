@@ -5,7 +5,7 @@ SMODS.Joker({
 	key = "ornate_chair",
 	atlas = "jokers_atlas",
 	pos = { x = 9, y = 0 },
-	config = { extra = { mult = 0, mult_gain = 3 } },
+	config = { extra = { mult = 0, mult_gain = 4 } },
 	rarity = 1,
 	cost = 4,
 	blueprint_compat = true,

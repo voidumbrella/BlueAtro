@@ -20,7 +20,7 @@ SMODS.Joker({
 	key = "sobface",
 	atlas = "jokers_atlas",
 	pos = { x = 0, y = 0 },
-	config = { extra = { dollar_gain = 1 } },
+	config = { extra = { dollar_gain = 2 } },
 	rarity = 1,
 	cost = 2,
 	blueprint_compat = true,

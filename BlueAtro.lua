@@ -24,6 +24,7 @@ local jokers = {
 	"white_rabbit", -- 07
 	"crafting_chamber", -- 08
 	"ornate_chair", -- 09
+	"stargazing", -- 10
 	-- Uncommons
 	"rollcake", -- 02
 	"pointman", -- 06
