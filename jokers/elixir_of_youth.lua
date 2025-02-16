@@ -1,6 +1,3 @@
---[[
---  Elixir of Youth
---]]
 SMODS.Joker({
 	key = "elixir_of_youth",
 	atlas = "jokers_atlas",

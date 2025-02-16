@@ -1,6 +1,3 @@
---[[
---  Ornate Chair
---]]
 SMODS.Joker({
 	key = "ornate_chair",
 	atlas = "jokers_atlas",

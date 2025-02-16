@@ -1,6 +1,3 @@
---[[
---  Crafting Chamber
---]]
 SMODS.Joker({
 	key = "crafting_chamber",
 	atlas = "jokers_atlas",

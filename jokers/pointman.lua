@@ -1,6 +1,3 @@
---[[
---  Pointman
---]]
 local calculate_xmult = function(card)
 	if not G.jokers or not G.jokers.cards then
 		return 1.0

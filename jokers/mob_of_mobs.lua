@@ -1,6 +1,3 @@
---[[
---  Mob of Mobs
---]]
 SMODS.Joker({
 	key = "mob_of_mobs",
 	atlas = "jokers_atlas",

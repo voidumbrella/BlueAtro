@@ -1,6 +1,3 @@
---[[
---  Stargazing
---]]
 SMODS.Joker({
 	key = "stargazing",
 	atlas = "jokers_atlas",

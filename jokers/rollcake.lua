@@ -1,6 +1,3 @@
---[[
---  Roll Cake
---]]
 SMODS.Joker({
 	key = "rollcake",
 	atlas = "jokers_atlas",

@@ -1,6 +1,3 @@
---[[
---  Contraband
---]]
 local should_proc = function(scoring_hand)
 	if #scoring_hand == 0 then
 		return false
