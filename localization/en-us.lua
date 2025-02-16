@@ -99,6 +99,15 @@ return {
 					"random {C:planet}Planet{} card",
 				},
 			},
+			j_blueatro_mob_of_mobs = {
+				name = "Mob of Mobs",
+				text = {
+					"When {C:attention}Blind{} is selected,",
+					"this Joker gains {X:mult,C:white}X#2#{} Mult for",
+					"each {C:blue}Common{} Joker you have",
+					"{C:inactive}(Currently {X:mult,C:white}X#1#{}{C:inactive} Mult{C:inactive})",
+				},
+			},
 		},
 		Other = {},
 		Planet = {},

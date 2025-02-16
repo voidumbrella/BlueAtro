@@ -99,6 +99,15 @@ return {
 					"무작위 {C:planet}행성{} 카드를 생성합니다",
 				},
 			},
+			j_blueatro_mob_of_mobs = {
+				name = "모브의 모임",
+				text = {
+					"이 조커는 {C:attention}블라인드{}를 선택하면,",
+					"보유한 {C:blue}일반{} 조커마다",
+					"배수 획득량이 {X:mult,C:white}X#2#{} 증가합니다",
+					"{C:inactive}(현재 {X:mult,C:white}X#1#{}{C:inactive} 배수)",
+				},
+			},
 		},
 		Other = {},
 		Planet = {},
