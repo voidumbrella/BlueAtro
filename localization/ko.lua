@@ -111,14 +111,15 @@ return {
 			j_blueatro_cheerleader = {
 				name = "치어리더",
 				text = {
-					"각 득점한 카드를 손패에 남아 있는",
-					"{C:attention}동일한 랭크{}의 카드 한 장마다 다시 발동합니다",
+					"각 득점한 카드가 손패에 남아 있는",
+					"{C:attention}동일한 랭크{}의 카드의",
+					"장수만큼 다시 발동합니다",
 				},
 			},
 			j_blueatro_bookkeeping = {
 				name = "총결산",
 				text = {
-					"정확히 {C:attention}#2#{}장을 버릴때마다,
+					"정확히 {C:attention}#2#{}장을 버릴때마다",
 					"{C:money}$#1#{}를 획득합니다.",
 					"카드의 갯수는 매 라운드 변경됩니다",
 				},

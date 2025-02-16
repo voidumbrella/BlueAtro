@@ -111,14 +111,15 @@ return {
 			j_blueatro_cheerleader = {
 				name = "Cheerleader",
 				text = {
-					"Each played card is retriggered once for",
-					"each card with the {C:attention}same rank{} held in hand",
+					"Each played card is retriggered",
+					"by the number of cards held in hand",
+					"with the {C:attention}same rank{}",
 				},
 			},
 			j_blueatro_bookkeeping = {
 				name = "Bookkeeping",
 				text = {
-					"If discarding exactly {C:attention}#2#{} cards,
+					"If discarding exactly {C:attention}#2#{} cards",
 					"earn {C:money}$#1#{}.",
 					"Amount of cards changes each round",
 				},
