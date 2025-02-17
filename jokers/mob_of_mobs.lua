@@ -10,7 +10,7 @@ SMODS.Joker({
 		return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_gain } }
 	end,
 	calculate = function(_, card, context)
-		if context.setting_blind and G.jokers and not context.blueprint then
+		if context.setting_blind and G.jokers and not context.blueprint and not context.retrigger_joker then
 			local common_count = 0
 			for i = 1, #G.jokers.cards do
 				if G.jokers.cards[i].config.center.rarity == 1 then

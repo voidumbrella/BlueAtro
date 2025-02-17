@@ -29,7 +29,7 @@ SMODS.Joker({
 		info_queue[#info_queue + 1] = G.P_CENTERS.c_death
 	end,
 	calculate = function(_, card, context)
-		if context.first_hand_drawn and not context.blueprint then
+		if context.first_hand_drawn and not context.blueprint and not context.retrigger_joker then
 			juice_card_until(card, function()
 				return G.GAME.current_round.hands_played == 0
 			end, true)

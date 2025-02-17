@@ -12,7 +12,7 @@ SMODS.Joker({
 		}
 	end,
 	calculate = function(_, card, context)
-		if context.selling_card and not context.blueprint then
+		if context.selling_card and not context.blueprint and not context.retrigger_joker then
 			card.ability.extra.cards_sold = card.ability.extra.cards_sold + 1
 			if card.ability.extra.cards_sold >= card.ability.extra.cards_needed then
 				card.ability.extra.cards_sold = 0

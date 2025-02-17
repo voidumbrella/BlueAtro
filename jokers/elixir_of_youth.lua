@@ -5,14 +5,14 @@ SMODS.Joker({
 	config = {},
 	rarity = 3,
 	cost = 6,
-	blueprint_compat = true,
+	blueprint_compat = false,
 	loc_vars = function(_, info_queue, card) end,
 	calculate = function(_, card, context)
-		if context.first_hand_drawn and not context.blueprint then
+		if context.first_hand_drawn and not context.blueprint and not card.retrigger_joker then
 			juice_card_until(card, function()
 				return G.GAME.current_round.hands_played == 0
 			end, true)
-		elseif context.destroying_card and not context.blueprint then
+		elseif context.destroying_card and not context.blueprint and not context.retrigger_joker then
 			if
 				G.GAME.current_round.hands_played == 0
 				and #context.full_hand == 1

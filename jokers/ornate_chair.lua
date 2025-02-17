@@ -20,7 +20,7 @@ SMODS.Joker({
 				mult_mod = card.ability.extra.mult,
 				message = localize({ type = "variable", key = "a_mult", vars = { card.ability.extra.mult } }),
 			}
-		elseif context.ending_shop and not context.blueprint then
+		elseif context.ending_shop and not context.blueprint and not context.retrigger_joker then
 			card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
 			return {
 				message = localize({
@@ -30,7 +30,7 @@ SMODS.Joker({
 				}),
 				card = card,
 			}
-		elseif context.reroll_shop and not context.blueprint then
+		elseif context.reroll_shop and not context.blueprint and not context.retrigger_joker then
 			card.ability.extra.mult = 0
 			SMODS.calculate_effect({ message = localize("k_reset"), colour = G.C.MULT, card = card })
 		end

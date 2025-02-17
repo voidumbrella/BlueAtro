@@ -15,7 +15,7 @@ SMODS.Joker({
 				mult_mod = card.ability.extra.mult,
 				message = localize({ type = "variable", key = "a_mult", vars = { card.ability.extra.mult } }),
 			}
-		elseif context.remove_playing_cards and not context.blueprint then
+		elseif context.remove_playing_cards and not context.blueprint and not context.retrigger_joker then
 			if not context.removed or #context.removed == 0 then
 				return
 			end
