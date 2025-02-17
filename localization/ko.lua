@@ -9,7 +9,7 @@ return {
 				name = "우는 얼굴",
 				text = {
 					"득점한 모든 카드가",
-					"{C:attention}7{} 이하라면, {C:money}$#1#{}를 얻습니다",
+					"{C:attention}7{} 이하라면, {C:money}$#1#{}를 획득합니다",
 					"{C:inactive}(에이스는 1로 취급됩니다){}",
 				},
 			},
@@ -113,6 +113,14 @@ return {
 				text = {
 					"각 득점한 카드를 손패에 남아 있는",
 					"{C:attention}동일한 랭크{}의 카드 한 장마다 다시 발동합니다",
+				},
+			},
+			j_blueatro_bookkeeping = {
+				name = "총결산",
+				text = {
+					"정확히 {C:attention}#2#{}장을 버릴때마다,
+					"{C:money}$#1#{}를 획득합니다.",
+					"카드의 갯수는 매 라운드 변경됩니다",
 				},
 			},
 		},

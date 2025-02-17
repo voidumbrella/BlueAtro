@@ -10,7 +10,7 @@ return {
 				text = {
 					"If all scored cards are",
 					"{C:attention}7{} or below, earn {C:money}$#1#{}",
-					"{C:inactive}(Aces are ones){}",
+					"{C:inactive}(Aces count as ones){}",
 				},
 			},
 			j_blueatro_teabagging = {
@@ -113,6 +113,14 @@ return {
 				text = {
 					"Each played card is retriggered once for",
 					"each card with the {C:attention}same rank{} held in hand",
+				},
+			},
+			j_blueatro_bookkeeping = {
+				name = "Bookkeeping",
+				text = {
+					"If discarding exactly {C:attention}#2#{} cards,
+					"earn {C:money}$#1#{}.",
+					"Amount of cards changes each round",
 				},
 			},
 		},
