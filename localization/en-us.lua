@@ -119,8 +119,8 @@ return {
 			j_blueatro_bookkeeping = {
 				name = "Bookkeeping",
 				text = {
-					"If discarding exactly {C:attention}#2#{} cards",
-					"earn {C:money}$#1#{}.",
+					"When discarding exactly",
+					"{C:attention}#2#{} cards, earn {C:money}$#1#{}.",
 					"Amount of cards changes each round",
 				},
 			},

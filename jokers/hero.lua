@@ -6,6 +6,7 @@ SMODS.Joker({
 	rarity = 1,
 	cost = 4,
 	blueprint_compat = true,
+	perishable_compat = false,
 	loc_vars = function(_, info_queue, card)
 		return {
 			vars = {
@@ -22,7 +23,12 @@ SMODS.Joker({
 				mult_mod = card.ability.extra.mult,
 				message = localize({ type = "variable", key = "a_mult", vars = { card.ability.extra.mult } }),
 			}
-		elseif context.individual and context.cardarea == G.play and not context.blueprint and not context.retrigger_joker then
+		elseif
+			context.individual
+			and context.cardarea == G.play
+			and not context.blueprint
+			and not context.retrigger_joker
+		then
 			card.ability.extra.cards_scored = card.ability.extra.cards_scored + 1
 			if card.ability.extra.cards_scored >= card.ability.extra.cards_needed then
 				card.ability.extra.cards_scored = 0

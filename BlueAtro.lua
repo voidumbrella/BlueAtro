@@ -25,6 +25,7 @@ local jokers = {
 	"crafting_chamber",
 	"ornate_chair",
 	"stargazing",
+	"bookkeeping",
 	-- Uncommons
 	"rollcake",
 	"pointman",

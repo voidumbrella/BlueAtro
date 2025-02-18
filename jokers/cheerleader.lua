@@ -1,7 +1,7 @@
 SMODS.Joker({
 	key = "cheerleader",
 	atlas = "jokers_atlas",
-	pos = { x = 1, y = 2 },
+	pos = { x = 2, y = 1 },
 	config = { extra = {} },
 	rarity = 3,
 	cost = 8,

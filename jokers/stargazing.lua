@@ -9,22 +9,19 @@ SMODS.Joker({
 	loc_vars = function(_, info_queue, card) end,
 	calculate = function(_, card, context)
 		if context.using_consumeable then
-			if context.consumeable.ability.set == "Tarot" then
+			if
+				context.consumeable.ability.set == "Tarot"
+				and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit
+			then
 				G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+				local _card = context.blueprint_card or card
 				G.E_MANAGER:add_event(Event({
 					func = function()
 						local planet_card = SMODS.create_card({ set = "Planet" })
 						planet_card:add_to_deck()
 						G.consumeables:emplace(planet_card)
 						G.GAME.consumeable_buffer = 0
-						card_eval_status_text(
-							context.blueprint_card or card,
-							"extra",
-							nil,
-							nil,
-							nil,
-							{ message = localize("k_plus_planet") }
-						)
+						card_eval_status_text(_card, "extra", nil, nil, nil, { message = localize("k_plus_planet") })
 						return true
 					end,
 				}))
