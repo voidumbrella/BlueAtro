@@ -9,21 +9,21 @@ local calculate_xmult = function(card)
 			joker_count = #G.jokers.cards - i
 		end
 	end
-	return 1.0 + (card.ability.extra.Xmult_per_joker * joker_count)
+	return 1.0 + (card.ability.extra.xmult_per_joker * joker_count)
 end
 
 SMODS.Joker({
 	key = "pointman",
 	atlas = "jokers_atlas",
 	pos = { x = 6, y = 0 },
-	config = { extra = { Xmult_per_joker = 0.5 } },
+	config = { extra = { xmult_per_joker = 0.5 } },
 	rarity = 2,
 	cost = 5,
 	blueprint_compat = true,
 	loc_vars = function(_, info_queue, card)
 		return {
 			vars = {
-				card.ability.extra.Xmult_per_joker,
+				card.ability.extra.xmult_per_joker,
 				calculate_xmult(card),
 			},
 		}
@@ -32,7 +32,7 @@ SMODS.Joker({
 		if context.joker_main then
 			local xmult = calculate_xmult(card)
 			return {
-				Xmult_mod = xmult,
+				xmult_mod = xmult,
 				message = localize({ type = "variable", key = "a_xmult", vars = { xmult } }),
 			}
 		end

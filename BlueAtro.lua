@@ -30,6 +30,7 @@ local jokers = {
 	"rollcake",
 	"pointman",
 	"mob_of_mobs",
+	"chicken skewer",
 	-- Rares
 	"contraband",
 	"elixir_of_youth",

@@ -124,6 +124,13 @@ return {
 					"Amount of cards changes each round",
 				},
 			},
+			j_blueatro_chicken_skewer = {
+				name = "Chicken Skewer",
+				text = {
+					"{X:mult,C:white}X#1#{}, loses {X:mult,C:white}X#2#{}",
+					"for each consumeable used",
+				},
+			},
 		},
 		Other = {},
 		Planet = {},

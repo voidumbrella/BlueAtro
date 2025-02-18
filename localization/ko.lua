@@ -124,6 +124,14 @@ return {
 					"카드의 갯수는 매 라운드 변경됩니다",
 				},
 			},
+			j_blueatro_chicken_skewer = {
+				name = "닭꼬치",
+				text = {
+					"{X:mult,C:white} X#1# {} 배수를 획득합니다",
+                    "{C:attention}소모품{}을 사용 할 때마다",
+                    "{X:mult,C:white} X#2# {} 배수를 잃습니다",
+				},
+			},
 		},
 		Other = {},
 		Planet = {},
