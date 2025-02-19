@@ -2,7 +2,7 @@ SMODS.Joker({
 	key = "chicken_skewer",
 	atlas = "jokers_atlas",
 	pos = { x = 4, y = 1 },
-	config = { extra = { xmult = 2.5, xmult_loss = 0.1 } },
+	config = { extra = { xmult = 2.5, xmult_loss = 0.05 } },
 	rarity = 2,
 	cost = 6,
 	blueprint_compat = true,
@@ -19,7 +19,7 @@ SMODS.Joker({
 			if context.using_consumeable and not context.blueprint and not context.retrigger_joker then
 				card.ability.extra.xmult = card.ability.extra.xmult - card.ability.extra.xmult_loss
 
-				if card.ability.extra.xmult <= 1.0 then
+				if card.ability.extra.xmult <= 1 then
 					G.E_MANAGER:add_event(Event({
 						func = function()
 							play_sound("tarot1")
@@ -34,8 +34,8 @@ SMODS.Joker({
 								func = function()
 									G.jokers:remove_card(card)
 									SMODS.calculate_context({
-										joker_destroyed = true,
-										destroyed = card,
+										jokers_destroyed = true,
+										destroyed = { card },
 									})
 									card:remove()
 									card = nil

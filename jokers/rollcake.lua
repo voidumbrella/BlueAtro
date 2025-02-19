@@ -68,9 +68,9 @@ SMODS.Joker({
 								blockable = false,
 								func = function()
 									G.jokers:remove_card(card)
-									SMODS.calculate_context( {
-										joker_destroyed = true,
-										destroyed = card,
+									SMODS.calculate_context({
+										jokers_destroyed = true,
+										destroyed = { card },
 									})
 									card:remove()
 									card = nil
