@@ -88,7 +88,7 @@ return {
 				text = {
 					"This Joker gains {C:mult}+#1#{} Mult",
 					"at the end of {C:attention}shop{}.",
-					"Resets when {C:attention}shop{} is {C:attention}rerolled{}",
+					"Resets when shop is {C:attention}rerolled{}",
 					"{C:inactive}(Currently {C:mult}+#2#{}{C:inactive} Mult)",
 				},
 			},
@@ -127,8 +127,8 @@ return {
 			j_blueatro_chicken_skewer = {
 				name = "Chicken Skewer",
 				text = {
-					"{X:mult,C:white}X#1#{}, loses {X:mult,C:white}X#2#{}",
-					"for each consumeable used",
+					"{X:mult,C:white}X#1#{} Mult, loses {X:mult,C:white}X#2#{} Mult",
+					"whenever a consumeable is used",
 				},
 			},
 		},

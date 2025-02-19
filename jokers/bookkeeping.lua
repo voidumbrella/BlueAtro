@@ -1,5 +1,5 @@
 local should_proc = function(discount)
-	if not G.GAME or not G.GAME.current_round or not G.GAME.current_round.joker_bookkeeping then
+	if not G.GAME or not G.GAME.current_round then
 		return false
 	end
 	return #discount == G.GAME.current_round.blueatro_bookkeeping_count
@@ -22,7 +22,7 @@ SMODS.Joker({
 		}
 	end,
 	calculate = function(_, card, context)
-		if context.discard then
+		if context.pre_discard then
 			if should_proc(G.hand.highlighted) then
 				ease_dollars(card.ability.extra.dollar_gain)
 				return {
@@ -68,6 +68,6 @@ end
 
 -- Update number of cards every round
 function SMODS.current_mod.reset_game_globals(run_start)
-	G.GAME.current_round.blueatro_bookkeeping_count
-		= pseudorandom_element({ 1, 2, 3, 4, 5 }, pseudoseed("aoi" .. G.GAME.round_resets.ante))
+	G.GAME.current_round.blueatro_bookkeeping_count =
+		pseudorandom_element({ 1, 2, 3, 4, 5 }, pseudoseed("aoi" .. G.GAME.round_resets.ante))
 end
