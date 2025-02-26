@@ -2,7 +2,7 @@ SMODS.Joker({
 	key = "mob_of_mobs",
 	atlas = "jokers_atlas",
 	pos = { x = 1, y = 1 },
-	config = { extra = { xmult = 1, xmult_gain = 0.05 } },
+	config = { extra = { xmult = 1, xmult_gain = 0.1 } },
 	rarity = 2,
 	cost = 6,
 	blueprint_compat = true,
