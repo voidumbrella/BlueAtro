@@ -3,12 +3,14 @@
 </p>
 
 # BlueAtro
-**The crossover of Blue Archive and Balatro that nobody asked for!**
-
+**Blue Archive themed Balatro mod**
 Adds numerous (hopefully) vanilla-like and decently balanced Jokers to the game.
-The mod is currently a work in progress!
 
-Supports English and Korean.
+Supports English and Korean!
+
+## Content
+### Jokers
+
 
 ## Installation
 TODO: Actual instructions and list specific versions of dependencies
@@ -16,4 +18,7 @@ TODO: Actual instructions and list specific versions of dependencies
 ### Dependencies
 - [Steamodded](https://github.com/Steamopollys/Steamodded/)
 - [Lovely](https://github.com/ethangreen-dev/lovely-injector)
-- (Optional) [JokerDisplay](https://github.com/nh6574/JokerDisplay)
+
+### Compatible With
+- [JokerDisplay](https://github.com/nh6574/JokerDisplay)
+  - QOL mod that displays relevant Joker stats without needing to hover over them
