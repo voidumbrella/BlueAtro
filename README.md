@@ -3,10 +3,9 @@
 </p>
 
 # BlueAtro
-**Blue Archive themed Balatro mod**
-Adds numerous (hopefully) vanilla-like and decently balanced Jokers to the game.
+**Blue Archive themed Balatro mod!**
 
-Supports English and Korean!
+Supports English and Korean.
 
 ## Content
 ### Jokers
