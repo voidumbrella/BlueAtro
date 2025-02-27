@@ -128,7 +128,7 @@ return {
 				name = "Chicken Skewer",
 				text = {
 					"{X:mult,C:white}X#1#{} Mult, loses {X:mult,C:white}X#2#{} Mult",
-					"whenever a consumeable is used",
+					"whenever a consumable is used",
 				},
 			},
 		},
