@@ -31,10 +31,13 @@ local jokers = {
 	"pointman",
 	"mob_of_mobs",
 	"chicken_skewer",
+	"crystal_haniwa",
+	"signed_photocard",
 	-- Rares
 	"contraband",
 	"elixir_of_youth",
 	"cheerleader",
+	"double_o",
 }
 
 local jokers_directory = SMODS.current_mod.path .. "/jokers"

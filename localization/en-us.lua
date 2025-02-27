@@ -44,7 +44,7 @@ return {
 				name = "Hero",
 				text = {
 					"For every {C:attention}#2#{} scored cards,",
-					"this Joker gains {C:mult}+#1#{} Mult",
+					"this gains {C:mult}+#1#{} Mult",
 					"{C:inactive}(#4# cards left)",
 					"{C:inactive}(Currently {C:mult}+#3#{}{C:inactive} Mult{})",
 				},
@@ -103,7 +103,7 @@ return {
 				name = "Mob of Mobs",
 				text = {
 					"When {C:attention}Blind{} is selected,",
-					"this Joker gains {X:mult,C:white}X#2#{} Mult for",
+					"this gains {X:mult,C:white}X#2#{} Mult for",
 					"each {C:blue}Common{} Joker you have",
 					"{C:inactive}(Currently {X:mult,C:white}X#1#{}{C:inactive} Mult{C:inactive})",
 				},
@@ -129,6 +129,30 @@ return {
 				text = {
 					"{X:mult,C:white}X#1#{} Mult, loses {X:mult,C:white}X#2#{} Mult",
 					"whenever a consumable is used",
+				},
+			},
+			j_blueatro_crystal_haniwa = {
+				name = "Crsytal Haniwa",
+				text = {
+					"Whenver {C:attention}6{} or {C:attention}9{} is scored,",
+					"this gains {C:mult}+#1#{} Mult",
+					"{C:inactive}(Currently {C:mult}+#3#{}{C:inactive} Mult)",
+				},
+			},
+			j_blueatro_signed_photocard = {
+				name = "Signed Photocard",
+				text = {
+					"Whenver a {C:attention}face{} card is scored,",
+					"this gains {C:chips}+#1#{} Chips",
+					"{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
+				},
+			},
+			j_blueatro_double_o = {
+				name = "Double O",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult for",
+					"each Ace scored this round",
+					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
 				},
 			},
 		},

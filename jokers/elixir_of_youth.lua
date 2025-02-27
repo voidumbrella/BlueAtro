@@ -17,6 +17,7 @@ SMODS.Joker({
 				G.GAME.current_round.hands_played == 0
 				and #context.full_hand == 1
 				and context.full_hand[1]:is_face()
+				and not context.full_hand[1].debuff
 			then
 				-- Create the random 9
 				local random_suit = pseudorandom_element({ "C", "S", "D", "H" }, pseudoseed("elixir_of_youth_suit"))

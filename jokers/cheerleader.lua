@@ -8,7 +8,7 @@ SMODS.Joker({
 	blueprint_compat = true,
 	loc_vars = function(_, info_queue, card) end,
 	calculate = function(_, card, context)
-		if context.repetition and context.cardarea == G.play then
+		if context.repetition and context.cardarea == G.play and not context.other_card.debuff then
 			if context.other_card.ability.effect == "Stone Card" then
 				-- Rankless!
 				return

@@ -7,10 +7,10 @@ local should_proc = function(scoring_hand)
 	local scored_9 = false
 	local scored = {}
 	for i = 1, #scoring_hand do
-		if scoring_hand[i]:get_id() == 6 then
+		if not scoring_hand[i].debuff and scoring_hand[i]:get_id() == 6 then
 			scored_6 = true
 		end
-		if scoring_hand[i]:get_id() == 9 then
+		if not scoring_hand[i].debuff and scoring_hand[i]:get_id() == 9 then
 			scored_9 = true
 		end
 	end

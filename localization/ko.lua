@@ -132,6 +132,22 @@ return {
 					"{X:mult,C:white} X#2# {} 배수를 잃습니다",
 				},
 			},
+			j_blueatro_crystal_haniwa = {
+				name = "수정 하니와",
+				text = {
+					"This Joker gains {C:mult}+#1#{} Mult",
+					"whenver {C:attention}6{} or {C:attention}9{} is scored",
+					"{C:inactive}(Currently {C:mult}+#3#{}{C:inactive} Mult)",
+				},
+			},
+			j_blueatro_signed_photocard = {
+				name = "친필사인 포토카드",
+				text = {
+					"{C:attention}그림{} 카드가 득점할 때마다",
+					"칩 획득량이 {C:chips}+#1#{}개 증가합니다",
+					"{C:inactive}(현재 칩 {C:chips}+#2#{C:inactive}개)",
+				},
+			},
 		},
 		Other = {},
 		Planet = {},

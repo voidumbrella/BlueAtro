@@ -28,6 +28,7 @@ SMODS.Joker({
 			and context.cardarea == G.play
 			and not context.blueprint
 			and not context.retrigger_joker
+			and not context.other_card.debuff
 		then
 			card.ability.extra.cards_scored = card.ability.extra.cards_scored + 1
 			if card.ability.extra.cards_scored >= card.ability.extra.cards_needed then
