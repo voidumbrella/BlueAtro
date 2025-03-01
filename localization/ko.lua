@@ -46,7 +46,7 @@ return {
 					"이 조커는 카드들이 {C:attention}#2#{}번 득점할 때마다,",
 					"배수 획득량이 {C:mult}+#1#{} 증가합니다",
 					"{C:inactive}(#4#번 남음)",
-					"{C:inactive}(현재 {C:mult}+#3#{}{C:inactive} 배수{})",
+					"{C:inactive}(현재 {C:mult}+#3#{}{C:inactive} 배수)",
 				},
 			},
 			j_blueatro_elixir_of_youth = {
@@ -62,7 +62,7 @@ return {
 				text = {
 					"이 조커의 배수 획득량은 이 조커의 오른쪽에 있는",
 					"조커의 갯수에 {X:mult,C:white}X#1#{}를 곱한 값입니다",
-					"{C:inactive}(현재 {X:mult,C:white}X#2#{} 배수)",
+					"{C:inactive}(현재 {X:mult,C:white}X#2#{C:inactive} 배수)",
 				},
 			},
 			j_blueatro_white_rabbit = {
@@ -132,20 +132,20 @@ return {
 					"{X:mult,C:white} X#2# {} 배수를 잃습니다",
 				},
 			},
-			j_blueatro_crystal_haniwa = {
-				name = "수정 하니와",
-				text = {
-					"This Joker gains {C:mult}+#1#{} Mult",
-					"whenver {C:attention}6{} or {C:attention}9{} is scored",
-					"{C:inactive}(Currently {C:mult}+#3#{}{C:inactive} Mult)",
-				},
-			},
 			j_blueatro_signed_photocard = {
 				name = "친필사인 포토카드",
 				text = {
 					"{C:attention}그림{} 카드가 득점할 때마다",
 					"칩 획득량이 {C:chips}+#1#{}개 증가합니다",
 					"{C:inactive}(현재 칩 {C:chips}+#2#{C:inactive}개)",
+				},
+			},
+			j_blueatro_double_o = {
+				name = "더블오",
+				text = {
+					"이번 라운드 동안 득점한 {C:attention}에이스{}마다",
+					"{X:mult,C:white}X#1#{} 배수를 얻습니다",
+					"{C:inactive}(현재 {X:mult,C:white}X#2#{C:inactive} 배수)",
 				},
 			},
 		},

@@ -131,14 +131,6 @@ return {
 					"whenever a consumable is used",
 				},
 			},
-			j_blueatro_crystal_haniwa = {
-				name = "Crsytal Haniwa",
-				text = {
-					"Whenver {C:attention}6{} or {C:attention}9{} is scored,",
-					"this gains {C:mult}+#1#{} Mult",
-					"{C:inactive}(Currently {C:mult}+#3#{}{C:inactive} Mult)",
-				},
-			},
 			j_blueatro_signed_photocard = {
 				name = "Signed Photocard",
 				text = {
@@ -150,8 +142,8 @@ return {
 			j_blueatro_double_o = {
 				name = "Double O",
 				text = {
-					"{X:mult,C:white}X#1#{} Mult for",
-					"each Ace scored this round",
+					"{X:mult,C:white}X#1#{} Mult for each",
+					"{C:attention}Ace{} scored this round",
 					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
 				},
 			},

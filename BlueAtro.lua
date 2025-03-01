@@ -31,7 +31,6 @@ local jokers = {
 	"pointman",
 	"mob_of_mobs",
 	"chicken_skewer",
-	"crystal_haniwa",
 	"signed_photocard",
 	-- Rares
 	"contraband",
