@@ -18,6 +18,7 @@ SMODS.Joker({
 			for _, played_card in ipairs(G.play.cards) do
 				-- TODO: Do I want to be this anal about this
 				if (not played_card.shattered) and not played_card.destroyed then
+					-- See G.FUNCS.draw_from_play_to_discard override in hooks.lua
 					played_card.blueatro = { return_to_hand = true }
 					i = i + 1
 					if i >= 2 then
