@@ -185,8 +185,8 @@ return {
 				name = "Resupply Operation",
 				text = {
 					"If hand contains a {C:attention}Full House{}",
-					"gain {C:attention}+#1#{} hand size.",
-					"Resets after selecting a Blind",
+					"gain {C:attention}+#1#{} hand size",
+					"for next Blind only",
 					"{C:inactive}(Currently {C:attention}+#2#{C:inactive} hand size){}",
 				},
 			},

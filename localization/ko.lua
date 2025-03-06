@@ -181,9 +181,9 @@ return {
 			j_blueatro_resupply_operation = {
 				name = "보급 작전",
 				text = {
-					"플레이한 핸드에 {C:attention}풀 하우스{}가 포함시",
+					"플레이한 핸드에 {C:attention}풀 하우스{}가",
+					"포함 시 다음 블라인드 동안"
 					"손패 크기 {C:attention}+#1#{}장을 얻습니다.",
-					"블라인드를 선택한 후 초기화됩니다",
 					"{C:inactive}(현재 {C:attention}+#2#{C:inactive}장){}",
 				},
 			},
