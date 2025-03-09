@@ -1,3 +1,5 @@
+BA = {}
+
 sendDebugMessage("Loading hooks", "BlueAtro")
 assert(SMODS.load_file("src/hooks.lua"))()
 
@@ -10,42 +12,19 @@ SMODS.Atlas({
 
 -- LOAD JOKERS --
 SMODS.Atlas({
-	key = "jokers_atlas",
-	path = "jokers.png",
+	key = "students_atlas",
+	path = "students.png",
 	px = 71,
 	py = 95,
 })
-local jokers = {
+local students = {
 	-- Commons
-	"sobbing_face",
-	"teabagging",
-	"hero",
-	"white_rabbit",
-	"crafting_chamber",
-	"ornate_chair",
-	"stargazing",
-	"bookkeeping",
-	"resupply_operation",
 	-- Uncommons
-	"rollcake",
-	"pointman",
-	"mob_of_mobs",
-	"chicken_skewer",
-	"signed_photocard",
-	"scientific_calculator",
-	"sugar_rush",
-	"quick_reload",
 	-- Rares
-	"contraband",
-	"elixir_of_youth",
-	"cheerleader",
-	"double_o",
-	"nyans_dash",
-	"account_reroll",
 }
-for _, name in ipairs(jokers) do
-	local file_path = "src/jokers/" .. name .. ".lua"
-	sendDebugMessage("Loading " .. file_path, "BlueAtro")
+sendDebugMessage("Loading students", "BlueAtro")
+for _, name in ipairs(students) do
+	local file_path = "src/students/" .. name .. ".lua"
 	assert(SMODS.load_file(file_path))()
 end
 
