@@ -95,8 +95,8 @@ return {
 				name = "화려한 의자",
 				text = {
 					"이 조커의 배수 획득량은 {C:attention}상점{}에서",
-					"나갈 때마다 {C:mult}+#1#{}씩 증가합니다.",
-					"상점을 {C:attention}새로고침{} 할시 초기화됩니다.",
+					"나갈 때마다 {C:mult}+#1#{}씩 증가합니다",
+					"상점을 {C:attention}새로고침{} 할시 초기화됩니다",
 					"{C:inactive}(현재 {C:mult}+#2#{}{C:inactive} 배수)",
 				},
 			},
@@ -128,7 +128,7 @@ return {
 				name = "총결산",
 				text = {
 					"정확히 {C:attention}#2#{}장을 버릴때마다",
-					"{C:money}$#1#{}를 획득합니다.",
+					"{C:money}$#1#{}를 획득합니다",
 					"카드의 갯수는 매 라운드 변경됩니다",
 				},
 			},
@@ -166,7 +166,7 @@ return {
 				name = "슈가 러시",
 				text = {
 					"{X:mult,C:white}X#1#{} 배수, 핸드를 {C:attention}플레이 할 때마다{}",
-					"{X:mult,C:white}X#2#{} 배수를 잃습니다 {C:inactive}(최소 X1까지 감소합니다){}.",
+					"{X:mult,C:white}X#2#{} 배수를 잃습니다 {C:inactive}(최소 X1까지 감소합니다){}",
 					"{C:attention}보스 블라인드{}에 승리하면 초기화됩니다",
 				},
 			},
@@ -182,9 +182,28 @@ return {
 				name = "보급 작전",
 				text = {
 					"플레이한 핸드에 {C:attention}풀 하우스{}가",
-					"포함 시 다음 블라인드 동안"
+					"포함 시 다음 블라인드 동안",
 					"손패 크기 {C:attention}+#1#{}장을 얻습니다.",
 					"{C:inactive}(현재 {C:attention}+#2#{C:inactive}장){}",
+				},
+			},
+			j_blueatro_nyans_dash = {
+				name = "냥즈 대쉬",
+				text = {
+					"이 조커는 콤보에 맞는 패를 낼때마다",
+					"배수 획득량이 {X:mult,C:white}X#1#{} 증가합니다",
+					"콤보를 떨구면 배수 획득량을 {X:mult,C:white}X#2#{} 잃습니다",
+					"{C:inactive}(현재 {X:mult,C:white}X#3#{C:inactive} 배수)",
+					"",
+					"{C:attention}#4#{}, {C:inactive}#5#{}, {C:inactive}#6#{}, ... ",
+				},
+			},
+			j_blueatro_account_reroll = {
+				name = "리세마라",
+				text = {
+					"상점을 {C:attention}새로고침{} 할 때마다",
+					"오른쪽의 조커를 {C:attention}파괴{}하고",
+					"무작위한 {C:attention}희귀{} 조커로 대체합니다",
 				},
 			},
 		},

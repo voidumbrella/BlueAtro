@@ -40,6 +40,8 @@ local jokers = {
 	"elixir_of_youth",
 	"cheerleader",
 	"double_o",
+	"nyans_dash",
+	"account_reroll",
 }
 for _, name in ipairs(jokers) do
 	local file_path = "src/jokers/" .. name .. ".lua"

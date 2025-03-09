@@ -94,7 +94,7 @@ return {
 				name = "Ornate Chair",
 				text = {
 					"This Joker gains {C:mult}+#1#{} Mult",
-					"at the end of the {C:attention}shop{}.",
+					"at the end of the {C:attention}shop{}",
 					"Resets when shop is {C:attention}rerolled{}",
 					"{C:inactive}(Currently {C:mult}+#2#{}{C:inactive} Mult)",
 				},
@@ -128,7 +128,7 @@ return {
 				name = "Bookkeeping",
 				text = {
 					"When discarding exactly",
-					"{C:attention}#2#{} cards, earn {C:money}$#1#{}.",
+					"{C:attention}#2#{} cards, earn {C:money}$#1#{}",
 					"Number of cards",
 					"hanges each round",
 				},
@@ -167,7 +167,7 @@ return {
 				name = "Sugar Rush",
 				text = {
 					"{X:mult,C:white}X#1#{} Mult, loses {X:mult,C:white}X#2#{} Mult",
-					"after each {C:attention}hand{}.",
+					"after each {C:attention}hand{}",
 					"{C:inactive}(Will remain at X1){}",
 					"Resets after beating a {C:attention}Boss Blind{}",
 				},
@@ -188,6 +188,26 @@ return {
 					"gain {C:attention}+#1#{} hand size",
 					"for next Blind only",
 					"{C:inactive}(Currently {C:attention}+#2#{C:inactive} hand size){}",
+				},
+			},
+			j_blueatro_nyans_dash = {
+				name = "Nyan's Dash",
+				text = {
+					"Gains {X:mult,C:white}X#1#{} Mult for each hand",
+					"matching the next hand in the combo",
+					"Loses {X:mult,C:white}X#2#{} if combo is dropped",
+					"{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive} Mult)",
+					"",
+					"Combo: {C:attention}#4#{}, {C:inactive}#5#{}, {C:inactive}#6#{}, ... ",
+				},
+			},
+			j_blueatro_account_reroll = {
+				name = "Account Reroll",
+				text = {
+					"When {C:attention}rerolling{} in the shop,",
+					"{C:attention}destroys{} Joker to the right",
+					"and replaces it with a",
+					"random {C:green}Uncommon{} Joker",
 				},
 			},
 		},

@@ -1,8 +1,8 @@
 local should_proc = function(discount)
-	if not G.GAME or not G.GAME.current_round then
+	if not G.GAME or not G.GAME.current_round or not G.GAME.current_round.blueatro then
 		return false
 	end
-	return #discount == G.GAME.current_round.blueatro_bookkeeping_count
+	return #discount == G.GAME.current_round.blueatro.bookkeeping_count
 end
 
 SMODS.Joker({
@@ -17,7 +17,7 @@ SMODS.Joker({
 		return {
 			vars = {
 				card.ability.extra.dollar_gain,
-				G.GAME.current_round.blueatro_bookkeeping_count,
+				G.GAME.current_round.blueatro.bookkeeping_count,
 			},
 		}
 	end,
@@ -45,7 +45,7 @@ SMODS.Joker({
 				{ text = " cards)", scale = 0.25 },
 			},
 			calc_function = function(card)
-				card.joker_display_values.count = G.GAME.current_round.blueatro_bookkeeping_count
+				card.joker_display_values.count = G.GAME.current_round.blueatro.bookkeeping_count
 				if not G.hand or not G.hand.highlighted then
 					card.joker_display_values.dollars = 0
 				else
@@ -57,17 +57,3 @@ SMODS.Joker({
 		}
 	end,
 })
-
--- Hook game to update var for Bookkeeping Jooker
-local igo = Game.init_game_object
-function Game:init_game_object()
-	local ret = igo(self)
-	ret.current_round.blueatro_bookkeeping_count = 3
-	return ret
-end
-
--- Update number of cards every round
-function SMODS.current_mod.reset_game_globals(run_start)
-	G.GAME.current_round.blueatro_bookkeeping_count =
-		math.floor(pseudorandom("aoi" .. G.GAME.round_resets.ante, 1, G.hand.config.highlighted_limit) + 0.5)
-end

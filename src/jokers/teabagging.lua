@@ -28,8 +28,7 @@ SMODS.Joker({
 						key = "a_mult",
 						vars = { card.ability.extra.mult },
 					}),
-					card = card,
-				})
+				}, card)
 			end
 		elseif context.blueatro and context.blueatro.destroying_joker and not context.blueprint then
 			if card == context.blueatro.joker_destroyed then
@@ -50,8 +49,7 @@ SMODS.Joker({
 							key = "a_mult",
 							vars = { card.ability.extra.mult },
 						}),
-						card = card,
-					})
+					}, card)
 					return true
 				end,
 			}))
