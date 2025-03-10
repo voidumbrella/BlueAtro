@@ -30,22 +30,22 @@ if __name__ == "__main__":
     atlases = [
         # input_dir, output_path, width, height, rows, columns, blank
         (
-            "art/jokers/1x",
-            "assets/1x/jokers.png",
+            "art/students/1x",
+            "assets/1x/students.png",
             71,
             95,
             10,
             10,
-            "art/jokers/1x/1x_blank.png",
+            "art/students/1x/1x_blank.png",
         ),
         (
-            "art/jokers/2x",
-            "assets/2x/jokers.png",
+            "art/students/2x",
+            "assets/2x/students.png",
             142,
             190,
             10,
             10,
-            "art/jokers/2x/2x_blank.png",
+            "art/students/2x/2x_blank.png",
         ),
         (
             "art/enhancements/1x",

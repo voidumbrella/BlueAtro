@@ -1,10 +1,7 @@
 return {
 	descriptions = {
-		Back = {},
-		Blind = {},
-		Edition = {},
 		Enhanced = {
-			m_ba_pyroxene = {
+			m_blueatro_pyroxene = {
 				name = "Pyroxene Card",
 				text = {
 					"Spend {C:money}$#1#{} for",
@@ -13,19 +10,23 @@ return {
 			},
 		},
 		Joker = {
-			j_ba_neru = {
+			j_blueatro_neru = {
 				name = "Neru",
-				text = {
-				},
+				text = { "?" },
 			},
 		},
-		Other = {},
-		Planet = {},
-		Spectral = {},
-		Stake = {},
-		Tag = {},
-		Tarot = {},
-		Voucher = {},
+		BlueAtro_Passive = {
+			blueatro_psv_neru = {
+				name = "Placeholder #1",
+				text = { "This is an example", "tooltip: {C:attention}#1#{}" },
+			},
+		},
+		BlueAtro_EX = {
+			blueatro_ex_neru = {
+				name = "Placeholder #2",
+				text = { "This is another example", "tooltip: {C:attention}#1#, #2#, #3#{}" },
+			},
+		},
 	},
 	misc = {
 		achievement_descriptions = {},

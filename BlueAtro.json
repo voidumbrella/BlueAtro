@@ -3,7 +3,7 @@
   "name": "BlueAtro",
   "author": ["void"],
   "description": "Blue Archive themed Balatro mod.",
-  "prefix": "ba",
+  "prefix": "blueatro",
   "display_name": "BlueAtro",
   "main_file": "BlueAtro.lua",
   "badge_colour": "6CB9FC",

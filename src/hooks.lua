@@ -1,3 +1,5 @@
+-- Contains misc. hooking functions that don't really fit anywhere
+
 local igo = Game.init_game_object
 function Game:init_game_object()
 	local ret = igo(self)
@@ -23,6 +25,7 @@ SMODS.calculate_context = function(context, return_table)
 		-- BEGIN: Increment cost meter
 		local meter = G.GAME.current_round.blueatro.cost_meter
 		meter.cur = math.min(meter.max, meter.cur + meter.inc)
+		print(G.GAME.current_round.blueatro.cost_meter)
 		-- END: Increment cost meter
 
 		-- BEGIN: Yuzu's Combo

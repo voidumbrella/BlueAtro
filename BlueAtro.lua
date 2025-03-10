@@ -1,7 +1,8 @@
-BA = {}
-
-sendDebugMessage("Loading hooks", "BlueAtro")
-assert(SMODS.load_file("src/hooks.lua"))()
+BlueAtro = {}
+BlueAtro.id_to_atlas_pos = function(id)
+	-- I'm lazy
+	return { x = id % 10, y = id / 10 }
+end
 
 SMODS.Atlas({
 	key = "modicon",
@@ -9,6 +10,9 @@ SMODS.Atlas({
 	px = 32,
 	py = 32,
 })
+
+assert(SMODS.load_file("src/hooks.lua"))()
+assert(SMODS.load_file("src/student.lua"))()
 
 -- LOAD JOKERS --
 SMODS.Atlas({
@@ -21,12 +25,11 @@ local students = {
 	-- Commons
 	-- Uncommons
 	-- Rares
+	"00_neru",
 }
-sendDebugMessage("Loading students", "BlueAtro")
 for _, name in ipairs(students) do
 	local file_path = "src/students/" .. name .. ".lua"
 	assert(SMODS.load_file(file_path))()
 end
 
-sendDebugMessage("Loading enhancements", "BlueAtro")
 assert(SMODS.load_file("src/enhancements.lua"))()
