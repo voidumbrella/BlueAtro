@@ -9,22 +9,32 @@ return {
 				},
 			},
 		},
+		-- Text field is required because the game refuses to parse objects without it.
+		-- Adding a dummy text is easier than patching that behavior.
 		Joker = {
 			j_blueatro_neru = {
 				name = "Neru",
-				text = { "?" },
+				text = { "" },
 			},
 		},
 		BlueAtro_Passive = {
 			blueatro_psv_neru = {
-				name = "Placeholder #1",
-				text = { "This is an example", "tooltip: {C:attention}#1#{}" },
+				name = "Callsign Double-O",
+				text = {
+					"This student has {X:mult,C:white}X#1#{} Mult",
+					"for each {C:attention}Ace{} scored this round",
+					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+				},
 			},
 		},
 		BlueAtro_EX = {
 			blueatro_ex_neru = {
-				name = "Placeholder #2",
-				text = { "This is another example", "tooltip: {C:attention}#1#, #2#, #3#{}" },
+				name = "Unbridled Rage",
+				text = {
+					"Retrigger {C:attention}Aces{} for",
+					"the next played hand",
+					"{V:1}(#1#){}",
+				},
 			},
 		},
 	},
@@ -34,7 +44,10 @@ return {
 		blind_states = {},
 		challenge_names = {},
 		collabs = {},
-		dictionary = {},
+		dictionary = {
+			ba_k_active = "Active!",
+			ba_k_inactive = "Inactive",
+		},
 		high_scores = {},
 		labels = {},
 		poker_hand_descriptions = {},
