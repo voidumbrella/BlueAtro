@@ -16,14 +16,16 @@ local igo = Game.init_game_object
 function Game:init_game_object()
 	local ret = igo(self)
 	ret.current_round.blueatro = {}
-	ret.current_round.blueatro.cost = { cur = 0, max = 10, inc = 1 }
+	ret.current_round.blueatro.cost = { cur = 0, max = 10, inc = 2 }
 	ret.current_round.blueatro.yuzu_combo = { "High Card", "Three of a Kind", "Two Pair" }
 	return ret
 end
 
 -- Update number of cards every round
 function SMODS.current_mod.reset_game_globals(run_start)
-	BlueAtro.update_cost()
+	if not run_start then
+		BlueAtro.update_cost()
+	end
 end
 
 -- Would it be better to Lovely patch this instead?
@@ -61,36 +63,6 @@ SMODS.calculate_context = function(context, return_table)
 	end
 end
 
--- After playing a hand, cards marked with `card.blueatro.return_to_hand` are returned to hand instead
-G.FUNCS.draw_from_play_to_discard = function(_)
-	local play_count = #G.play.cards
-	local i = 1
-	for _, card in ipairs(G.play.cards) do
-		if (not card.shattered) and not card.destroyed then
-			if card.blueatro and card.blueatro.return_to_hand then
-				card.blueatro.return_to_hand = nil
-				draw_card(G.play, G.hand, i * 100 / play_count, "up", true, card)
-			else
-				draw_card(G.play, G.discard, i * 100 / play_count, "down", false, card)
-			end
-			i = i + 1
-		end
-	end
-end
-
--- Create custom context for Joker destruction
-local _card_remove = Card.remove
-function Card.remove(self)
-	---@diagnostic disable-next-line: undefined-field
-	if self.added_to_deck and self.ability.set == "Joker" and not G.CONTROLLER.locks.selling_card then
-		SMODS.calculate_context({
-			blueatro = { destroying_joker = true, destroyed_joker = self },
-		})
-	end
-
-	return _card_remove(self)
-end
-
 ---Modify the current cost held by given amount.
 ---If amount is nil, it is assumed to be the end of round regeneration
 ---and will increment it by cost.inc instead.
@@ -104,14 +76,9 @@ function BlueAtro.update_cost(amount)
 	end
 	meter.cur = math.max(0, math.min(meter.cur, meter.max))
 
-	-- End of round cost update is done in `reset_game_globals`, which can be called
-	-- at the start of a run when the run UI is not fully initialized.
-	if G.blueatro_costbar then
-		print(G.GAME.current_round.blueatro.cost)
-		local cost_UI = G.blueatro_costbar:get_UIE_by_ID("blueatro_costbar_UI")
-		cost_UI.config.object:update()
-		G.blueatro_costbar:recalculate()
-	end
+	local cost_UI = G.blueatro_costbar:get_UIE_by_ID("blueatro_costbar_UI")
+	cost_UI.config.object:update()
+	G.blueatro_costbar:recalculate()
 end
 
 function BlueAtro.create_UIBox_cost()
@@ -133,7 +100,12 @@ function BlueAtro.create_UIBox_cost()
 				config = {
 					id = "blueatro_costbar_UI",
 					object = DynaText({
-						string = tostring(G.GAME.current_round.blueatro.cost.cur),
+						string = {
+							{
+								ref_table = G.GAME.current_round.blueatro.cost,
+								ref_value = "cur",
+							},
+						},
 						scale = 1,
 						colours = { G.C.WHITE },
 						bump_rate = 1,
@@ -168,13 +140,37 @@ function Game:delete_run(args)
 	end
 end
 
+-- ========================= CUSTOM UI FOR STUDENT CARDS =========================
+local _desc_from_rows = desc_from_rows
+function desc_from_rows(desc_nodes, empty, maxw)
+	if desc_nodes[1] and desc_nodes[1][1] and desc_nodes[1][1].blueatro_ui_override then
+		local t = {}
+		for k, v in ipairs(desc_nodes) do
+			t[#t + 1] = { n = G.UIT.R, config = { align = "cm", maxw = maxw }, nodes = v }
+		end
+		return {
+			n = G.UIT.R,
+			config = {
+				align = "cm",
+				colour = G.C.CLEAR,
+				filler = true,
+			},
+			nodes = {
+				{ n = G.UIT.R, config = { align = "cm", padding = 0.03 }, nodes = t },
+			},
+		}
+	else
+		return _desc_from_rows(desc_nodes, empty, maxw)
+	end
+end
+
 ---Builds a UI node to display the description of a skill.
 ---Skill is assumed to be an EX skill if `cost` is present, passive otherwise.
 ---@param key any Student's key
 ---@param vars table? Vars returned from `loc_vars`
 ---@param cost number? If not nil, cost of EX skill.
 ---@return table
-local function build_skill_box(key, vars, cost)
+function BlueAtro.build_skill_box(key, vars, cost)
 	local set = cost and "BlueAtro_EX" or "BlueAtro_Passive"
 
 	local desc_nodes = {}
@@ -186,6 +182,9 @@ local function build_skill_box(key, vars, cost)
 	end
 
 	local name = localize({ type = "name_text", key = key, set = set, name_nodes = {}, vars = {} })
+	if cost then
+		name = string.format("%s (%d)", name, cost)
+	end
 	local name_node = {
 		{
 			n = G.UIT.O,
@@ -203,7 +202,15 @@ local function build_skill_box(key, vars, cost)
 
 	return {
 		n = G.UIT.R,
-		config = { align = "cm", colour = G.C.BLACK, r = 0.1, padding = 0.05 },
+		config = {
+			align = "cm",
+			colour = lighten(G.C.BLACK, 0.05),
+			r = 0.1,
+			padding = 0.05,
+			emboss = 0.05,
+			outline = 1.0,
+			outline_colour = G.C.BLACK,
+		},
 		nodes = {
 			{
 				n = G.UIT.R,
@@ -223,6 +230,7 @@ local function build_skill_box(key, vars, cost)
 				nodes = { { n = G.UIT.R, config = { align = "cm", padding = 0.03 }, nodes = desc } },
 			},
 		},
+		blueatro_ui_override = true,
 	}
 end
 
@@ -241,8 +249,8 @@ BlueAtro.generate_student_ui = function(self, info_queue, card, desc_nodes, spec
 			nodes = full_UI_table.name,
 		})
 		desc_nodes[#desc_nodes + 1] = {
-			build_skill_box(self.blueatro_passive_key, loc_vars.blueatro_passive_vars),
-			build_skill_box(self.blueatro_ex_key, loc_vars.blueatro_ex_vars, self.blueatro_ex_cost),
+			BlueAtro.build_skill_box(self.blueatro_passive_key, loc_vars.blueatro_passive_vars),
+			BlueAtro.build_skill_box(self.blueatro_ex_key, loc_vars.blueatro_ex_vars, self.blueatro_ex_cost),
 		}
 	end
 end
@@ -291,6 +299,8 @@ function G.UIDEF.use_and_sell_buttons(card)
 	end
 	return t
 end
+
+-- ========================= STUDENT CARDS EX SKILL USAGE =========================
 
 ---Checks whether a student can use its EX skill.
 G.FUNCS.blueatro_ex_ready = function(e)
@@ -347,6 +357,38 @@ G.FUNCS.blueatro_ex_use = function(e, mute)
 	BlueAtro.update_cost(-card.config.center.blueatro_ex_cost)
 	card.config.center:blueatro_ex_use(card)
 	card.area:remove_from_highlighted(card)
+end
+
+-- ========================= MISC HOOKS  =========================
+
+-- After playing a hand, cards marked with `card.blueatro.return_to_hand` are returned to hand instead
+G.FUNCS.draw_from_play_to_discard = function(_)
+	local play_count = #G.play.cards
+	local i = 1
+	for _, card in ipairs(G.play.cards) do
+		if (not card.shattered) and not card.destroyed then
+			if card.blueatro and card.blueatro.return_to_hand then
+				card.blueatro.return_to_hand = nil
+				draw_card(G.play, G.hand, i * 100 / play_count, "up", true, card)
+			else
+				draw_card(G.play, G.discard, i * 100 / play_count, "down", false, card)
+			end
+			i = i + 1
+		end
+	end
+end
+
+-- Create custom context for Joker destruction
+local _card_remove = Card.remove
+function Card.remove(self)
+	---@diagnostic disable-next-line: undefined-field
+	if self.added_to_deck and self.ability.set == "Joker" and not G.CONTROLLER.locks.selling_card then
+		SMODS.calculate_context({
+			blueatro = { destroying_joker = true, destroyed_joker = self },
+		})
+	end
+
+	return _card_remove(self)
 end
 
 -- ========================= LOAD STUDENTS =========================

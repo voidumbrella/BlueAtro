@@ -7,7 +7,7 @@ from PIL import Image
 from http import client
 
 KEYS = {
-    "neru",
+    (0, "neru"),
 }
 
 
@@ -44,7 +44,7 @@ def get_img(key):
 
 
 if __name__ == "__main__":
-    for id, key in enumerate(KEYS):
+    for id, key in KEYS:
         path_1x = f"art/students/1x/{id:03d}_{key}.png"
         path_2x = f"art/students/2x/{id:03d}_{key}.png"
         if os.path.exists(path_1x) and os.path.exists(path_2x):
