@@ -17,33 +17,48 @@ SMODS.Atlas({
 local _Game_start_run = Game.start_run
 function Game:start_run(args)
 	_Game_start_run(self, args)
+	-- The blind timer must be declared INSIDE Game:start_run
+	-- because this function also sets up the HUD UI elements,
+	-- which would blow up from the timer being nil.
+	-- It also cannot be declared BEFORE it, G.GAME isn't declared
+	-- until this function loads/creates a run.	
+	-- See lovely/timer.toml for the injection.
 
+	-- UI for displaying current Cost
 	self.blueatro_costbar = UIBox({
 		definition = BlueAtro.create_UIBox_cost(),
 		config = { align = "cr", offset = { x = -1, y = 0 }, major = G.ROOM_ATTACH, bond = "Weak" },
 	})
 	self.blueatro_costbar.states.visible = true
 
-	-- Default values for cost regen
-	print(self.GAME.blueatro_cost)
+	-- Used loaded values, or default values for Cost regen
 	self.GAME.blueatro_cost = self.GAME.blueatro_cost or 0
-	print(self.GAME.blueatro_cost)
 	self.GAME.blueatro_cost_str = self.GAME.blueatro_cost_str or "0"
 	self.GAME.blueatro_cost_max = self.GAME.blueatro_cost_max or 10
 	self.GAME.blueatro_cost_per_sec = self.GAME.blueatro_cost_per_sec or 0.5
 end
 
--- Hook to delete custom fields when run ends.
+-- Run whenever starting a new round
+local _new_round = new_round
+function new_round()
+	_new_round()
+	-- TODO: This might be better if it was at the end of round?
+	G.GAME.blueatro_cost = 0
+	BlueAtro.update_blind_timer()
+end
+
 local _Game_delete_run = Game.delete_run
 function Game:delete_run(args)
 	_Game_delete_run(self, args)
+	-- Delete UI elements.
 	if self.ROOM then
 		if self.blueatro_costbar then
 			self.blueatro_costbar:remove()
 			self.blueatro_costbar = nil
 		end
 	end
-	self.timer = nil
+	-- Is this necessary?
+	self.GAME.blind_timer = nil
 end
 
 -- Initialize run-wide global variables
@@ -82,12 +97,12 @@ SMODS.calculate_context = function(context, return_table)
 		local yuzu_combo = G.GAME.current_round.blueatro.yuzu_combo
 		table.remove(yuzu_combo, 1)
 		yuzu_combo[#yuzu_combo + 1] = next
-		--END: Nyan's Dash
+		--END: Yuzu's Combo
 	end
 	-- END: Update round-global variables after each hand
 end
 
----Modify the current cost held by given amount.
+---Modify the current Cost by given amount.
 ---@param delta number Change to the cost meter.
 function BlueAtro.update_cost(delta)
 	local last = G.GAME.blueatro_cost
@@ -104,6 +119,7 @@ function BlueAtro.update_cost(delta)
 	G.blueatro_costbar:recalculate()
 end
 
+---UIBox definition for Cost meter.
 function BlueAtro.create_UIBox_cost()
 	return {
 		n = G.UIT.ROOT,
@@ -141,12 +157,11 @@ function BlueAtro.create_UIBox_cost()
 end
 
 -- ========================= BLIND TIMER =========================
-BlueAtro.BlindTimer = { real = 0, display = "" }
----Updates the current blind timer.
+---Updates the current blind timer by dt.
 ---If dt is nil, it will reset it to G.GAME.blind_timer_length instead.
 ---@param dt number?
 function BlueAtro.update_blind_timer(dt)
-	local timer = BlueAtro.BlindTimer
+	local timer = G.GAME.blind_timer
 	if dt == nil then
 		timer.real = G.GAME.blind_timer_length
 	else
@@ -177,7 +192,9 @@ function Game:update(dt)
 		BlueAtro.update_cost(G.GAME.blueatro_cost_per_sec * dt)
 
 		BlueAtro.update_blind_timer(-dt)
+
 		if G.GAME.blind_timer.real == 0 then
+			-- TODO: Mr. Bones
 			G.STATE = G.STATES.GAME_OVER
 			if not G.GAME.won and not G.GAME.seeded and not G.GAME.challenge then
 				G.PROFILES[G.SETTINGS.profile].high_scores.current_streak.amt = 0
@@ -192,6 +209,9 @@ end
 local _create_UIBox_HUD_blind = create_UIBox_HUD_blind
 function create_UIBox_HUD_blind()
 	local ret = _create_UIBox_HUD_blind()
+	-- Hook to add a timer UI to the Blind HUD.
+	-- This is hardcoded and probably breaks if
+	-- any other mod tries to modify the HUD here. Welp.
 	ret.nodes[2].nodes[3] = {
 		n = G.UIT.R,
 		config = { align = "cm", minh = 0.7, r = 0.1, emboss = 0.05, colour = G.C.DYN_UI.MAIN },
@@ -221,16 +241,11 @@ function create_UIBox_HUD_blind()
 	return ret
 end
 
-local _new_round = new_round
-function new_round()
-	_new_round()
-	G.GAME.blueatro_cost = 0
-	BlueAtro.update_blind_timer()
-end
-
 -- ========================= CUSTOM UI FOR STUDENT CARDS =========================
 local _desc_from_rows = desc_from_rows
 function desc_from_rows(desc_nodes, empty, maxw)
+	-- If flag is present, remove the white box in the descriptions because
+	-- we provide our own tooltip boxes for students and it's ugly to have both.
 	if desc_nodes[1] and desc_nodes[1][1] and desc_nodes[1][1].blueatro_ui_override then
 		local t = {}
 		for k, v in ipairs(desc_nodes) do
@@ -253,6 +268,7 @@ function desc_from_rows(desc_nodes, empty, maxw)
 end
 
 ---Builds a UI node to display the description of a skill.
+---This is self contained and should be inserted directly into `nodes`.
 ---Skill is assumed to be an EX skill if `cost` is present, passive otherwise.
 ---@param key any Student's key
 ---@param vars table? Vars returned from `loc_vars`
@@ -318,11 +334,13 @@ function BlueAtro.build_skill_box(key, vars, cost)
 				nodes = { { n = G.UIT.R, config = { align = "cm", padding = 0.03 }, nodes = desc } },
 			},
 		},
+		-- Override the default tooltip structure. See `desc_from_rows`.
 		blueatro_ui_override = true,
 	}
 end
 
---- `generate_ui` implementation for student cards.
+---`generate_ui` implementation for student cards.
+---All students must manually specify this as their `generate_ui` function.
 BlueAtro.generate_student_ui = function(self, info_queue, card, desc_nodes, specific_vars, full_UI_table)
 	local loc_vars = {}
 	if self.loc_vars and type(self.loc_vars) == "function" then
@@ -343,7 +361,9 @@ BlueAtro.generate_student_ui = function(self, info_queue, card, desc_nodes, spec
 	end
 end
 
+-- ========================= STUDENT CARDS EX SKILL USAGE =========================
 -- Hook to add use button for Student cards.
+-- Thank you github.com/Mysthaps/LobotomyCorp
 local _G_UIDEF_use_and_sell_buttons = G.UIDEF.use_and_sell_buttons
 function G.UIDEF.use_and_sell_buttons(card)
 	local t = _G_UIDEF_use_and_sell_buttons(card)
@@ -388,13 +408,10 @@ function G.UIDEF.use_and_sell_buttons(card)
 	return t
 end
 
--- ========================= STUDENT CARDS EX SKILL USAGE =========================
-
 ---Checks whether a student can use its EX skill.
 G.FUNCS.blueatro_ex_can_use = function(e)
 	local card = e.config.ref_table
-	-- Vanilla game checks
-	-- Yoinked from Card:can_use_consumeable
+	-- Vanilla game checks yoinked from Card:can_use_consumeable
 	local valid_state = not (
 			(G.play and #G.play.cards > 0)
 			or G.CONTROLLER.locked
@@ -403,8 +420,8 @@ G.FUNCS.blueatro_ex_can_use = function(e)
 		and G.STATE ~= G.STATES.HAND_PLAYED
 		and G.STATE ~= G.STATES.DRAW_TO_HAND
 		and G.STATE ~= G.STATES.PLAY_TAROT
-	--
-	-- Student specific checks
+
+	-- Student specific checks.
 	local student_consents = card.area == G.jokers
 		and not card.debuff
 		and card.config.center.blueatro_ex_use
@@ -442,16 +459,16 @@ G.FUNCS.blueatro_ex_use = function(e, mute)
 		card.children.sell_button:remove()
 		card.children.sell_button = nil
 	end
+	-- EX cost is always stored positive!
 	BlueAtro.update_cost(-card.config.center.blueatro_ex_cost)
 	card.config.center:blueatro_ex_use(card)
 	card.area:remove_from_highlighted(card)
 
-	-- Save gamestate
+	-- Force save gamestate.
 	G.FILE_HANDLER.force = true
 end
 
 -- ========================= MISC HOOKS  =========================
-
 -- After playing a hand, cards marked with `card.blueatro.return_to_hand` are returned to hand instead
 G.FUNCS.draw_from_play_to_discard = function(_)
 	local play_count = #G.play.cards
@@ -501,5 +518,4 @@ for _, name in ipairs(students) do
 end
 
 -- ========================= LOAD ENHANCEMENTS =========================
-
 assert(SMODS.load_file("src/enhancements.lua"))()
