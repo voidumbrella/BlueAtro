@@ -11,22 +11,51 @@ SMODS.Atlas({
 	py = 32,
 })
 
+-- ========================= MAIN =========================
+
+-- Hook to register custom fields when run starts.
+local _Game_start_run = Game.start_run
+function Game:start_run(args)
+	_Game_start_run(self, args)
+
+	self.blueatro_costbar = UIBox({
+		definition = BlueAtro.create_UIBox_cost(),
+		config = { align = "cr", offset = { x = -1, y = 0 }, major = G.ROOM_ATTACH, bond = "Weak" },
+	})
+	self.blueatro_costbar.states.visible = true
+
+	-- Default values for cost regen
+	print(self.GAME.blueatro_cost)
+	self.GAME.blueatro_cost = self.GAME.blueatro_cost or 0
+	print(self.GAME.blueatro_cost)
+	self.GAME.blueatro_cost_str = self.GAME.blueatro_cost_str or "0"
+	self.GAME.blueatro_cost_max = self.GAME.blueatro_cost_max or 10
+	self.GAME.blueatro_cost_per_sec = self.GAME.blueatro_cost_per_sec or 0.5
+end
+
+-- Hook to delete custom fields when run ends.
+local _Game_delete_run = Game.delete_run
+function Game:delete_run(args)
+	_Game_delete_run(self, args)
+	if self.ROOM then
+		if self.blueatro_costbar then
+			self.blueatro_costbar:remove()
+			self.blueatro_costbar = nil
+		end
+	end
+	self.timer = nil
+end
+
 -- Initialize run-wide global variables
 local igo = Game.init_game_object
 function Game:init_game_object()
 	local ret = igo(self)
 	ret.current_round.blueatro = {}
-	ret.current_round.blueatro.cost = { cur = 0, max = 10, inc = 2 }
 	ret.current_round.blueatro.yuzu_combo = { "High Card", "Three of a Kind", "Two Pair" }
 	return ret
 end
 
--- Update number of cards every round
-function SMODS.current_mod.reset_game_globals(run_start)
-	if not run_start then
-		BlueAtro.update_cost()
-	end
-end
+function SMODS.current_mod.reset_game_globals(run_start) end
 
 -- Would it be better to Lovely patch this instead?
 local _smods_calculate_context = SMODS.calculate_context
@@ -56,26 +85,20 @@ SMODS.calculate_context = function(context, return_table)
 		--END: Nyan's Dash
 	end
 	-- END: Update round-global variables after each hand
-
-	--Regenerate cost after skipping a round
-	if context.skip_blind then
-		BlueAtro.update_cost()
-	end
 end
 
 ---Modify the current cost held by given amount.
----If amount is nil, it is assumed to be the end of round regeneration
----and will increment it by cost.inc instead.
----@param amount number? Change to the cost meter.
-function BlueAtro.update_cost(amount)
-	local meter = G.GAME.current_round.blueatro.cost
-	if amount then
-		meter.cur = meter.cur + amount
-	else
-		meter.cur = meter.cur + meter.inc
+---@param delta number Change to the cost meter.
+function BlueAtro.update_cost(delta)
+	local last = G.GAME.blueatro_cost
+	local cur = last + delta
+	-- Incremented
+	if math.floor(last) < math.floor(cur) then
+		play_sound("chips1")
 	end
-	meter.cur = math.max(0, math.min(meter.cur, meter.max))
+	G.GAME.blueatro_cost = math.max(0, math.min(cur, G.GAME.blueatro_cost_max))
 
+	G.GAME.blueatro_cost_str = tostring(math.floor(cur))
 	local cost_UI = G.blueatro_costbar:get_UIE_by_ID("blueatro_costbar_UI")
 	cost_UI.config.object:update()
 	G.blueatro_costbar:recalculate()
@@ -102,8 +125,8 @@ function BlueAtro.create_UIBox_cost()
 					object = DynaText({
 						string = {
 							{
-								ref_table = G.GAME.current_round.blueatro.cost,
-								ref_value = "cur",
+								ref_table = G.GAME,
+								ref_value = "blueatro_cost_str",
 							},
 						},
 						scale = 1,
@@ -117,27 +140,92 @@ function BlueAtro.create_UIBox_cost()
 	}
 end
 
--- Hook to register custom UI when run starts.
-local _Game_start_run = Game.start_run
-function Game:start_run(args)
-	_Game_start_run(self, args)
-	self.blueatro_costbar = UIBox({
-		definition = BlueAtro.create_UIBox_cost(),
-		config = { align = "cr", offset = { x = -1, y = 0 }, major = G.ROOM_ATTACH, bond = "Weak" },
-	})
-	self.blueatro_costbar.states.visible = true
-end
-
--- Hook to delete custom UI when run ends.
-local _Game_delete_run = Game.delete_run
-function Game:delete_run(args)
-	_Game_delete_run(self, args)
-	if self.ROOM then
-		if self.blueatro_costbar then
-			self.blueatro_costbar:remove()
-			self.blueatro_costbar = nil
+-- ========================= BLIND TIMER =========================
+BlueAtro.BlindTimer = { real = 0, display = "" }
+---Updates the current blind timer.
+---If dt is nil, it will reset it to G.GAME.blind_timer_length instead.
+---@param dt number?
+function BlueAtro.update_blind_timer(dt)
+	local timer = BlueAtro.BlindTimer
+	if dt == nil then
+		timer.real = G.GAME.blind_timer_length
+	else
+		timer.real = math.max(0, timer.real + dt)
+	end
+	-- I wish I could print floats with leading zeroes
+	timer.display = string.format(
+		"%d:%02d.%s",
+		math.floor(timer.real / 60),
+		math.floor(timer.real % 60),
+		string.format("%.3f", timer.real % 1):sub(3)
+	)
+	if G.HUD_Blind then
+		local timer_UI = G.HUD_blind:get_UIE_by_ID("blueatro_HUD_timer")
+		if timer_UI then
+			timer_UI.config.object:update()
+			G.HUD_blind:recalculate()
 		end
 	end
+end
+
+local _Game_update = G.update
+function Game:update(dt)
+	_Game_update(self, dt)
+
+	-- Game is not paused, and player actually has control.
+	if not G.SETTINGS.paused and self.STATE == self.STATES.SELECTING_HAND then
+		BlueAtro.update_cost(G.GAME.blueatro_cost_per_sec * dt)
+
+		BlueAtro.update_blind_timer(-dt)
+		if G.GAME.blind_timer.real == 0 then
+			G.STATE = G.STATES.GAME_OVER
+			if not G.GAME.won and not G.GAME.seeded and not G.GAME.challenge then
+				G.PROFILES[G.SETTINGS.profile].high_scores.current_streak.amt = 0
+			end
+			G:save_settings()
+			G.FILE_HANDLER.force = true
+			G.STATE_COMPLETE = false
+		end
+	end
+end
+
+local _create_UIBox_HUD_blind = create_UIBox_HUD_blind
+function create_UIBox_HUD_blind()
+	local ret = _create_UIBox_HUD_blind()
+	ret.nodes[2].nodes[3] = {
+		n = G.UIT.R,
+		config = { align = "cm", minh = 0.7, r = 0.1, emboss = 0.05, colour = G.C.DYN_UI.MAIN },
+		nodes = {
+			{
+				n = G.UIT.C,
+				config = { align = "cm", minw = 3 },
+				nodes = {
+					{
+						n = G.UIT.O,
+						config = {
+							object = DynaText({
+								string = { { ref_table = G.GAME.blind_timer, ref_value = "display" } },
+								colours = { G.C.UI.TEXT_LIGHT },
+								shadow = true,
+								float = true,
+								scale = 1.2 * 0.7,
+								y_offset = -4,
+							}),
+							id = "blueatro_HUD_timer",
+						},
+					},
+				},
+			},
+		},
+	}
+	return ret
+end
+
+local _new_round = new_round
+function new_round()
+	_new_round()
+	G.GAME.blueatro_cost = 0
+	BlueAtro.update_blind_timer()
 end
 
 -- ========================= CUSTOM UI FOR STUDENT CARDS =========================
@@ -279,7 +367,7 @@ function G.UIDEF.use_and_sell_buttons(card)
 						colour = G.C.UI.BACKGROUND_INACTIVE,
 						one_press = true,
 						button = "blueatro_ex_use",
-						func = "blueatro_ex_ready",
+						func = "blueatro_ex_can_use",
 					},
 					nodes = {
 						{ n = G.UIT.B, config = { w = 0.1, h = 0.6 } },
@@ -303,7 +391,7 @@ end
 -- ========================= STUDENT CARDS EX SKILL USAGE =========================
 
 ---Checks whether a student can use its EX skill.
-G.FUNCS.blueatro_ex_ready = function(e)
+G.FUNCS.blueatro_ex_can_use = function(e)
 	local card = e.config.ref_table
 	-- Vanilla game checks
 	-- Yoinked from Card:can_use_consumeable
@@ -320,8 +408,8 @@ G.FUNCS.blueatro_ex_ready = function(e)
 	local student_consents = card.area == G.jokers
 		and not card.debuff
 		and card.config.center.blueatro_ex_use
-		and card.config.center.blueatro_ex_cost <= G.GAME.current_round.blueatro.cost.cur
-		and card.config.center:blueatro_ex_ready(card)
+		and card.config.center.blueatro_ex_cost <= G.GAME.blueatro_cost
+		and card.config.center:blueatro_ex_can_use(card)
 
 	if valid_state and student_consents then
 		e.config.colour = G.C.RED
@@ -357,6 +445,9 @@ G.FUNCS.blueatro_ex_use = function(e, mute)
 	BlueAtro.update_cost(-card.config.center.blueatro_ex_cost)
 	card.config.center:blueatro_ex_use(card)
 	card.area:remove_from_highlighted(card)
+
+	-- Save gamestate
+	G.FILE_HANDLER.force = true
 end
 
 -- ========================= MISC HOOKS  =========================

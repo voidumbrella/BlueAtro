@@ -73,7 +73,7 @@ j.calculate = function(self, card, context)
 end
 
 j.blueatro_ex_cost = 3
-j.blueatro_ex_ready = function(self, card)
+j.blueatro_ex_can_use = function(self, card)
 	return card.ability.extra.ex_active == false
 end
 j.blueatro_ex_use = function(self, card)

@@ -1,0 +1,18 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 1
+
+# This needs to be injected *during* the run setup because
+# HUD_blind needs access to this table, but G.GAME is only set
+# during `Game.start_run` (as it creates/loads a run)
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "G.playing_cards = {}"
+match_indent = true
+position = "after"
+payload = '''
+self.GAME.blind_timer_length = 2 * 60
+self.GAME.blind_timer = BlueAtro.BlindTimer
+'''
