@@ -206,8 +206,7 @@ return {
 				text = {
 					"When {C:attention}rerolling{} in the shop,",
 					"{C:attention}destroys{} Joker to the right",
-					"and replaces it with a",
-					"random {C:green}Uncommon{} Joker",
+					"and creates a random Joker",
 				},
 			},
 		},

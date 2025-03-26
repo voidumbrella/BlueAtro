@@ -28,7 +28,6 @@ SMODS.Joker({
 						next_joker:remove()
 						local c = SMODS.add_card({
 							set = "Joker",
-							rarity = 0.75,
 							key_append = "risemara",
 						})
 						for i = #G.jokers.cards, pos + 1, -1 do
