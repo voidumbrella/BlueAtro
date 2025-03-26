@@ -22,7 +22,7 @@ local jokers = {
 	"hero",
 	"white_rabbit",
 	"crafting_chamber",
-	"ornate_chair",
+	"slacker",
 	"stargazing",
 	"bookkeeping",
 	"resupply_operation",

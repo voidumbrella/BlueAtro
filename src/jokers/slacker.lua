@@ -1,5 +1,5 @@
 SMODS.Joker({
-	key = "ornate_chair",
+	key = "slacker",
 	atlas = "jokers_atlas",
 	pos = { x = 9, y = 0 },
 	config = { extra = { mult = 0, mult_gain = 4 } },
