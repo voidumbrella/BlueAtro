@@ -91,8 +91,8 @@ return {
 					"{C:inactive}(#2#장 남음){}",
 				},
 			},
-			j_blueatro_ornate_chair = {
-				name = "화려한 의자",
+			j_blueatro_slacker = {
+				name = "게으름뱅이",
 				text = {
 					"이 조커의 배수 획득량은 {C:attention}상점{}에서",
 					"나갈 때마다 {C:mult}+#1#{}씩 증가합니다",

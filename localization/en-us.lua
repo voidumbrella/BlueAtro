@@ -90,8 +90,8 @@ return {
 					"{C:inactive}(#2# left){}",
 				},
 			},
-			j_blueatro_ornate_chair = {
-				name = "Ornate Chair",
+			j_blueatro_slacker = {
+				name = "Slacker",
 				text = {
 					"This Joker gains {C:mult}+#1#{} Mult",
 					"at the end of the {C:attention}shop{}",
