@@ -20,40 +20,23 @@ SMODS.Atlas({
 	px = 71,
 	py = 95,
 })
-local jokers = {
-	-- Commons
-	"sobbing_face",
-	"teabagging",
-	"hero",
-	"white_rabbit",
-	"crafting_chamber",
-	"slacker",
-	"stargazing",
-	"bookkeeping",
-	"resupply_operation",
-	"guardian_angel",
-	-- Uncommons
-	"rollcake",
-	"pointman",
-	"mob_of_mobs",
-	"chicken_skewer",
-	"signed_photocard",
-	"scientific_calculator",
-	"sugar_rush",
-	"quick_reload",
-	-- Rares
-	"contraband",
-	"elixir_of_youth",
-	"cheerleader",
-	"double_o",
-	"nyans_dash",
-	"account_reroll",
-}
-for _, name in ipairs(jokers) do
-	local file_path = "src/jokers/" .. name .. ".lua"
-	sendDebugMessage("Loading " .. file_path, "BlueAtro")
-	assert(SMODS.load_file(file_path))()
+local jokers = {}
+
+local path = SMODS.current_mod.path .. "/src/jokers"
+local files = NFS.getDirectoryItemsInfo(path)
+for i = 1, #files do
+	local file_name = files[i].name
+	if file_name:sub(-4) == ".lua" then
+		jokers[#jokers + 1] = file_name
+	end
+end
+table.sort(jokers)
+
+for _, file_name in ipairs(jokers) do
+	sendDebugMessage("Loading " .. file_name, "BlueAtro")
+	assert(SMODS.load_file("src/jokers/" .. file_name))()
 end
 
+-- LOAD ENHANCEMENTS --
 sendDebugMessage("Loading enhancements", "BlueAtro")
 assert(SMODS.load_file("src/enhancements.lua"))()
