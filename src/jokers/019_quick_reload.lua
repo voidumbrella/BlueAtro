@@ -22,7 +22,7 @@ SMODS.Joker({
 					played_card.blueatro = { return_to_hand = true }
 					i = i + 1
 					if i >= 2 then
-						return true
+						return
 					end
 				end
 			end
