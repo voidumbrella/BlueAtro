@@ -2,6 +2,7 @@ local igo = Game.init_game_object
 function Game:init_game_object()
 	local ret = igo(self)
 	ret.current_round.blueatro = {}
+	ret.current
 	ret.current_round.blueatro.bookkeeping_count = 3
 	ret.current_round.blueatro.yuzu_combo = { "High Card", "Three of a Kind", "Two Pair" }
 	return ret
@@ -56,6 +57,8 @@ SMODS.calculate_context = function(context, return_table)
 		--	END: Nyan's Dash
 		-- END: Update round-global variables after each hand
 	end
+
+	return ret
 end
 
 -- Context for Joker destruction
@@ -63,10 +66,8 @@ local _card_remove = Card.remove
 function Card.remove(self)
 	if self.added_to_deck and self.ability.set == "Joker" and not G.CONTROLLER.locks.selling_card then
 		SMODS.calculate_context({
-			blueatro = {
-				destroying_joker = true,
-				destroyed_joker = self,
-			},
+			blueatro_destroying_joker = true,
+			blueatro_destroyed_joker = self,
 		})
 	end
 

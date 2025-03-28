@@ -2,7 +2,7 @@ SMODS.Joker({
 	key = "teabagging",
 	atlas = "jokers_atlas",
 	pos = { x = 1, y = 0 },
-	config = { extra = { mult = 0, mult_gain = 4, already_shown = false } },
+	config = { extra = { mult = 0, mult_gain = 4 } },
 	rarity = 1,
 	cost = 4,
 	blueprint_compat = true,
@@ -30,24 +30,23 @@ SMODS.Joker({
 					}),
 				}, card)
 			end
-		elseif context.blueatro and context.blueatro.destroying_joker and not context.blueprint then
-			if card == context.blueatro.joker_destroyed then
+		elseif context.blueatro_destroying_joker and not context.blueprint then
+			if card == context.blueatro_destroyed_joker then
 				return
 			end
-			card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
+			local new_mult = card.ability.extra.mult + card.ability.extra.mult_gain
+			card.ability.extra.mult = new_mult
 			-- Wrap it in an event so when multiple Jokers are destroyed a dead copy of this doesn't proc effects
 			G.E_MANAGER:add_event(Event({
 				func = function()
-					if card.removed or card.already_shown then
+					if card.removed then
 						return true
 					end
-					-- If multiple Jokers are destroyed at once, only show the proc once
-					card.alrady_shown = true
 					SMODS.calculate_effect({
 						message = localize({
 							type = "variable",
 							key = "a_mult",
-							vars = { card.ability.extra.mult },
+							vars = { new_mult },
 						}),
 					}, card)
 					return true

@@ -209,6 +209,20 @@ return {
 					"and creates a random Joker",
 				},
 			},
+			j_blueatro_guardian_angel = {
+				name = "Guardian Angel",
+				text = {
+					"When this is sold or destroyed,",
+					"it returns at the end of round",
+					"with a sell cost of {C:money}$0{} and",
+					"and gains {C:mult}+#1#{} Mult",
+					"{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
+					" ",
+					"If there are no slots available,",
+					"will destroy the first non-Eternal",
+					"{C:attention}Joker{} to create room"
+				}
+			}
 		},
 		Other = {},
 		Planet = {},

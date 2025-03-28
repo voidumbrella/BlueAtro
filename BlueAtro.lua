@@ -1,3 +1,5 @@
+BlueAtro = {}
+
 sendDebugMessage("Loading hooks", "BlueAtro")
 assert(SMODS.load_file("src/hooks.lua"))()
 
@@ -26,6 +28,7 @@ local jokers = {
 	"stargazing",
 	"bookkeeping",
 	"resupply_operation",
+	"guardian_angel",
 	-- Uncommons
 	"rollcake",
 	"pointman",
