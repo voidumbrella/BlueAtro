@@ -1,7 +1,7 @@
 SMODS.Joker({
 	key = "chicken_skewer",
 	atlas = "jokers_atlas",
-	pos = { x = 4, y = 1 },
+	pos = BlueAtro.id_to_atlas_pos(14),
 	config = { extra = { xmult = 2.5, xmult_loss = 0.05 } },
 	rarity = 2,
 	cost = 6,

@@ -1,7 +1,7 @@
 SMODS.Joker({
 	key = "account_reroll",
 	atlas = "jokers_atlas",
-	pos = { x = 2, y = 2 },
+	pos = BlueAtro.id_to_atlas_pos(22),
 	config = {},
 	rarity = 3,
 	cost = 7,

@@ -1,7 +1,7 @@
 SMODS.Joker({
 	key = "rollcake",
 	atlas = "jokers_atlas",
-	pos = { x = 2, y = 0 },
+	pos = BlueAtro.id_to_atlas_pos(2),
 	config = { extra = { rounds = 5, rounds_left = 5, odds = 2 } },
 	rarity = 2,
 	cost = 6,

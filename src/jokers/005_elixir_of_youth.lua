@@ -1,7 +1,7 @@
 SMODS.Joker({
 	key = "elixir_of_youth",
 	atlas = "jokers_atlas",
-	pos = { x = 5, y = 0 },
+	pos = BlueAtro.id_to_atlas_pos(5),
 	config = {},
 	rarity = 3,
 	cost = 7,

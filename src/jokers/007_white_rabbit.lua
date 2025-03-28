@@ -6,7 +6,7 @@ SMODS.Sound({
 SMODS.Joker({
 	key = "white_rabbit",
 	atlas = "jokers_atlas",
-	pos = { x = 7, y = 0 },
+	pos = BlueAtro.id_to_atlas_pos(7),
 	config = { extra = { cost = 1 } },
 	rarity = 1,
 	cost = 2,

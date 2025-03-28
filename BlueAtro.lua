@@ -1,4 +1,7 @@
 BlueAtro = {}
+BlueAtro.id_to_atlas_pos = function(id)
+	return { x = id % 10, y = math.floor(id / 10) }
+end
 
 sendDebugMessage("Loading hooks", "BlueAtro")
 assert(SMODS.load_file("src/hooks.lua"))()

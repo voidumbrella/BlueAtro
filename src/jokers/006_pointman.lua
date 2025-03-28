@@ -15,7 +15,7 @@ end
 SMODS.Joker({
 	key = "pointman",
 	atlas = "jokers_atlas",
-	pos = { x = 6, y = 0 },
+	pos = BlueAtro.id_to_atlas_pos(6),
 	config = { extra = { xmult_per_joker = 0.5 } },
 	rarity = 2,
 	cost = 6,

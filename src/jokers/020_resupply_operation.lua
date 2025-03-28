@@ -1,7 +1,7 @@
 SMODS.Joker({
 	key = "resupply_operation",
 	atlas = "jokers_atlas",
-	pos = { x = 0, y = 2 },
+	pos = BlueAtro.id_to_atlas_pos(20),
 	config = { extra = { inc = 1, applied_hand_size = 0, hand_size = 0 } },
 	rarity = 1,
 	cost = 5,

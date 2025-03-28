@@ -20,7 +20,7 @@ end
 SMODS.Joker({
 	key = "contraband",
 	atlas = "jokers_atlas",
-	pos = { x = 3, y = 0 },
+	pos = BlueAtro.id_to_atlas_pos(3),
 	config = {},
 	rarity = 3,
 	cost = 8,

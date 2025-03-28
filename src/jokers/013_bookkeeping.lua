@@ -8,7 +8,7 @@ end
 SMODS.Joker({
 	key = "bookkeeping",
 	atlas = "jokers_atlas",
-	pos = { x = 3, y = 1 },
+	pos = BlueAtro.id_to_atlas_pos(13),
 	config = { extra = { dollar_gain = 4 } },
 	rarity = 1,
 	cost = 5,
