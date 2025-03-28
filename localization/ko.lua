@@ -215,8 +215,15 @@ return {
 					"{C:inactive}(현재 {C:mult}+#2#{C:inactive} 배수)",
 					" ",
 					"자리가 없을 경우, 이터널이 아닌",
-					"첫번째 {C:attention}조커{}를",
-					"파괴한 뒤 돌아옵니다"
+					"첫번째 {C:attention}조커{}를 파괴합니다",
+				}
+			}
+			j_blueatro_tattered_poster = {
+				name = "낡은 포스터",
+				text = {
+					"{C:attention}파괴{}될 시 무작위한",
+					"{C:red}레어{} {C:attention}조커{}를 생성합니다",
+					"{C:inactive}(자리가 있어야 합니다){}",
 				}
 			}
 		},

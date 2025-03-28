@@ -222,6 +222,15 @@ return {
 					"will destroy the first non-Eternal",
 					"{C:attention}Joker{} to create room"
 				}
+			},
+			j_blueatro_tattered_poster = {
+				name = "Tattered Poster",
+				text = {
+					"Creates a random",
+					"{C:red}Rare{} {C:attention}Joker{} when",
+					"this is {C:attention}destroyed{}",
+					"{C:inactive}(Must have room){}",
+				}
 			}
 		},
 		Other = {},
