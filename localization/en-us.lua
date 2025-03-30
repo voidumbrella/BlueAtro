@@ -151,8 +151,8 @@ return {
 			j_blueatro_double_o = {
 				name = "Double O",
 				text = {
-					"Gains {X:mult,C:white}X#1#{} Mult for this round",
-					"whenever an {C:attention}Ace{} scores",
+					"Gains {X:mult,C:white}X#1#{} Mult each card",
+					"discarded this {C:attention}Ante{}",
 					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
 				},
 			},

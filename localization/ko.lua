@@ -150,7 +150,7 @@ return {
 			j_blueatro_double_o = {
 				name = "더블오",
 				text = {
-					"이번 라운드 동안 득점한 {C:attention}에이스{}마다",
+					"이번 {C:attention}앤티{}동안 버린 카드마다",
 					"{X:mult,C:white}X#1#{} 배수를 얻습니다",
 					"{C:inactive}(현재 {X:mult,C:white}X#2#{C:inactive} 배수)",
 				},
