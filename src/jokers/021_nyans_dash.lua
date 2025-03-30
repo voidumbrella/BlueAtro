@@ -22,8 +22,9 @@ SMODS.Joker({
 		-- Global combo list is updated by hooking `SMODS.calculate_context` in `src/hooks.lua`.
 		if context.joker_main then
 			return {
-				Xmult_mod = card.ability.extra.xmult,
-				message = localize({ type = "variable", key = "a_xmult", vars = { card.ability.extra.xmult } }),
+				x_mult = card.ability.extra.xmult,
+				card = card,
+				colour = G.C.MULT,
 			}
 		elseif
 			context.before

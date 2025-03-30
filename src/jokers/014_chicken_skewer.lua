@@ -12,8 +12,9 @@ SMODS.Joker({
 	calculate = function(_, card, context)
 		if context.joker_main then
 			return {
-				Xmult_mod = card.ability.extra.xmult,
-				message = localize({ type = "variable", key = "a_xmult", vars = { card.ability.extra.xmult } }),
+				x_mult = card.ability.extra.xmult,
+				colour = G.C.MULT,
+				card = card,
 			}
 		else
 			if context.using_consumeable and not context.blueprint and not context.retrigger_joker then

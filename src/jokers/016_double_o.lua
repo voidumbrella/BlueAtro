@@ -12,8 +12,9 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		if context.joker_main and card.ability.extra.xmult >= 1 then
 			return {
-				Xmult_mod = card.ability.extra.xmult,
-				message = localize({ type = "variable", key = "a_xmult", vars = { card.ability.extra.xmult } }),
+				x_mult = card.ability.extra.xmult,
+				card = card,
+				colour = G.C.MULT,
 			}
 		elseif
 			context.individual

@@ -32,8 +32,9 @@ SMODS.Joker({
 		if context.joker_main then
 			local xmult = calculate_xmult(card)
 			return {
-				Xmult_mod = xmult,
-				message = localize({ type = "variable", key = "a_xmult", vars = { xmult } }),
+				x_mult = xmult,
+				card = card,
+				colour = G.C.MULT,
 			}
 		end
 	end,

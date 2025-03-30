@@ -12,9 +12,9 @@ SMODS.Joker({
 	calculate = function(_, card, context)
 		if context.individual and context.cardarea == G.play and not context.other_card:is_face() then
 			return {
-				message = localize({ type = "variable", key = "a_mult", vars = { card.ability.extra.mult } }),
-				card = card or context.blueprint_card,
 				mult = card.ability.extra.mult,
+				card = card or context.blueprint_card,
+				colour = G.C.MULT,
 			}
 		end
 	end,

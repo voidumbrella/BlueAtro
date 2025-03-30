@@ -30,7 +30,6 @@ SMODS.Joker({
 				else
 					return {
 						h_chips = card.ability.extra.chips,
-						-- message = localize({ type = "variable", key = "a_chips", vars = { card.ability.extra.chips } }),
 					}
 				end
 			end

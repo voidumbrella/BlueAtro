@@ -18,8 +18,9 @@ SMODS.Joker({
 	calculate = function(_, card, context)
 		if context.joker_main and card.ability.extra.mult > 0 then
 			return {
-				mult_mod = card.ability.extra.mult,
-				message = localize({ type = "variable", key = "a_mult", vars = { card.ability.extra.mult } }),
+				mult = card.ability.extra.mult,
+				card = card,
+				colour = G.C.MULT,
 			}
 		elseif context.ending_shop and not context.blueprint and not context.retrigger_joker then
 			card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
