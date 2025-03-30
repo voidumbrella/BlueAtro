@@ -28,7 +28,7 @@ SMODS.Joker({
 			return {
 				x_mult = card.ability.extra.xmult,
 				colour = G.C.MULT,
-				card = card,
+				card = context.blueprint_card or card,
 			}
 		end
 	end,

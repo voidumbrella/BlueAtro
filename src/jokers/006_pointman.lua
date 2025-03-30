@@ -33,7 +33,7 @@ SMODS.Joker({
 			local xmult = calculate_xmult(card)
 			return {
 				x_mult = xmult,
-				card = card,
+				card = context.blueprint_card or card,
 				colour = G.C.MULT,
 			}
 		end

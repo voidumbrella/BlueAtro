@@ -13,7 +13,7 @@ SMODS.Joker({
 		if context.individual and context.cardarea == G.play and not context.other_card:is_face() then
 			return {
 				mult = card.ability.extra.mult,
-				card = card or context.blueprint_card,
+				card = context.blueprint_card or card,
 				colour = G.C.MULT,
 			}
 		end

@@ -28,7 +28,7 @@ SMODS.Joker({
 				return {
 					message = localize("$") .. card.ability.extra.dollar_gain,
 					colour = G.C.MONEY,
-					card = card,
+					card = context.blueprint_card or card,
 				}
 			end
 		end

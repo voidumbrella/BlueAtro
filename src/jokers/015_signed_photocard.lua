@@ -17,7 +17,7 @@ SMODS.Joker({
 				return {
 					message = localize("k_upgrade_ex"),
 					colour = G.C.MULT,
-					card = card,
+					card = context.blueprint_card or card,
 				}
 			end
 		end

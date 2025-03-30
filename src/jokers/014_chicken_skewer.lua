@@ -14,7 +14,7 @@ SMODS.Joker({
 			return {
 				x_mult = card.ability.extra.xmult,
 				colour = G.C.MULT,
-				card = card,
+				card = context.blueprint_card or card,
 			}
 		else
 			if context.using_consumeable and not context.blueprint and not context.retrigger_joker then

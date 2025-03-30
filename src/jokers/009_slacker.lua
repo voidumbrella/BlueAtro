@@ -19,7 +19,7 @@ SMODS.Joker({
 		if context.joker_main and card.ability.extra.mult > 0 then
 			return {
 				mult = card.ability.extra.mult,
-				card = card,
+				card = context.blueprint_card or card,
 				colour = G.C.MULT,
 			}
 		elseif context.ending_shop and not context.blueprint and not context.retrigger_joker then
