@@ -5,7 +5,7 @@ SMODS.Joker({
 	config = {},
 	rarity = 3,
 	cost = 7,
-	blueprint_compat = true,
+	blueprint_compat = false,
 	loc_vars = function(_, info_queue, card) end,
 	calculate = function(_, card, context)
 		if context.reroll_shop and not context.blueprint and not context.retrigger_joker then

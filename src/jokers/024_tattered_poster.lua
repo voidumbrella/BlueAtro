@@ -9,9 +9,10 @@ SMODS.Joker({
     eternal_compat = false,
 	perishable_compat = true,
 	calculate = function(_, card, context)
+        -- Allowing Blueprint to copy this because if you really
+        -- want to destroy Blueprint for a random Joker you deserve it
 		if context.blueatro_destroying_joker
             and context.blueatro_destroyed_joker == self
-            and not context.blueprint
         then
             G.E_MANAGER:add_event(Event({
                 func = function()
