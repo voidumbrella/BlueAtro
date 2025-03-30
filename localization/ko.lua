@@ -178,13 +178,13 @@ return {
 					"두장을 손에 다시 넣습니다",
 				},
 			},
-			j_blueatro_resupply_operation = {
-				name = "보급 작전",
+			j_blueatro_avantgarde = {
+				name = "아방가르드군",
 				text = {
-					"플레이한 핸드에 {C:attention}풀 하우스{}가",
-					"포함 시 다음 블라인드 동안",
-					"손패 크기 {C:attention}+#1#{}장을 얻습니다.",
-					"{C:inactive}(현재 {C:attention}+#2#{C:inactive}장){}",
+					"플레이한 핸드가 다른 모든",
+					"포커 핸드보다 레벨이 낮다면",
+					"플레이한 카드가 득점할때마다.",
+					"{X:mult,C:white}X#1#{} 배수를 획득합니다",
 				},
 			},
 			j_blueatro_nyans_dash = {

@@ -181,13 +181,13 @@ return {
 					"into hand after scoring",
 				},
 			},
-			j_blueatro_resupply_operation = {
-				name = "Resupply Operation",
+			j_blueatro_avantgarde = {
+				name = "Avant-Garde-kun",
 				text = {
-					"If hand contains a {C:attention}Full House{}",
-					"gain {C:attention}+#1#{} hand size",
-					"for next Blind only",
-					"{C:inactive}(Currently {C:attention}+#2#{C:inactive} hand size){}",
+					"If played hand is lower level",
+					"than all other poker hands",
+					"each played card gives",
+					"{X:mult,C:white}X#1#{} Mult when scored",
 				},
 			},
 			j_blueatro_nyans_dash = {
