@@ -10,7 +10,7 @@ SMODS.Joker({
 	perishable_compat = true,
 	calculate = function(_, card, context)
 		if context.blueatro_destroying_joker
-            and context.blueatro_destroyed_joker == self)
+            and context.blueatro_destroyed_joker == self
             and not context.blueprint
         then
             G.E_MANAGER:add_event(Event({
