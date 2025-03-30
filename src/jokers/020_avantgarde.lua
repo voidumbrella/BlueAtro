@@ -40,7 +40,7 @@ SMODS.Joker({
 				{ ref_table = "card.joker_display_values", ref_value = "xmult", colour = G.C.MULT },
 			},
 			calc_function = function(card)
-				if should_
+				-- TODO: Calculate XMult
 				card.joker_display_values.xmult = 1
 			end,
 		}
