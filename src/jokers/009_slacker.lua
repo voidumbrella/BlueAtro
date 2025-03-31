@@ -33,8 +33,15 @@ SMODS.Joker({
 				card = card,
 			}
 		elseif context.reroll_shop and not context.blueprint and not context.retrigger_joker then
-			card.ability.extra.mult = 0
-			return { message = localize("k_reset"), colour = G.C.MULT, card = card }
+			card.ability.extra.mult = math.floor(card.ability.extra.mult / 2)
+			return {
+				message = localize({
+					type = "variable",
+					key = "a_mult",
+					vars = { card.ability.extra.mult },
+				}),
+				card = card,
+			}
 		end
 	end,
 	joker_display_def = function(JokerDisplay)

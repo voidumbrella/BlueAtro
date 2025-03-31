@@ -12,20 +12,15 @@ SMODS.Joker({
 	key = "avantgarde",
 	atlas = "jokers_atlas",
 	pos = BlueAtro.id_to_atlas_pos(20),
-	config = { extra = { xmult = 1.618 } },
-	rarity = 1,
-	cost = 5,
+	config = { extra = { xmult = 1.62 } },
+	rarity = 3,
+	cost = 10,
 	blueprint_compat = false,
 	loc_vars = function(_, info_queue, card)
 		return { vars = { card.ability.extra.xmult } }
 	end,
 	calculate = function(self, card, context)
-		if
-			context.individual
-			and context.cardarea == G.play
-			and should_proc(context.scoring_name)
-		then
-			local xmult = calculate_xmult(card)
+		if context.individual and context.cardarea == G.play and should_proc(context.scoring_name) then
 			return {
 				x_mult = card.ability.extra.xmult,
 				colour = G.C.RED,

@@ -96,7 +96,8 @@ return {
 				text = {
 					"이 조커의 배수 획득량은 {C:attention}상점{}에서",
 					"나갈 때마다 {C:mult}+#1#{}씩 증가합니다",
-					"상점을 {C:attention}새로고침{} 할시 초기화됩니다",
+					"상점을 {C:attention}새로고침{} 할시 절반이",
+					"됩니다 (소수점은 버립니다)",
 					"{C:inactive}(현재 {C:mult}+#2#{}{C:inactive} 배수)",
 				},
 			},
@@ -192,10 +193,10 @@ return {
 				text = {
 					"이 조커는 콤보에 맞는 패를 낼때마다",
 					"배수 획득량이 {X:mult,C:white}X#1#{} 증가합니다",
-					"콤보를 떨구면 배수 획득량을 {X:mult,C:white}X#2#{} 잃습니다",
+					"콤보를 떨구면 배수 획득량이 절반이 됩니다",
 					"{C:inactive}(현재 {X:mult,C:white}X#3#{C:inactive} 배수)",
 					"",
-					"{C:attention}#4#{}, {C:inactive}#5#{}, {C:inactive}#6#{}, ... ",
+					"콤보: {C:attention}#4#{}, {C:inactive,s:0.9}#5#, #6#, ... ",
 				},
 			},
 			j_blueatro_account_reroll = {
@@ -210,22 +211,22 @@ return {
 				name = "백의의 천사",
 				text = {
 					"이 조커가 판매되거나 파괴되면,",
-					"라운드의 끝에 판매 가격이 {C:money}$0{}인",
-					"채로 돌아오며 배수 획득량이 {C:mult}+#1#{} 증가합니다",
+					"라운드가 끝날때 돌아오며",
+					"배수 획득량이 {C:mult}+#1#{} 증가합니다",
 					"{C:inactive}(현재 {C:mult}+#2#{C:inactive} 배수)",
 					" ",
-					"자리가 없을 경우, 이터널이 아닌",
+					"자리가 없을 경우, 돌아오기 전",
 					"첫번째 {C:attention}조커{}를 파괴합니다",
-				}
-			}
-			j_blueatro_tattered_poster = {
-				name = "낡은 포스터",
+				},
+			},
+			j_blueatro_torn_poster = {
+				name = "찢어진 포스터",
 				text = {
 					"{C:attention}파괴{}될 시 무작위한",
 					"{C:red}레어{} {C:attention}조커{}를 생성합니다",
 					"{C:inactive}(자리가 있어야 합니다){}",
-				}
-			}
+				},
+			},
 		},
 		Other = {},
 		Planet = {},
@@ -246,6 +247,7 @@ return {
 			k_levelup = "빠밤빠밤!",
 			k_nihaha = "니하하!",
 			k_sugar_replenished = "당분 보충!",
+			k_rerolled = "리세!",
 		},
 		high_scores = {},
 		labels = {},

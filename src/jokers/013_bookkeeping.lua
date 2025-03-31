@@ -1,3 +1,20 @@
+local _Game_init_game_object = Game.init_game_object
+function Game:init_game_object()
+	local ret = _Game_init_game_object(self)
+	ret.current_round.blueatro = ret.current_round.blueatro or {}
+	ret.current_round.blueatro.bookkeeping_count = 3
+	return ret
+end
+
+local _reset_game_globals = SMODS.current_mod.reset_game_globals
+function SMODS.current_mod.reset_game_globals(run_start)
+	if _reset_game_globals then
+		_reset_game_globals(run_start)
+	end
+	G.GAME.current_round.blueatro.bookkeeping_count =
+		math.floor(pseudorandom("aoi" .. G.GAME.round_resets.ante, 1, G.hand.config.highlighted_limit) + 0.5)
+end
+
 local should_proc = function(discount)
 	if not G.GAME or not G.GAME.current_round or not G.GAME.current_round.blueatro then
 		return false

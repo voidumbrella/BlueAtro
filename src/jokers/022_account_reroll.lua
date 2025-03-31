@@ -26,15 +26,24 @@ SMODS.Joker({
 					func = function()
 						card:juice_up(0.8)
 						next_joker:remove()
-						local c = SMODS.add_card({
-							set = "Joker",
-							key_append = "risemara",
-						})
-						for i = #G.jokers.cards, pos + 1, -1 do
-							G.jokers.cards[i] = G.jokers.cards[i - 1]
+						if #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
+							local c = SMODS.add_card({
+								set = "Joker",
+								key_append = "risemara",
+							})
+							for i = #G.jokers.cards, pos + 1, -1 do
+								G.jokers.cards[i] = G.jokers.cards[i - 1]
+							end
+							G.jokers.cards[pos] = c
+							play_sound("generic1")
+							SMODS.calculate_effect({
+								message = localize("k_rerolled"),
+							}, card)
+						else
+							SMODS.calculate_effect({
+								message = localize("k_no_room_ex"),
+							}, card)
 						end
-						G.jokers.cards[pos] = c
-						play_sound("generic1")
 						return true
 					end,
 				}))

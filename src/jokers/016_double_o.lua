@@ -2,7 +2,7 @@ SMODS.Joker({
 	key = "double_o",
 	atlas = "jokers_atlas",
 	pos = BlueAtro.id_to_atlas_pos(16),
-	config = { extra = { xmult = 1, xmult_gain = 0.15 } },
+	config = { extra = { xmult = 1, xmult_gain = 0.1 } },
 	rarity = 3,
 	cost = 9,
 	blueprint_compat = true,
@@ -16,11 +16,7 @@ SMODS.Joker({
 				card = context.blueprint_card or card,
 				colour = G.C.MULT,
 			}
-		elseif
-			context.individual
-			and context.cardarea == G.play
-			and not context.blueprint
-		then
+		elseif context.discard and not context.blueprint then
 			card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
 			return {
 				message = localize({ type = "variable", key = "a_xmult", vars = { card.ability.extra.xmult } }),

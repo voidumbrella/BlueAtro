@@ -4,7 +4,7 @@ SMODS.Joker({
 	pos = BlueAtro.id_to_atlas_pos(12),
 	config = { extra = {} },
 	rarity = 3,
-	cost = 7,
+	cost = 10,
 	blueprint_compat = true,
 	loc_vars = function(_, info_queue, card) end,
 	calculate = function(_, card, context)

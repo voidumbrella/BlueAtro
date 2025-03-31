@@ -95,7 +95,8 @@ return {
 				text = {
 					"This Joker gains {C:mult}+#1#{} Mult",
 					"at the end of the {C:attention}shop{}",
-					"Resets when shop is {C:attention}rerolled{}",
+					"Mult is halved when shop is",
+					"{C:attention}rerolled{} (rounded down)",
 					"{C:inactive}(Currently {C:mult}+#2#{}{C:inactive} Mult)",
 				},
 			},
@@ -145,7 +146,7 @@ return {
 				text = {
 					"Played {C:attention}Queens{}",
 					"permanently gain",
-					"{C:mult}+#1#{} Mult when they score",
+					"{C:mult}+#1#{} Mult when scored",
 				},
 			},
 			j_blueatro_double_o = {
@@ -185,7 +186,7 @@ return {
 				name = "Avant-Garde-kun",
 				text = {
 					"If played hand is lower level",
-					"than all other poker hands",
+					"than all other poker hands,",
 					"each played card gives",
 					"{X:mult,C:white}X#1#{} Mult when scored",
 				},
@@ -195,16 +196,16 @@ return {
 				text = {
 					"Gains {X:mult,C:white}X#1#{} Mult for each hand",
 					"matching the next hand in the combo",
-					"Loses {X:mult,C:white}X#2#{} if combo is dropped",
+					"Mult is halved when combo is dropped",
 					"{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive} Mult)",
 					"",
-					"Combo: {C:attention}#4#{}, {C:inactive}#5#{}, {C:inactive}#6#{}, ... ",
+					"Combo: {C:attention}#4#{}, {C:inactive,s:0.9}#5#, #6#, ... ",
 				},
 			},
 			j_blueatro_account_reroll = {
 				name = "Account Reroll",
 				text = {
-					"When {C:attention}rerolling{} in the shop,",
+					"When {C:attention}rerolling{} the shop,",
 					"{C:attention}destroys{} Joker to the right",
 					"and creates a random Joker",
 				},
@@ -212,26 +213,25 @@ return {
 			j_blueatro_guardian_angel = {
 				name = "Guardian Angel",
 				text = {
-					"When this is sold or destroyed,",
-					"it returns at the end of round",
-					"with a sell cost of {C:money}$0{} and",
+					"When sold or destroyed,",
+					"returns at the end of round",
 					"and gains {C:mult}+#1#{} Mult",
 					"{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
 					" ",
-					"If there are no slots available,",
-					"will destroy the first non-Eternal",
-					"{C:attention}Joker{} to create room"
-				}
+					"If there is no room available,",
+					"destroys the leftmost {C:attention}Joker{}",
+					"to create space",
+				},
 			},
-			j_blueatro_tattered_poster = {
-				name = "Tattered Poster",
+			j_blueatro_torn_poster = {
+				name = "Torn Poster",
 				text = {
 					"Creates a random",
 					"{C:red}Rare{} {C:attention}Joker{} when",
 					"this is {C:attention}destroyed{}",
 					"{C:inactive}(Must have room){}",
-				}
-			}
+				},
+			},
 		},
 		Other = {},
 		Planet = {},
@@ -252,6 +252,7 @@ return {
 			k_levelup = "Panpakapan!",
 			k_nihaha = "Nihaha!",
 			k_sugar_replenished = "Sugar Replenished!",
+			k_rerolled = "Rerolled!",
 		},
 		high_scores = {},
 		labels = {},

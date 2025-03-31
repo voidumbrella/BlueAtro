@@ -38,8 +38,6 @@ SMODS.Joker({
 						return true
 					end,
 				}))
-
-				return true
 			end
 		end
 	end,

@@ -53,7 +53,7 @@ if __name__ == "__main__":
             71,
             95,
             10,
-            10,
+            1,
             "art/enhancements/1x/1x_blank.png",
         ),
         (
@@ -62,7 +62,7 @@ if __name__ == "__main__":
             142,
             190,
             10,
-            10,
+            1,
             "art/enhancements/2x/2x_blank.png",
         ),
     ]
