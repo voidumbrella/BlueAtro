@@ -28,7 +28,15 @@ SMODS.calculate_context = function(context, return_table)
 	local ret = _smods_calculate_context(context, return_table)
 
 	if context.end_of_round then
-		local slots_needed = #BlueAtro.blueatro_serina_storage.cards
+		local negatives_count = 0
+
+		for _, card in ipairs(BlueAtro.blueatro_serina_storage.cards) do
+			if card.edition and card.edition.negative then
+				negatives_count = negatives_count + 1
+			end
+		end
+		
+		local slots_needed = #BlueAtro.blueatro_serina_storage.cards - negatives_count
 		local available_slots = G.jokers.config.card_limit - (#G.jokers.cards + G.GAME.joker_buffer)
 		if slots_needed > available_slots then
 			local destruction_count = slots_needed - available_slots
@@ -50,7 +58,8 @@ SMODS.calculate_context = function(context, return_table)
 		for _, card in ipairs(BlueAtro.blueatro_serina_storage.cards) do
 			G.E_MANAGER:add_event(Event({
 				func = function()
-					if #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
+					if #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit or
+						(card.edition and card.edition.negative) then
 						BlueAtro.blueatro_serina_storage:remove_card(card)
 						G.jokers:emplace(card)
 						card:add_to_deck()
