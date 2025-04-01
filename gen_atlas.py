@@ -52,8 +52,8 @@ if __name__ == "__main__":
             "assets/1x/enhancements.png",
             71,
             95,
-            10,
             1,
+            10,
             "art/enhancements/1x/1x_blank.png",
         ),
         (
@@ -61,8 +61,8 @@ if __name__ == "__main__":
             "assets/2x/enhancements.png",
             142,
             190,
-            10,
             1,
+            10,
             "art/enhancements/2x/2x_blank.png",
         ),
     ]

@@ -2,7 +2,6 @@ BlueAtro = {}
 BlueAtro.id_to_atlas_pos = function(id)
 	return { x = id % 10, y = math.floor(id / 10) }
 end
-function BlueAtro.move_joker_pos(card, pos) end
 
 sendDebugMessage("Loading hooks", "BlueAtro")
 assert(SMODS.load_file("src/hooks.lua"))()
