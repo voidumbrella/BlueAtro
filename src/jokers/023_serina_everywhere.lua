@@ -35,7 +35,7 @@ SMODS.calculate_context = function(context, return_table)
 				negatives_count = negatives_count + 1
 			end
 		end
-		
+
 		local slots_needed = #BlueAtro.blueatro_serina_storage.cards - negatives_count
 		local available_slots = G.jokers.config.card_limit - (#G.jokers.cards + G.GAME.joker_buffer)
 		if slots_needed > available_slots then
@@ -58,8 +58,10 @@ SMODS.calculate_context = function(context, return_table)
 		for _, card in ipairs(BlueAtro.blueatro_serina_storage.cards) do
 			G.E_MANAGER:add_event(Event({
 				func = function()
-					if #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit or
-						(card.edition and card.edition.negative) then
+					if
+						#G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit
+						or (card.edition and card.edition.negative)
+					then
 						BlueAtro.blueatro_serina_storage:remove_card(card)
 						G.jokers:emplace(card)
 						card:add_to_deck()
@@ -78,7 +80,7 @@ SMODS.calculate_context = function(context, return_table)
 end
 
 SMODS.Joker({
-	key = "guardian_angel",
+	key = "serina",
 	atlas = "jokers_atlas",
 	pos = BlueAtro.id_to_atlas_pos(23),
 	config = { extra = { mult = 0, mult_gain = 3 } },

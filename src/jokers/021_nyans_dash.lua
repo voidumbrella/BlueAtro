@@ -96,10 +96,10 @@ SMODS.Joker({
 				{ text = ")" },
 			},
 			calc_function = function(card)
-				-- Don't update this as the hand is being scored, since it'd look jarring.
 				if next(G.play.cards) then
 					return
 				end
+
 				local needed_hand = G.GAME.current_round.blueatro.yuzu_combo[1]
 				card.joker_display_values.next_hand = localize(needed_hand, "poker_hands")
 

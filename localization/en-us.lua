@@ -90,8 +90,8 @@ return {
 					"{C:inactive}(#2# left){}",
 				},
 			},
-			j_blueatro_slacker = {
-				name = "Slacker",
+			j_blueatro_nemugaki = {
+				name = "Sleepy Brat",
 				text = {
 					"This Joker gains {C:mult}+#1#{} Mult",
 					"at the end of the {C:attention}shop{}",
@@ -185,10 +185,10 @@ return {
 			j_blueatro_avantgarde = {
 				name = "Avant-Garde-kun",
 				text = {
-					"If played hand is lower level",
-					"than all other poker hands,",
-					"each played card gives",
-					"{X:mult,C:white}X#1#{} Mult when scored",
+					"This Joker gains {C:mult}+#1#{} Mult",
+					"for each poker hand with",
+					"level higher than played hand",
+					"{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
 				},
 			},
 			j_blueatro_nyans_dash = {
@@ -210,8 +210,8 @@ return {
 					"and creates a random Joker",
 				},
 			},
-			j_blueatro_guardian_angel = {
-				name = "Guardian Angel",
+			j_blueatro_serina = {
+				name = "Serina Everywhere",
 				text = {
 					"When sold or destroyed,",
 					"returns at the end of round",
@@ -230,6 +230,14 @@ return {
 					"{C:red}Rare{} {C:attention}Joker{} when",
 					"this is {C:attention}destroyed{}",
 					"{C:inactive}(Must have room){}",
+				},
+			},
+			j_blueatro_panic_shot = {
+				name = "Panic Shot",
+				text = {
+					"{C:green}#1# in #2#{} chance for {X:mult,C:white}X#3#{} Mult",
+					"Selling a {C:attention}Joker{} increases",
+					"the chance until end of round",
 				},
 			},
 		},

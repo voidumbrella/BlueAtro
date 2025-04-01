@@ -91,8 +91,8 @@ return {
 					"{C:inactive}(#2#장 남음){}",
 				},
 			},
-			j_blueatro_slacker = {
-				name = "게으름뱅이",
+			j_blueatro_nemugaki = {
+				name = "졸린 꼬맹이",
 				text = {
 					"이 조커의 배수 획득량은 {C:attention}상점{}에서",
 					"나갈 때마다 {C:mult}+#1#{}씩 증가합니다",
@@ -153,7 +153,7 @@ return {
 				text = {
 					"이번 {C:attention}앤티{}동안 버린 카드마다",
 					"{X:mult,C:white}X#1#{} 배수를 얻습니다",
-					"{C:inactive}(현재 {X:mult,C:white}X#2#{C:inactive} 배수)",
+					"{C:inactive}(현재 X:mult,C:white}X#2#{C:inactive} 배수)",
 				},
 			},
 			j_blueatro_calculator = {
@@ -182,10 +182,11 @@ return {
 			j_blueatro_avantgarde = {
 				name = "아방가르드군",
 				text = {
-					"플레이한 핸드가 다른 모든",
-					"포커 핸드보다 레벨이 낮다면",
-					"플레이한 카드가 득점할때마다.",
-					"{X:mult,C:white}X#1#{} 배수를 획득합니다",
+					"플레이한 핸드 보다",
+					"레벨이 높은 족보마다",
+					"이 조커의 배수 획득량이",
+					"{C:mult}+#1#{} 증가합니다",
+					"{C:inactive}(현재 {C:mult}+#2#{C:inactive} 배수)",
 				},
 			},
 			j_blueatro_nyans_dash = {
@@ -207,8 +208,8 @@ return {
 					"무작위한 조커를 생성합니다",
 				},
 			},
-			j_blueatro_guardian_angel = {
-				name = "백의의 천사",
+			j_blueatro_serina = {
+				name = "어디서나 세리나",
 				text = {
 					"이 조커가 판매되거나 파괴되면,",
 					"라운드가 끝날때 돌아오며",
@@ -225,6 +226,15 @@ return {
 					"{C:attention}파괴{}될 시 무작위한",
 					"{C:red}레어{} {C:attention}조커{}를 생성합니다",
 					"{C:inactive}(자리가 있어야 합니다){}",
+				},
+			},
+			j_blueatro_panic_shot = {
+				name = "패닉 샷",
+				text = {
+					"{C:green}#1#/#2#{} 확률로",
+					"{X:mult,C:white}X#3#{} 배수를 획득합니다",
+					"{C:attention}조커{}를 판매할 때마다",
+					"라운드의 끝까지 확률이 증가합니다",
 				},
 			},
 		},

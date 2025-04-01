@@ -1,5 +1,5 @@
 SMODS.Joker({
-	key = "slacker",
+	key = "nemugaki",
 	atlas = "jokers_atlas",
 	pos = BlueAtro.id_to_atlas_pos(9),
 	config = { extra = { mult = 0, mult_gain = 4 } },

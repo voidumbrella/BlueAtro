@@ -1,29 +1,44 @@
-local function should_proc(scoring_name)
-	local level = G.GAME.hands[scoring_name].level or 1
+local function get_lower_hands_count(scoring_name)
+	local level = G.GAME.hands[scoring_name] and G.GAME.hands[scoring_name].level or 1
+	local hand_count = 0
 	for k, v in pairs(G.GAME.hands) do
-		if k ~= scoring_name and v.visible and v.level <= level then
-			return false
+		if v.visible and v.level > level then
+			hand_count = hand_count + 1
 		end
 	end
-	return true
+	return hand_count
 end
 
 SMODS.Joker({
 	key = "avantgarde",
 	atlas = "jokers_atlas",
 	pos = BlueAtro.id_to_atlas_pos(20),
-	config = { extra = { xmult = 1.62 } },
+	config = { extra = { mult_gain = 1, mult = 0 } },
 	rarity = 3,
-	cost = 10,
-	blueprint_compat = false,
+	cost = 11,
+	blueprint_compat = true,
+	eternal_compat = false,
+	perishable_compat = false,
 	loc_vars = function(_, info_queue, card)
-		return { vars = { card.ability.extra.xmult } }
+		return { vars = { card.ability.extra.mult_gain, card.ability.extra.mult } }
 	end,
 	calculate = function(self, card, context)
-		if context.individual and context.cardarea == G.play and should_proc(context.scoring_name) then
+		if context.joker_main and card.ability.extra.mult > 0 then
 			return {
-				x_mult = card.ability.extra.xmult,
-				colour = G.C.RED,
+				mult = card.ability.extra.mult,
+				card = context.blueprint_card or card,
+				colour = G.C.MULT,
+			}
+		elseif context.before then
+			local lower_hands = get_lower_hands_count(context.scoring_name)
+			card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain * lower_hands
+
+			return {
+				message = localize({
+					type = "variable",
+					key = "a_mult",
+					vars = { card.ability.extra.mult },
+				}),
 				card = card,
 			}
 		end
@@ -31,12 +46,21 @@ SMODS.Joker({
 	joker_display_def = function(JokerDisplay)
 		return {
 			text = {
-				{ text = "X", colour = G.C.MULT },
-				{ ref_table = "card.joker_display_values", ref_value = "xmult", colour = G.C.MULT },
+				{ text = "+", colour = G.C.MULT },
+				{ ref_table = "card.joker_display_values", ref_value = "mult", colour = G.C.MULT },
 			},
 			calc_function = function(card)
-				-- TODO: Calculate XMult
-				card.joker_display_values.xmult = 1
+				if next(G.play.cards) then
+					return
+				end
+
+				local text, _, _ = JokerDisplay.evaluate_hand()
+				if text ~= "Unknown" and G.GAME and G.GAME.hands[text] then
+					local count = get_lower_hands_count(text)
+					card.joker_display_values.mult = card.ability.extra.mult + card.ability.extra.mult_gain * count
+				else
+					card.joker_display_values.mult = card.ability.extra.mult
+				end
 			end,
 		}
 	end,
