@@ -13,7 +13,7 @@ end
 
 local _card_remove = Card.remove
 function Card:remove()
-	if self.config.center.key == "j_blueatro_guardian_angel" and self.added_to_deck then
+	if self.config.center.key == "j_blueatro_serina" and self.added_to_deck then
 		local copy = copy_card(self)
 		copy.ability.extra.mult = self.ability.extra.mult + self.ability.extra.mult_gain
 		copy.added_to_deck = nil
