@@ -214,8 +214,8 @@ return {
 				name = "Serina Everywhere",
 				text = {
 					"When sold or destroyed,",
-					"returns at the end of round",
-					"and gains {C:mult}+#1#{} Mult",
+					"this returns at the end of",
+					"round and gains {C:mult}+#1#{} Mult",
 					"{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
 					" ",
 					"If there is no room available,",

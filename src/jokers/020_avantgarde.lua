@@ -31,6 +31,10 @@ SMODS.Joker({
 			}
 		elseif context.before then
 			local lower_hands = get_lower_hands_count(context.scoring_name)
+			if lower_hands == 0 then
+				return
+			end
+
 			card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain * lower_hands
 
 			return {
