@@ -50,7 +50,7 @@ return {
 			j_blueatro_hero = {
 				name = "Hero",
 				text = {
-					"For every {C:attention}#2#{} scored cards,",
+					"When cards are scored {C:attention}#2#{} times,",
 					"this gains {C:mult}+#1#{} Mult",
 					"{C:inactive}(#4# cards left)",
 					"{C:inactive}(Currently {C:mult}+#3#{}{C:inactive} Mult){}",
