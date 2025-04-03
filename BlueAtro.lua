@@ -3,8 +3,9 @@ BlueAtro.id_to_atlas_pos = function(id)
 	return { x = id % 10, y = math.floor(id / 10) }
 end
 
-sendDebugMessage("Loading hooks", "BlueAtro")
 assert(SMODS.load_file("src/hooks.lua"))()
+assert(SMODS.load_file("src/enhancements.lua"))()
+assert(SMODS.load_file("src/tarots.lua"))()
 
 SMODS.Atlas({
 	key = "modicon",
@@ -33,10 +34,5 @@ end
 table.sort(jokers)
 
 for _, file_name in ipairs(jokers) do
-	sendDebugMessage("Loading " .. file_name, "BlueAtro")
 	assert(SMODS.load_file("src/jokers/" .. file_name))()
 end
-
--- LOAD ENHANCEMENTS --
-sendDebugMessage("Loading enhancements", "BlueAtro")
-assert(SMODS.load_file("src/enhancements.lua"))()

@@ -65,6 +65,24 @@ if __name__ == "__main__":
             10,
             "art/enhancements/2x/2x_blank.png",
         ),
+        (
+            "art/tarots/1x",
+            "assets/1x/tarots.png",
+            71,
+            95,
+            1,
+            10,
+            "art/tarots/1x/1x_blank.png",
+        ),
+        (
+            "art/tarots/2x",
+            "assets/2x/tarots.png",
+            142,
+            190,
+            1,
+            10,
+            "art/tarots/2x/2x_blank.png",
+        ),
     ]
 
     for atlas in atlases:

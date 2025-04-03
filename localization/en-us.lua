@@ -168,7 +168,7 @@ return {
 				name = "Sugar Rush",
 				text = {
 					"{X:mult,C:white}X#1#{} Mult, loses {X:mult,C:white}X#2#{} Mult",
-					"after each {C:attention}hand{}",
+					"after each hand played",
 					"{C:inactive}(Will remain at X1){}",
 					"Resets after beating a {C:attention}Boss Blind{}",
 				},
@@ -246,7 +246,15 @@ return {
 		Spectral = {},
 		Stake = {},
 		Tag = {},
-		Tarot = {},
+		Tarot = {
+			c_blueatro_whale = {
+				name = "The Whale",
+				text = {
+					"Enhances {C:attention}#1#{} selected card",
+					"into a {C:attention}Pyroxene Card",
+				},
+			},
+		},
 		Voucher = {},
 	},
 	misc = {
