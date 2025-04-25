@@ -38,7 +38,7 @@ SMODS.Joker({
 				message = localize("k_nihaha"),
 				colour = G.C.SECONDARY_SET.Tarot,
 				card = context.blueprint_card or card,
-				dollar = -card.ability.extra.cost,
+				dollars = -card.ability.extra.cost,
 			}
 		end
 	end,
