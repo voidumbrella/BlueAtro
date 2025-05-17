@@ -24,10 +24,10 @@ SMODS.Joker({
 
 			local next_joker = G.jokers.cards[pos]
 			if next_joker and not next_joker.eternal then
+				next_joker.getting_sliced = true
 				G.E_MANAGER:add_event(Event({
 					func = function()
 						card:juice_up(0.8)
-						next_joker.getting_sliced = true
 						next_joker:remove()
 						if #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
 							local c = SMODS.add_card({
