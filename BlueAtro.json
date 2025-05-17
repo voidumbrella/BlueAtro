@@ -1,0 +1,13 @@
+{
+  "id": "BlueAtro",
+  "name": "BlueAtro",
+  "author": ["void"],
+  "description": "Blue Archive themed Balatro mod.",
+  "prefix": "blueatro",
+  "display_name": "BlueAtro",
+  "main_file": "BlueAtro.lua",
+  "badge_colour": "6CB9FC",
+  "badge_text_colour": "FFFFFF",
+  "version": "0.1.0",
+  "dependencies": ["Steamodded (>=1.0.0~ALPHA-1304a)"]
+}
