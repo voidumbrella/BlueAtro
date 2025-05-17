@@ -13,7 +13,7 @@ SMODS.Joker({
 	key = "avantgarde",
 	atlas = "blueatro_joker_atlas",
 	pos = BlueAtro.id_to_atlas_pos(20),
-	config = { extra = { mult_gain = 1, mult = 0 } },
+	config = { extra = { mult_gain = 2, mult = 0 } },
 	rarity = 3,
 	cost = 11,
 	blueprint_compat = true,

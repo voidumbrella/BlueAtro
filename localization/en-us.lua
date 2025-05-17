@@ -191,7 +191,7 @@ return {
 				},
 			},
 			j_blueatro_double_o = {
-				name = "Double O",
+				name = "Callsign Double O",
 				text = {
 					"Gains {X:mult,C:white}X#1#{} Mult each card",
 					"discarded this {C:attention}Ante{}",
@@ -307,7 +307,7 @@ return {
 					"{X:mult,C:white}X#1#{} Mult if cards",
 					"held in hand do not",
 					"form any poker hand",
-					"(except {C:attention}High Card{})",
+					"{C:inactive}(except {C:attention}High Card{C:inactive})",
 				},
 			},
 		},

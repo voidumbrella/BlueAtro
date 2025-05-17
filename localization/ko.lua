@@ -189,33 +189,35 @@ return {
 				},
 			},
 			j_blueatro_double_o = {
-				name = "더블오",
+				name = "콜사인 더블오",
 				text = {
 					"이번 {C:attention}앤티{}동안 버린 카드마다",
 					"{X:mult,C:white}X#1#{} 배수를 얻습니다",
-					"{C:inactive}(현재 X:mult,C:white}X#2#{C:inactive} 배수)",
+					"{C:inactive}(현재 {X:mult,C:white}X#2#{C:inactive} 배수)",
 				},
 			},
 			j_blueatro_calculator = {
 				name = "공학 계산기",
 				text = {
-					"손패에 남아 있는 각 {C:attention}청휘석 카드{}가",
-					"{C:chips}+#1#{} 칩을 부여합니다",
+					"손패에 남아 있는 {C:attention}청휘석 카드{}마다",
+					"칩 {C:chips}+#1#{}개를 획득합니다",
 				},
 			},
 			j_blueatro_sugar_rush = {
 				name = "슈가 러시",
 				text = {
 					"{X:mult,C:white}X#1#{} 배수, 핸드를 {C:attention}플레이 할 때마다{}",
-					"{X:mult,C:white}X#2#{} 배수를 잃습니다 {C:inactive}(최소 X1까지 감소합니다){}",
+					"{X:mult,C:white}X#2#{} 배수를 잃습니다",
+					"{C:inactive}(최소 X1까지 감소합니다){}",
 					"{C:attention}보스 블라인드{}에 승리하면 초기화됩니다",
 				},
 			},
 			j_blueatro_quick_reload = {
-				name = "고속 재장전",
+				name = "능숙한 재장전",
 				text = {
-					"플레이한 핸드에 {C:attention}투페어{}가 포함시",
-					"{C:attention}플레이한 카드{}들 중 첫번째",
+					"플레이한 핸드에",
+					"{C:attention}투페어{}가 포함되 있을 경우",
+					"{C:attention}플레이한 카드{}들 중 처음",
 					"두장을 손에 다시 넣습니다",
 				},
 			},
@@ -223,7 +225,7 @@ return {
 				name = "아방가르드군",
 				text = {
 					"플레이한 핸드 보다",
-					"레벨이 높은 족보마다",
+					"레벨이 높은 족보 하나마다",
 					"이 조커의 배수 획득량이",
 					"{C:mult}+#1#{} 증가합니다",
 					"{C:inactive}(현재 {C:mult}+#2#{C:inactive} 배수)",
@@ -271,10 +273,11 @@ return {
 			j_blueatro_panic_shot = {
 				name = "패닉 샷",
 				text = {
-					"{C:green}#1#/#2#{} 확률로",
+					"{C:green}#1#/#2#{}의 확률로",
 					"{X:mult,C:white}X#3#{} 배수를 획득합니다",
 					"카드를 판매할 때마다",
-					"라운드의 끝까지 확률이 증가합니다",
+					"블라인드에 승리할때 까지",
+					"확률이 증가합니다",
 				},
 			},
 			j_blueatro_dictator = {
@@ -289,7 +292,7 @@ return {
 			j_blueatro_crayondrawing = {
 				name = "크레파스 그림",
 				text = {
-					"이 조커는 득점하는 다른 문양마다",
+					"득점하는 다른 문양 하나마다 이 조커의",
 					"칩 획득량이 {C:chips}+#1#{}개 증가합니다",
 					"{C:inactive}(현재 칩 {C:chips}+#2#{}{C:inactive} 개{})",
 				},
@@ -300,8 +303,8 @@ return {
 					"손에 남은 카드들이",
 					"아무런 포커 핸드를",
 					"만들지 않을 시",
-					"{X:mult,C:white}X#1#{} 배수",
-					"({C:attention}하이 카드{} 제외)",
+					"{C:inactive}({C:attention}하이 카드{C:inactive} 제외)",
+					"{X:mult,C:white}X#1#{} 배수를 획득합니다",
 				},
 			},
 		},

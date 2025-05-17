@@ -27,7 +27,7 @@ local _smods_calculate_context = SMODS.calculate_context
 SMODS.calculate_context = function(context, return_table)
 	local ret = _smods_calculate_context(context, return_table)
 
-	if context.end_of_round then
+	if context.end_of_round and #BlueAtro.blueatro_serina_storage.cards > 0 then
 		local negatives_count = 0
 
 		for _, card in ipairs(BlueAtro.blueatro_serina_storage.cards) do
