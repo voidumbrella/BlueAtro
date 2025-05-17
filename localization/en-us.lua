@@ -1,7 +1,48 @@
 return {
 	descriptions = {
 		Back = {},
-		Blind = {},
+		Blind = {
+			bl_blueatro_binah = {
+				name = "Binah",
+				text = {
+					"Absurdly large blind",
+					"{s:0.15}",
+					"Playing a hand type",
+					"unplayed this round",
+					"halves required score",
+				},
+			},
+			bl_blueatro_chesed = {
+				name = "Chesed",
+				text = {
+					"Playing a hand increases",
+					"required score by 15%",
+				},
+			},
+			bl_blueatro_goz = {
+				name = "Goz",
+				text = {
+					"After Play or Discard,",
+					"flip and shuffle",
+					"cards held in hand",
+				},
+			},
+			bl_blueatro_perorodzilla = {
+				name = "Perorodzilla",
+				text = {
+					"First scoring card",
+					"of each hand is",
+					"permanently debuffed",
+				},
+			},
+			bl_blueatro_kurokage = {
+				name = "Myouki Kurokage",
+				text = {
+					"Cards with rank scored",
+					"this round are debuffed",
+				},
+			},
+		},
 		Edition = {},
 		Enhanced = {
 			m_blueatro_pyroxene = {
@@ -50,7 +91,7 @@ return {
 			j_blueatro_hero = {
 				name = "Hero",
 				text = {
-					"For every {C:attention}#2#{} scored cards,",
+					"When cards are scored {C:attention}#2#{} times,",
 					"this gains {C:mult}+#1#{} Mult",
 					"{C:inactive}(#4# cards left)",
 					"{C:inactive}(Currently {C:mult}+#3#{}{C:inactive} Mult){}",
@@ -90,12 +131,13 @@ return {
 					"{C:inactive}(#2# left){}",
 				},
 			},
-			j_blueatro_ornate_chair = {
-				name = "Ornate Chair",
+			j_blueatro_nemugaki = {
+				name = "Sleepy Brat",
 				text = {
 					"This Joker gains {C:mult}+#1#{} Mult",
-					"at the end of the {C:attention}shop{}.",
-					"Resets when shop is {C:attention}rerolled{}",
+					"at the end of the {C:attention}shop{}",
+					"Mult is halved when shop is",
+					"{C:attention}rerolled{} (rounded down)",
 					"{C:inactive}(Currently {C:mult}+#2#{}{C:inactive} Mult)",
 				},
 			},
@@ -128,9 +170,9 @@ return {
 				name = "Bookkeeping",
 				text = {
 					"When discarding exactly",
-					"{C:attention}#2#{} cards, earn {C:money}$#1#{}.",
+					"{C:attention}#2#{} cards, earn {C:money}$#1#{}",
 					"Number of cards",
-					"hanges each round",
+					"changes each round",
 				},
 			},
 			j_blueatro_chicken_skewer = {
@@ -145,14 +187,14 @@ return {
 				text = {
 					"Played {C:attention}Queens{}",
 					"permanently gain",
-					"{C:mult}+#1#{} Mult when they score",
+					"{C:chips}+#1#{} Chips when scored",
 				},
 			},
 			j_blueatro_double_o = {
 				name = "Double O",
 				text = {
-					"Gains {X:mult,C:white}X#1#{} Mult for this round",
-					"whenever an {C:attention}Ace{} scores",
+					"Gains {X:mult,C:white}X#1#{} Mult each card",
+					"discarded this {C:attention}Ante{}",
 					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
 				},
 			},
@@ -167,7 +209,7 @@ return {
 				name = "Sugar Rush",
 				text = {
 					"{X:mult,C:white}X#1#{} Mult, loses {X:mult,C:white}X#2#{} Mult",
-					"after each {C:attention}hand{}.",
+					"after each hand played",
 					"{C:inactive}(Will remain at X1){}",
 					"Resets after beating a {C:attention}Boss Blind{}",
 				},
@@ -181,13 +223,91 @@ return {
 					"into hand after scoring",
 				},
 			},
-			j_blueatro_resupply_operation = {
-				name = "Resupply Operation",
+			j_blueatro_avantgarde = {
+				name = "Avant-Garde-kun",
 				text = {
-					"If hand contains a {C:attention}Full House{}",
-					"gain {C:attention}+#1#{} hand size.",
-					"Resets after selecting a Blind",
-					"{C:inactive}(Currently {C:attention}+#2#{C:inactive} hand size){}",
+					"This Joker gains {C:mult}+#1#{} Mult",
+					"for each poker hand with",
+					"level higher than played hand",
+					"{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
+				},
+			},
+			j_blueatro_nyans_dash = {
+				name = "Nyan's Dash",
+				text = {
+					"Gains {X:mult,C:white}X#1#{} Mult for each hand",
+					"matching the next hand in the combo",
+					"Mult is halved when combo is dropped",
+					"{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive} Mult)",
+					"",
+					"Combo: {C:attention}#4#{}, {C:inactive,s:0.9}#5#, #6#, ... ",
+				},
+			},
+			j_blueatro_account_reroll = {
+				name = "Account Reroll",
+				text = {
+					"When {C:attention}rerolling{} the shop,",
+					"{C:attention}destroys{} Joker to the right",
+					"and creates a random Joker",
+				},
+			},
+			j_blueatro_serina = {
+				name = "Serina Everywhere",
+				text = {
+					"When sold or destroyed,",
+					"this returns at the end of",
+					"round and gains {C:mult}+#1#{} Mult",
+					"{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
+					" ",
+					"If there is no room available,",
+					"destroys the leftmost {C:attention}Joker{}",
+					"to create space",
+				},
+			},
+			j_blueatro_torn_poster = {
+				name = "Torn Poster",
+				text = {
+					"Creates a random",
+					"{C:red}Rare{} {C:attention}Joker{} when",
+					"this is {C:attention}destroyed{}",
+					"{C:inactive}(Must have room){}",
+				},
+			},
+			j_blueatro_panic_shot = {
+				name = "Panic Shot",
+				text = {
+					"{C:green}#1# in #2#{} chance for {X:mult,C:white}X#3#{} Mult",
+					"Selling a card increases",
+					"the chance until end of round",
+				},
+			},
+			j_blueatro_dictator = {
+				name = "Dictator",
+				text = {
+					"Discarding exactly {C:attention}1{}",
+					"non-debuffed card",
+					"permanently {C:attention}debuffs{} it",
+					"and gives {C:mult}+#1#{} Mult to",
+					"all other cards in hand",
+				},
+			},
+			j_blueatro_crayondrawing = {
+				name = "Crayon Drawing",
+				text = {
+					"This Joker gains",
+					"{C:chips}+#1#{} Chips for",
+					"each unique suit",
+					"in scoring hand",
+					"{C:inactive}(Currently {C:chips}+#2#{}{C:inactive} Chips{C:inactive})",
+				},
+			},
+			j_blueatro_vanivani = {
+				name = "Vanitas Vanitatum",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult if cards",
+					"held in hand do not",
+					"form any poker hand",
+					"(except {C:attention}High Card{})",
 				},
 			},
 		},
@@ -196,7 +316,15 @@ return {
 		Spectral = {},
 		Stake = {},
 		Tag = {},
-		Tarot = {},
+		Tarot = {
+			c_blueatro_whale = {
+				name = "The Whale",
+				text = {
+					"Enhances {C:attention}#1#{} selected card",
+					"into a {C:attention}Pyroxene Card",
+				},
+			},
+		},
 		Voucher = {},
 	},
 	misc = {
@@ -210,6 +338,8 @@ return {
 			k_levelup = "Panpakapan!",
 			k_nihaha = "Nihaha!",
 			k_sugar_replenished = "Sugar Replenished!",
+			k_rerolled = "Rerolled!",
+			k_purge = "Purge!",
 		},
 		high_scores = {},
 		labels = {},

@@ -1,3 +1,5 @@
+--- Hooks that don't belong under specific files.
+
 -- After playing a hand, cards marked with `card.blueatro.return_to_hand` are returned to hand instead
 G.FUNCS.draw_from_play_to_discard = function(_)
 	local play_count = #G.play.cards
@@ -17,13 +19,11 @@ end
 
 -- Context for Joker destruction
 local _card_remove = Card.remove
-function Card.remove(self)
+function Card:remove()
 	if self.added_to_deck and self.ability.set == "Joker" and not G.CONTROLLER.locks.selling_card then
 		SMODS.calculate_context({
-			blueatro = {
-				destroying_joker = true,
-				destroyed_joker = self,
-			},
+			blueatro_destroying_joker = true,
+			blueatro_destroyed_joker = self,
 		})
 	end
 
