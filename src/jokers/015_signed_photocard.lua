@@ -2,7 +2,7 @@ SMODS.Joker({
 	key = "signed_photocard",
 	atlas = "blueatro_joker_atlas",
 	pos = BlueAtro.id_to_atlas_pos(15),
-	config = { extra = { chip_gain = 8 } },
+	config = { extra = { chip_gain = 15 } },
 	rarity = 2,
 	cost = 6,
 	blueprint_compat = true,
