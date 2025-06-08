@@ -39,15 +39,6 @@ if __name__ == "__main__":
             "art/jokers/1x/1x_blank.png",
         ),
         (
-            "art/jokers/2x",
-            "assets/2x/jokers.png",
-            71 * 2,
-            95 * 2,
-            10,
-            10,
-            "art/jokers/2x/2x_blank.png",
-        ),
-        (
             "art/enhancements/1x",
             "assets/1x/enhancements.png",
             71,
@@ -55,15 +46,6 @@ if __name__ == "__main__":
             1,
             10,
             "art/enhancements/1x/1x_blank.png",
-        ),
-        (
-            "art/enhancements/2x",
-            "assets/2x/enhancements.png",
-            71 * 2,
-            95 * 2,
-            1,
-            10,
-            "art/enhancements/2x/2x_blank.png",
         ),
         (
             "art/tarots/1x",
@@ -75,15 +57,6 @@ if __name__ == "__main__":
             "art/tarots/1x/1x_blank.png",
         ),
         (
-            "art/tarots/2x",
-            "assets/2x/tarots.png",
-            71 * 2,
-            95 * 2,
-            1,
-            10,
-            "art/tarots/2x/2x_blank.png",
-        ),
-        (
             "art/blinds/1x",
             "assets/1x/blinds.png",
             34 * 21,
@@ -92,16 +65,16 @@ if __name__ == "__main__":
             10,
             "art/blinds/1x/1x_blank.png",
         ),
-        (
-            "art/blinds/2x",
-            "assets/2x/blinds.png",
-            34 * 21 * 2,
-            34 * 2,
-            15,
-            1,
-            "art/blinds/2x/2x_blank.png",
-        ),
     ]
 
-    for atlas in atlases:
-        create_atlas(*atlas)
+    for input_dir, output_path, width, height, rows, columns, placeholder in atlases:
+        create_atlas(input_dir, output_path, width, height, rows, columns, placeholder)
+        create_atlas(
+            input_dir.replace("1x", "2x"),
+            output_path.replace("1x", "2x"),
+            width * 2,
+            height * 2,
+            rows,
+            columns,
+            placeholder,
+        )

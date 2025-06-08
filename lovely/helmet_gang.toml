@@ -1,0 +1,56 @@
+[manifest]
+version = "1.2"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = 'engine/controller.lua'
+pattern = '''self.dragging.target = self.cursor_down.target
+self.dragging.handled = false
+'''
+position = "after"
+payload = '''if #SMODS.find_card("j_blueatro_helmet_gang") > 0 and self.dragging.target.area == G.jokers then
+	self.dragging.blueatro_initial_rank = self.dragging.target.rank
+end'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'cardarea.lua'
+pattern = '''if self.config.type == 'joker' or self.config.type == 'title_2' then'''
+position = "after"
+payload = '''
+if self == G.jokers
+	and G.CONTROLLER.dragging.target == nil
+	and G.CONTROLLER.dragging.prev_target
+	and G.CONTROLLER.dragging.prev_target.area == G.jokers
+	and G.CONTROLLER.dragging.prev_target.rank ~= G.CONTROLLER.dragging.blueatro_initial_rank
+	and #SMODS.find_card("j_blueatro_helmet_gang") > 0
+then
+	local helmet_gangs = SMODS.find_card("j_blueatro_helmet_gang")
+	local total_price = 0
+	for _, card in ipairs(helmet_gangs) do
+		total_price = total_price + card.ability.extra.price
+	end
+
+	if (G.GAME.dollars + (G.GAME.dollar_buffer or 0)) - total_price >= G.GAME.bankrupt_at then
+		-- Pay and move on
+		for _, card in ipairs(helmet_gangs) do
+			SMODS.calculate_effect({dollars = -card.ability.extra.price, colour = G.C.MONEY}, card)
+		end
+	else
+		-- Not enough to pay
+		SMODS.calculate_effect({message = localize("k_nope_ex"), colour = G.C.MONEY}, helmet_gangs[1])
+		local dragged_card = G.CONTROLLER.dragging.prev_target
+		blueatro.move_to_index(
+			self.cards,
+			dragged_card.rank,
+			G.CONTROLLER.dragging.blueatro_initial_rank
+		)
+	end
+
+	G.CONTROLLER.dragging.blueatro_initial_rank = nil
+	percent = (percent or 0)
+end'''
+match_indent = true

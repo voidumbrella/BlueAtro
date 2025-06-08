@@ -1,0 +1,22 @@
+# Prevents Jokers from appearing in shops if Descartes is present.
+[manifest]
+version = "1.2"
+dump_lua = true
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+pattern = '''          local total_rate = G.GAME.joker_rate + G.GAME.playing_card_rate'''
+position = "at"
+payload = '''local total_rate = #SMODS.find_card("j_blueatro_descartes") > 0 and G.GAME.playing_card_rate
+	or G.GAME.joker_rate + G.GAME.playing_card_rate'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+pattern = '''            {type = 'Joker', val = G.GAME.joker_rate},'''
+position = "at"
+payload = '''{type = 'Joker', val = #SMODS.find_card("j_blueatro_descartes") > 0 and 0 or G.GAME.joker_rate},'''
+match_indent = true

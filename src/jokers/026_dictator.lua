@@ -2,7 +2,7 @@ SMODS.Joker({
 	key = "dictator",
 	atlas = "blueatro_joker_atlas",
 	pos = BlueAtro.id_to_atlas_pos(26),
-	config = { extra = { mult = 2 } },
+	config = { extra = { mult = 3 } },
 	rarity = 2,
 	cost = 7,
 	blueprint_compat = true,
@@ -12,7 +12,7 @@ SMODS.Joker({
 		return { vars = { card.ability.extra.mult } }
 	end,
 	calculate = function(self, card, context)
-		if context.discard and #context.full_hand == 1 and not context.full_hand[1].debuff then
+		if context.discard and #context.full_hand == 1 then
 			SMODS.debuff_card(G.hand.highlighted[1], true, "blueatro_cherino")
 			for i = 1, #G.hand.cards do
 				local card_in_hand = G.hand.cards[i]

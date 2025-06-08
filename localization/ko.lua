@@ -181,8 +181,8 @@ return {
 					"{X:mult,C:white} X#2# {} 배수를 잃습니다",
 				},
 			},
-			j_blueatro_signed_photocard = {
-				name = "친필싸인 포토카드",
+			j_blueatro_photocard = {
+				name = "와라쿠 히메 포토카드",
 				text = {
 					"플레이해 득점한 {C:attention}퀸{}에",
 					"칩 획득량을 영구적으로 {C:chips}+#1#{}개 추가합니다",
@@ -197,7 +197,7 @@ return {
 				},
 			},
 			j_blueatro_calculator = {
-				name = "공학 계산기",
+				name = "회계의 계산기",
 				text = {
 					"손패에 남아 있는 {C:attention}청휘석 카드{}마다",
 					"칩 {C:chips}+#1#{}개를 획득합니다",
@@ -305,6 +305,38 @@ return {
 					"만들지 않을 시",
 					"{C:inactive}({C:attention}하이 카드{C:inactive} 제외)",
 					"{X:mult,C:white}X#1#{} 배수를 획득합니다",
+				},
+			},
+			j_blueatro_helmet_gang = {
+				name = "헬멧단",
+				text = {
+					"{X:mult,C:white}X#1#{} 배수",
+					"{C:attention}조커{}를 올기려면",
+					"{C:money}$#2#{}를 내야합니다",
+				},
+			},
+			j_blueatro_iridescence = {
+				name = "색채",
+				text = {
+					"라운드 종료 시",
+					"무작위한 {C:attention}이터널{}",
+					"{C:spectral}유령{} 카드를 생성합니다",
+				},
+			},
+			j_blueatro_descartes = {
+				name = "데카르트",
+				text = {
+					"상점이 {C:attention}조커{}를",
+					"판매하지 않습니다",
+				},
+			},
+			j_blueatro_dowsing_rods = {
+				name = "다우징 로드",
+				text = {
+					"{C:attention}블라인드{} 선택 시,",
+					"덱에 가장 적은 {C:attention}랭크{}의",
+					"카드들을 덱 위에 섞어넣습니다",
+					"{C:inactive}(비길시 같이 섞입니다)",
 				},
 			},
 		},

@@ -182,8 +182,8 @@ return {
 					"whenever a consumable is used",
 				},
 			},
-			j_blueatro_signed_photocard = {
-				name = "Signed Photocard",
+			j_blueatro_photocard = {
+				name = "Warakuhime Photocard",
 				text = {
 					"Played {C:attention}Queens{}",
 					"permanently gain",
@@ -199,7 +199,7 @@ return {
 				},
 			},
 			j_blueatro_calculator = {
-				name = "Scientific Calculator",
+				name = "Treasurer's Calculator",
 				text = {
 					"Each {C:attention}Pyroxene Card{} held in",
 					"hand gives {C:chips}+#1#{} Chips",
@@ -284,8 +284,7 @@ return {
 			j_blueatro_dictator = {
 				name = "Dictator",
 				text = {
-					"Discarding exactly {C:attention}1{}",
-					"non-debuffed card",
+					"Discarding exactly {C:attention}1{} card",
 					"permanently {C:attention}debuffs{} it",
 					"and gives {C:mult}+#1#{} Mult to",
 					"all other cards in hand",
@@ -308,6 +307,38 @@ return {
 					"held in hand do not",
 					"form any poker hand",
 					"{C:inactive}(except {C:attention}High Card{C:inactive})",
+				},
+			},
+			j_blueatro_helmet_gang = {
+				name = "Helmat Gang",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult",
+					"Must pay {C:money}$#2#{} to",
+					"move a {C:attention}Joker{}",
+				},
+			},
+			j_blueatro_iridescence = {
+				name = "Iridescence",
+				text = {
+					"At the end of each round,",
+					"creates a random {C:attention}Eternal{}",
+					"{C:spectral}Spectral{} card",
+				},
+			},
+			j_blueatro_descartes = {
+				name = "Descartes",
+				text = {
+					"Shops do not",
+					"offer {C:attention}Jokers{}",
+				},
+			},
+			j_blueatro_dowsing_rods = {
+				name = "Dowsing Rods",
+				text = {
+					"When {C:attention}Blind{} is selected,",
+					"cards with the the least common {C:attention}ranks{}",
+					"are shuffled to the top of the deck",
+					"{C:inactive}(Ties are shuffled together)",
 				},
 			},
 		},
