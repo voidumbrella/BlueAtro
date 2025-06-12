@@ -18,7 +18,7 @@ SMODS.Joker({
 				card = context.blueprint_card or card,
 				colour = G.C.CHIPS,
 			}
-		elseif context.before and context.cardarea == G.jokers and not context.blueprint then
+		elseif context.before and context.main_eval and not context.blueprint then
 			-- FIXME: Suit check
 			local suits = {}
 			for _, scoring_card in ipairs(context.scoring_hand) do

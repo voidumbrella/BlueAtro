@@ -18,7 +18,7 @@ SMODS.Joker({
 				card = context.blueprint_card or card,
 				colour = G.C.MULT,
 			}
-		elseif context.remove_playing_cards and not context.blueprint and not context.retrigger_joker then
+		elseif context.remove_playing_cards and not context.blueprint and context.main_eval then
 			if not context.removed or #context.removed == 0 then
 				return
 			end

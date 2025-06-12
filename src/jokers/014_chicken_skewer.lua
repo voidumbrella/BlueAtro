@@ -2,7 +2,7 @@ SMODS.Joker({
 	key = "chicken_skewer",
 	atlas = "blueatro_joker_atlas",
 	pos = BlueAtro.id_to_atlas_pos(14),
-	config = { extra = { xmult = 2.5, xmult_loss = 0.05 } },
+	config = { extra = { xmult = 3, xmult_loss = 0.05 } },
 	rarity = 2,
 	cost = 6,
 	blueprint_compat = true,
@@ -19,31 +19,11 @@ SMODS.Joker({
 				card = context.blueprint_card or card,
 			}
 		else
-			if context.using_consumeable and not context.blueprint and not context.retrigger_joker then
+			if context.card_added and context.card.ability.set == "Joker" and not context.blueprint then
 				card.ability.extra.xmult = card.ability.extra.xmult - card.ability.extra.xmult_loss
 
 				if card.ability.extra.xmult <= 1 then
-					G.E_MANAGER:add_event(Event({
-						func = function()
-							play_sound("tarot1")
-							card.T.r = -0.2
-							card:juice_up(0.3, 0.4)
-							card.states.drag.is = true
-							card.children.center.pinch.x = true
-							G.E_MANAGER:add_event(Event({
-								trigger = "after",
-								delay = 0.3,
-								blockable = false,
-								func = function()
-									G.jokers:remove_card(card)
-									card:remove()
-									card = nil
-									return true
-								end,
-							}))
-							return true
-						end,
-					}))
+					BlueAtro.pop_card(card)
 					return {
 						message = localize("k_eaten_ex"),
 						colour = G.C.FILTER,

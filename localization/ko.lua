@@ -134,10 +134,9 @@ return {
 			j_blueatro_nemugaki = {
 				name = "졸린 꼬맹이",
 				text = {
-					"이 조커의 배수 획득량은 {C:attention}상점{}에서",
-					"나갈 때마다 {C:mult}+#1#{}씩 증가합니다",
-					"상점을 {C:attention}새로고침{} 할시 절반이",
-					"됩니다 (소수점은 버립니다)",
+					"이 조커의 배수 획득량은 {C:attention}상점{}을",
+					"{C:attention}새로고침{}하지 않고 나갈 시",
+					"{C:mult}+#1#{}씩 증가합니다",
 					"{C:inactive}(현재 {C:mult}+#2#{}{C:inactive} 배수)",
 				},
 			},
@@ -177,7 +176,7 @@ return {
 				name = "닭꼬치",
 				text = {
 					"{X:mult,C:white} X#1# {} 배수를 획득합니다",
-					"{C:attention}소모품{}을 사용 할 때마다",
+					"{C:attention}조커{}를 얻을 때마다",
 					"{X:mult,C:white} X#2# {} 배수를 잃습니다",
 				},
 			},

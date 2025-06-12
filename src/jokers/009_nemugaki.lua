@@ -2,7 +2,7 @@ SMODS.Joker({
 	key = "nemugaki",
 	atlas = "blueatro_joker_atlas",
 	pos = BlueAtro.id_to_atlas_pos(9),
-	config = { extra = { mult = 0, mult_gain = 4 } },
+	config = { extra = { mult = 0, mult_gain = 3, rerolled = false } },
 	rarity = 1,
 	cost = 4,
 	blueprint_compat = true,
@@ -23,8 +23,9 @@ SMODS.Joker({
 				card = context.blueprint_card or card,
 				colour = G.C.MULT,
 			}
-		elseif context.ending_shop and not context.blueprint and not context.retrigger_joker then
+		elseif context.ending_shop and not context.blueprint and context.main_eval and not card.ability.rerolled then
 			card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
+			card.ability.rerolled = false
 			return {
 				message = localize({
 					type = "variable",
@@ -33,16 +34,8 @@ SMODS.Joker({
 				}),
 				card = card,
 			}
-		elseif context.reroll_shop and not context.blueprint and not context.retrigger_joker then
-			card.ability.extra.mult = math.floor(card.ability.extra.mult / 2)
-			return {
-				message = localize({
-					type = "variable",
-					key = "a_mult",
-					vars = { card.ability.extra.mult },
-				}),
-				card = card,
-			}
+		elseif context.reroll_shop then
+			card.ability.rerolled = true
 		end
 	end,
 	joker_display_def = function(JokerDisplay)

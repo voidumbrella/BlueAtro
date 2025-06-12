@@ -9,13 +9,7 @@ SMODS.Joker({
 	eternal_compat = true,
 	perishable_compat = true,
 	calculate = function(self, card, context)
-		if
-			context.after
-			and context.main_eval
-			and next(context.poker_hands["Two Pair"])
-			and not context.blueprint
-			and not context.retrigger_joker
-		then
+		if context.after and context.main_eval and next(context.poker_hands["Two Pair"]) and not context.blueprint then
 			local i = 0
 			for _, played_card in ipairs(G.play.cards) do
 				-- TODO: Do I want to be this anal about this

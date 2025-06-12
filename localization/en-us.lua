@@ -136,8 +136,7 @@ return {
 				text = {
 					"This Joker gains {C:mult}+#1#{} Mult",
 					"at the end of the {C:attention}shop{}",
-					"Mult is halved when shop is",
-					"{C:attention}rerolled{} (rounded down)",
+					"if it has not been {C:attention}rerolled{}",
 					"{C:inactive}(Currently {C:mult}+#2#{}{C:inactive} Mult)",
 				},
 			},
@@ -179,7 +178,7 @@ return {
 				name = "Chicken Skewer",
 				text = {
 					"{X:mult,C:white}X#1#{} Mult, loses {X:mult,C:white}X#2#{} Mult",
-					"whenever a consumable is used",
+					"whenever a {C:attention}Joker{} is obtained",
 				},
 			},
 			j_blueatro_photocard = {

@@ -63,12 +63,7 @@ SMODS.Joker({
 				card = context.blueprint_card or card,
 				colour = G.C.MULT,
 			}
-		elseif
-			context.before
-			and context.cardarea == G.jokers
-			and not context.blueprint
-			and not context.retrigger_jokers
-		then
+		elseif context.before and context.main_eval and not context.blueprint then
 			local hand_needed = G.GAME.current_round.blueatro.yuzu_combo[1]
 			if context.scoring_name == hand_needed then
 				card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
