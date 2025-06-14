@@ -3,12 +3,7 @@ local calculate_xmult = function(card)
 		return 1.0
 	end
 
-	local joker_count = 0
-	for i = 1, #G.jokers.cards do
-		if G.jokers.cards[i] == card then
-			joker_count = #G.jokers.cards - i
-		end
-	end
+	local joker_count = #G.jokers.cards - BlueAtro.get_card_pos(G.jokers, card)
 	return 1.0 + (card.ability.extra.xmult_per_joker * joker_count)
 end
 

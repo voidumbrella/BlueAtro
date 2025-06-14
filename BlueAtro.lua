@@ -1,6 +1,9 @@
 BlueAtro = {}
-BlueAtro.id_to_atlas_pos = function(id)
-	return { x = id % 10, y = math.floor(id / 10) }
+
+SMODS.current_mod.optional_features = function()
+	return {
+		post_trigger = true,
+	}
 end
 
 SMODS.Atlas({

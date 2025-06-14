@@ -16,7 +16,7 @@ return {
 				name = "헤세드",
 				text = {
 					"핸드를 낼때마다 요구",
-					"점수가 15% 증가합니다",
+					"점수가 20% 증가합니다",
 				},
 			},
 			bl_blueatro_goz = {
@@ -36,10 +36,7 @@ return {
 			},
 			bl_blueatro_kurokage = {
 				name = "묘귀 쿠로카게",
-				text = {
-					"이 라운드에서 득점한",
-					"랭크는 디버프됩니다",
-				},
+				text = {},
 			},
 		},
 		Edition = {},
@@ -336,6 +333,33 @@ return {
 					"덱에 가장 적은 {C:attention}랭크{}의",
 					"카드들을 덱 위에 섞어넣습니다",
 					"{C:inactive}(비길시 같이 섞입니다)",
+				},
+			},
+			j_blueatro_timid_observation = {
+				name = "소심한 관측",
+				text = {
+					"다른 {C:attention}조커{}가",
+					"{C:chips}+칩{}이나 {C:mult}+배수{}를 부여할 시",
+					"이 카드의 칩 획득량이 {C:chips}+#1#{}개 증가합니다",
+					"{C:inactive}(현재 칩 {C:chips}+#2#{}{C:inactive} 개{})",
+				},
+			},
+			j_blueatro_unwelcome_joker = {
+				name = "Unwelcome Joker",
+				text = {
+					"플레이한 모든 카드를",
+					"{C:attention}파괴{}한 후 {C:red}자폭{}합니다",
+				},
+			},
+			j_blueatro_kuroko = {
+				name = "시로코 테러",
+				text = {
+					"카드 {C:attention}3{}을 구매할 때마다,",
+					"가장 왼쪽의 {C:attention}이터널{}이 아닌 {C:attention}조커{}를",
+					"{C:attention}파괴{}하고 이 카드의 배수 획득량이",
+					"{X:mult,C:white}X#2#{} 증가합니다",
+					"{C:inactive}(현재 {X:mult,C:white}X#1#{} {C:inactive}배수)",
+					"{C:inactive}(현재 #3#/3장){}",
 				},
 			},
 		},

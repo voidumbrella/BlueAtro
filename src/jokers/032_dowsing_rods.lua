@@ -1,7 +1,7 @@
 SMODS.Joker({
 	key = "dowsing_rods",
 	atlas = "blueatro_joker_atlas",
-	pos = BlueAtro.id_to_atlas_pos(12),
+	pos = BlueAtro.id_to_atlas_pos(32),
 	config = {},
 	rarity = 2,
 	cost = 5,
@@ -17,6 +17,8 @@ function CardArea:shuffle(seed)
 	if self == G.deck and #SMODS.find_card("j_blueatro_dowsing_rods") > 0 and G.STATE == G.STATES.DRAW_TO_HAND then
 		local rods = SMODS.find_card("j_blueatro_dowsing_rods")
 		rods[1]:juice_up()
+		play_sound("generic1.ogg")
+
 		-- Determine rank frequency
 		local ranks = {}
 		for _, card in ipairs(G.deck.cards) do

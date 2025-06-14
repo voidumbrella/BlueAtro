@@ -62,7 +62,7 @@ if __name__ == "__main__":
             34 * 21,
             34,
             15,
-            10,
+            1,
             "art/blinds/1x/1x_blank.png",
         ),
     ]

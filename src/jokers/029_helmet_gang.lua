@@ -1,3 +1,5 @@
+-- See lovely/helmet_gang.toml.
+
 SMODS.Joker({
 	key = "helmet_gang",
 	atlas = "blueatro_joker_atlas",

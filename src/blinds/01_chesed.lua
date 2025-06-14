@@ -20,6 +20,6 @@ SMODS.Blind({
 
 	press_play = function(self)
 		G.GAME.blind:wiggle()
-		BlueAtro.ease_blind_chips(G.GAME.blind.chips * 1.15)
+		BlueAtro.ease_blind_chips(G.GAME.blind.chips * 1.20)
 	end,
 })

@@ -11,13 +11,7 @@ SMODS.Joker({
 	loc_vars = function(_, info_queue, card) end,
 	calculate = function(_, card, context)
 		if context.reroll_shop and not context.blueprint and not context.retrigger_joker then
-			local pos = nil
-			for i = 1, #G.jokers.cards do
-				if G.jokers.cards[i] == card then
-					pos = i + 1
-					break
-				end
-			end
+			local pos = BlueAtro.get_card_pos(G.jokers, card)
 			if pos == nil then
 				return
 			end

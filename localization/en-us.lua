@@ -16,7 +16,7 @@ return {
 				name = "Chesed",
 				text = {
 					"Playing a hand increases",
-					"required score by 15%",
+					"required score by 20%",
 				},
 			},
 			bl_blueatro_goz = {
@@ -37,10 +37,7 @@ return {
 			},
 			bl_blueatro_kurokage = {
 				name = "Myouki Kurokage",
-				text = {
-					"Cards with rank scored",
-					"this round are debuffed",
-				},
+				text = {},
 			},
 		},
 		Edition = {},
@@ -338,6 +335,50 @@ return {
 					"cards with the the least common {C:attention}ranks{}",
 					"are shuffled to the top of the deck",
 					"{C:inactive}(Ties are shuffled together)",
+				},
+			},
+			j_blueatro_ambulance = {
+				name = "Tactical Ambulance 11",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult for",
+					"each {C:attention}Joker{} sold during",
+					"the current {C:attention}Blind{}",
+					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+				},
+			},
+			j_blueatro_bunny_grenade = {
+				name = "Bunny Tail Grenade",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult for each",
+					"{C:attention}7{} in first drawn",
+					"hand of the round",
+					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+				},
+			},
+			j_blueatro_timid_observation = {
+				name = "Timid Observation",
+				text = {
+					"Gains {C:chips}+#1#{} Chips",
+					"whenever another {C:attention}Joker{}",
+					"gives {C:chips}+Chips{} or {C:mult}+Mult{}",
+					"{C:inactive}(Currently {C:chips}+#2#{}{C:inactive} Chips{C:inactive})",
+				},
+			},
+			j_blueatro_unwelcome_joker = {
+				name = "Unwelcome Joker",
+				text = {
+					"{C:attention}Destroys{} all played cards",
+					"then {C:red}self-destructs{}",
+				},
+			},
+			j_blueatro_kuroko = {
+				name = "Shiroko Terror",
+				text = {
+					"After every {C:attention}3{} cards purchased,",
+					"{C:attention}destroys{} leftmost non-{C:attention}Eternal{}",
+					"{C:attention}Joker{} and gains {X:mult,C:white}X#2#{} Mult",
+					"{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult)",
+					"{C:inactive}(Bought #3#/3 cards){}",
 				},
 			},
 		},

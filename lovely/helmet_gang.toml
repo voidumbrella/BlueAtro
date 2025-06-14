@@ -43,7 +43,7 @@ then
 		-- Not enough to pay
 		SMODS.calculate_effect({message = localize("k_nope_ex"), colour = G.C.MONEY}, helmet_gangs[1])
 		local dragged_card = G.CONTROLLER.dragging.prev_target
-		blueatro.move_to_index(
+		BlueAtro.move_to_index(
 			self.cards,
 			dragged_card.rank,
 			G.CONTROLLER.dragging.blueatro_initial_rank
